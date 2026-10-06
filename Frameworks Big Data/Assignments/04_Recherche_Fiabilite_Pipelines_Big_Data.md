@@ -1,9 +1,10 @@
 ---
 title: "موثوقية خطوط أنابيب البيانات الضخمة في بيئة الإنتاج (Fiabilité des pipelines Big Data en production)"
 subject: "Frameworks Big Data"
-type: Cours
+type: Devoir / Recherche
 tags:
   - 2mdsp
+  - assignment
   - big-data
   - spark
   - data-engineering

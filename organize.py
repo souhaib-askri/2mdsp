@@ -66,6 +66,11 @@ def detect_subfolder(filename: str, available_subfolders: list) -> str:
     if any(k in name_lower for k in ["td", "exercice", "serie", "travaux dirig"]):
         if "TD" in available_subfolders:
             return "TD"
+    if any(k in name_lower for k in ["devoir", "projet", "recherche", "assignment", "activite", "activité", "تكليف", "تكليفات"]):
+        if "Assignments" in available_subfolders:
+            return "Assignments"
+        if "تكليفات" in available_subfolders:
+            return "تكليفات"
     if any(k in name_lower for k in ["cours", "chapitre", "ch", "cm", "lecture", "slide", "presentation"]):
         if "Cours" in available_subfolders:
             return "Cours"

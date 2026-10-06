@@ -46,7 +46,7 @@
     <!-- Strategy 1: Exponential Backoff + Jitter -->
     <rect x="20" y="55" width="390" height="75" rx="8" fill="#ffffff" stroke="#86efac" stroke-width="1.5"/>
     <text x="35" y="78" fill="#166534" font-size="12" font-weight="bold">1. Exponential Backoff with Jitter</text>
-    <text x="35" y="98" fill="#000000" font-size="11">&#8226; Delay = min(MaxWait, Base &times; 2^attempt) &plusmn; UniformRandom()</text>
+    <text x="35" y="98" fill="#000000" font-size="11">&#8226; Delay = min(MaxWait, Base &#215; 2^attempt) &#177; UniformRandom()</text>
     <text x="35" y="115" fill="#475569" font-size="10">&#8594; De-synchronizes worker waves &amp; gives services room to recover</text>
 
     <!-- Strategy 2: Idempotent Operations (WAP) -->
