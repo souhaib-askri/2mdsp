@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 410" width="100%" height="auto" style="background:transparent; font-family:system-ui, -apple-system, sans-serif;">
+  <defs>
+    <marker id="arrow-green-dag" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a"/>
+    </marker>
+    <marker id="arrow-red-dag" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrow-purple-dag" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="480" y="30" text-anchor="middle" fill="#000000" font-size="20" font-weight="bold">Orchestrator Task Failure &amp; Fine-Grained Recovery Lifecycle</text>
+  <text x="480" y="52" text-anchor="middle" fill="#475569" font-size="13" font-weight="500">How metadata checkpointing enables partial re-execution without restarting the full DAG</text>
+
+  <!-- PHASE 1: DAG Failure Point -->
+  <g transform="translate(30, 75)">
+    <rect width="430" height="305" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <rect width="430" height="36" rx="12" fill="#f1f5f9"/>
+    <text x="215" y="24" text-anchor="middle" fill="#0f172a" font-size="13" font-weight="bold">Phase 1: Task Crash &amp; Upstream Blast Block</text>
+
+    <!-- Task 1: Ingest -->
+    <rect x="25" y="55" width="165" height="50" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+    <text x="35" y="78" fill="#166534" font-size="12" font-weight="bold">&#10004; Task 1: Ingestion</text>
+    <text x="35" y="94" fill="#475569" font-size="10">State: SUCCESS (Preserved)</text>
+
+    <!-- Arrow Task 1 to 2 -->
+    <line x1="190" y1="80" x2="235" y2="80" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green-dag)"/>
+
+    <!-- Task 2: Validate -->
+    <rect x="240" y="55" width="165" height="50" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+    <text x="250" y="78" fill="#166534" font-size="12" font-weight="bold">&#10004; Task 2: Validation</text>
+    <text x="250" y="94" fill="#475569" font-size="10">State: SUCCESS (Preserved)</text>
+
+    <!-- Arrow Task 2 to Task 3 -->
+    <path d="M 322 105 L 322 135 L 105 135 L 105 155" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red-dag)"/>
+
+    <!-- Task 3: Spark Transform (FAILED) -->
+    <rect x="25" y="155" width="165" height="60" rx="8" fill="#fef2f2" stroke="#f87171" stroke-width="2"/>
+    <text x="35" y="178" fill="#991b1b" font-size="12" font-weight="bold">&#9888; Task 3: Spark Job</text>
+    <text x="35" y="194" fill="#dc2626" font-size="10" font-weight="bold">State: FAILED (Pod OOM)</text>
+    <text x="35" y="208" fill="#475569" font-size="9">Worker lost heartbeat</text>
+
+    <!-- Arrow Task 3 to Task 4 -->
+    <line x1="190" y1="185" x2="235" y2="185" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4"/>
+
+    <!-- Task 4: Downstream (BLOCKED) -->
+    <rect x="240" y="155" width="165" height="60" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="250" y="178" fill="#64748b" font-size="12" font-weight="bold">&#8860; Task 4: Gold Publish</text>
+    <text x="250" y="194" fill="#64748b" font-size="10">UPSTREAM_FAILED</text>
+    <text x="250" y="208" fill="#64748b" font-size="9">Execution blocked safely</text>
+
+    <!-- Scheduler DB Note -->
+    <rect x="25" y="235" width="380" height="50" rx="6" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="35" y="255" fill="#1e40af" font-size="11" font-weight="bold">Orchestrator Metadata DB (PostgreSQL Checkpoint):</text>
+    <text x="35" y="272" fill="#000000" font-size="10">Records Task 3 failure timestamp without clearing Task 1 &amp; 2 artifacts.</text>
+  </g>
+
+  <!-- Connective Arrow in Center -->
+  <line x1="465" y1="225" x2="495" y2="225" stroke="#7c3aed" stroke-width="3" marker-end="url(#arrow-purple-dag)"/>
+
+  <!-- PHASE 2: Fine-Grained Container Recovery -->
+  <g transform="translate(505, 75)">
+    <rect width="425" height="305" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/>
+    <rect width="425" height="36" rx="12" fill="#dcfce7"/>
+    <text x="212" y="24" text-anchor="middle" fill="#166534" font-size="13" font-weight="bold">Phase 2: Fine-Grained Containerized Recovery</text>
+
+    <!-- Checkpoint Reuse Card -->
+    <rect x="20" y="52" width="385" height="65" rx="8" fill="#ffffff" stroke="#86efac" stroke-width="1.5"/>
+    <text x="35" y="74" fill="#166534" font-size="12" font-weight="bold">1. Checkpoint Reuse (Zero Recompute for Tasks 1 &amp; 2)</text>
+    <text x="35" y="93" fill="#000000" font-size="11">&#8226; Ingestion &amp; Validation outputs loaded directly from S3 cache</text>
+    <text x="35" y="108" fill="#475569" font-size="10">&#8594; Saves $00s of compute cost &amp; preserves upstream SLA</text>
+
+    <!-- Isolated Pod Relaunch -->
+    <rect x="20" y="125" width="385" height="85" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+    <text x="35" y="147" fill="#6d28d9" font-size="12" font-weight="bold">2. Dynamic KubernetesPodOperator Re-spawn</text>
+    <text x="35" y="167" fill="#000000" font-size="11">&#8226; Scheduler launches Task 3 in fresh isolated Pod with adjusted limits</text>
+    <text x="35" y="184" fill="#000000" font-size="11">&#8226; Memory boosted from 8GiB &#8594; 16GiB automatically</text>
+    <text x="35" y="200" fill="#059669" font-size="10" font-weight="bold">&#10004; Task 3 Status: SUCCESS (Resolved cleanly)</text>
+
+    <!-- Downstream Unblocked -->
+    <rect x="20" y="218" width="385" height="65" rx="8" fill="#ffffff" stroke="#86efac" stroke-width="1.5"/>
+    <text x="35" y="240" fill="#166534" font-size="12" font-weight="bold">3. Downstream Unblocked (Task 4 Finishes)</text>
+    <text x="35" y="259" fill="#000000" font-size="11">&#8226; Task 4 (Gold Publish) triggers immediately upon Task 3 completion</text>
+    <text x="35" y="274" fill="#16a34a" font-size="10" font-weight="bold">&#10004; Entire pipeline recovered with minimal MTTR</text>
+  </g>
+</svg>
