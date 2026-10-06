@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="100%" height="auto" style="background:transparent; font-family:system-ui, -apple-system, sans-serif;">
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" fill="#000000" font-size="22" font-weight="bold">Key Applications of Natural Language Processing (NLP)</text>
+  
+  <!-- Grid of Cards -->
+  <!-- Card 1 -->
+  <g transform="translate(40, 70)">
+    <rect width="250" height="160" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+    <text x="20" y="35" fill="#000000" font-size="16" font-weight="bold">Machine Translation</text>
+    <text x="20" y="55" fill="#1d4ed8" font-size="12" font-weight="600">Traduction Automatique</text>
+    <text x="20" y="90" fill="#000000" font-size="12">• Real-time cross-language translation</text>
+    <text x="20" y="115" fill="#000000" font-size="12">• Context preservation &amp; alignment</text>
+    <text x="20" y="140" fill="#000000" font-size="12">• Autonomous translation engines</text>
+  </g>
+
+  <!-- Card 2 -->
+  <g transform="translate(325, 70)">
+    <rect width="250" height="160" rx="10" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+    <text x="20" y="35" fill="#000000" font-size="16" font-weight="bold">Sentiment Analysis</text>
+    <text x="20" y="55" fill="#047857" font-size="12" font-weight="600">Opinion Mining</text>
+    <text x="20" y="90" fill="#000000" font-size="12">• Classify polarity (Pos / Neg / Neu)</text>
+    <text x="20" y="115" fill="#000000" font-size="12">• Social media brand monitoring</text>
+    <text x="20" y="140" fill="#000000" font-size="12">• Customer satisfaction tracking</text>
+  </g>
+
+  <!-- Card 3 -->
+  <g transform="translate(610, 70)">
+    <rect width="250" height="160" rx="10" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+    <text x="20" y="35" fill="#000000" font-size="16" font-weight="bold">Conversational AI</text>
+    <text x="20" y="55" fill="#b45309" font-size="12" font-weight="600">Chatbots &amp; Assistants</text>
+    <text x="20" y="90" fill="#000000" font-size="12">• 24/7 Automated customer support</text>
+    <text x="20" y="115" fill="#000000" font-size="12">• Voice agents (Siri, Alexa, Google)</text>
+    <text x="20" y="140" fill="#000000" font-size="12">• Task-oriented dialogue handling</text>
+  </g>
+
+  <!-- Card 4 -->
+  <g transform="translate(40, 260)">
+    <rect width="250" height="160" rx="10" fill="#ffffff" stroke="#db2777" stroke-width="2"/>
+    <text x="20" y="35" fill="#000000" font-size="16" font-weight="bold">Text Classification</text>
+    <text x="20" y="55" fill="#be185d" font-size="12" font-weight="600">Classification de Texte</text>
+    <text x="20" y="90" fill="#000000" font-size="12">• Spam filtering (Spam vs Ham)</text>
+    <text x="20" y="115" fill="#000000" font-size="12">• Document &amp; topic categorization</text>
+    <text x="20" y="140" fill="#000000" font-size="12">• Automated news and article tagging</text>
+  </g>
+
+  <!-- Card 5 -->
+  <g transform="translate(325, 260)">
+    <rect width="250" height="160" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+    <text x="20" y="35" fill="#000000" font-size="16" font-weight="bold">Summarization &amp; Editing</text>
+    <text x="20" y="55" fill="#6d28d9" font-size="12" font-weight="600">Résumé &amp; Correction</text>
+    <text x="20" y="90" fill="#000000" font-size="12">• Concise multi-document summary</text>
+    <text x="20" y="115" fill="#000000" font-size="12">• Intelligent grammar &amp; spell check</text>
+    <text x="20" y="140" fill="#000000" font-size="12">• Executive insight extraction</text>
+  </g>
+
+  <!-- Card 6 -->
+  <g transform="translate(610, 260)">
+    <rect width="250" height="160" rx="10" fill="#ffffff" stroke="#0891b2" stroke-width="2"/>
+    <text x="20" y="35" fill="#000000" font-size="16" font-weight="bold">Semantic Search &amp; Ads</text>
+    <text x="20" y="55" fill="#0e7490" font-size="12" font-weight="600">Information Retrieval</text>
+    <text x="20" y="90" fill="#000000" font-size="12">• User intent matching &amp; ranking</text>
+    <text x="20" y="115" fill="#000000" font-size="12">• High-precision query retrieval</text>
+    <text x="20" y="140" fill="#000000" font-size="12">• E-commerce behavior analytics</text>
+  </g>
+</svg>

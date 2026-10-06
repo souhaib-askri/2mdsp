@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 480" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <!-- Arrowhead markers -->
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+    <filter id="soft-shadow-2" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="525" y="38" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Gradient Descent Dynamics &amp; Learning Rate Impact</text>
+  <text x="525" y="62" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500" fill="#475569">Module Component MSE Module Component (η / Learning Rate) Module Component</text>
+
+  <!-- Panel 1: Learning Rate Too Small -->
+  <g transform="translate(30, 95)">
+    <rect width="310" height="360" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#soft-shadow-2)"/>
+    <rect width="310" height="34" rx="16" fill="#f1f5f9"/>
+    <text x="155" y="23" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#334155">1. Too Small (eta &lt; 0.001) (Trop Petit: η = 0.0005)</text>
+
+    <!-- Loss Curve Canvas -->
+    <!-- Parabola: y = 0.007 * (x - 155)^2 + 100 -->
+    <path d="M 45 130 Q 155 350 265 130" stroke="#94a3b8" stroke-width="2.5" fill="none"/>
+    <circle cx="155" cy="240" r="4" fill="#0f172a"/>
+    <text x="155" y="260" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#0f172a">Module Component (Minimum w*)</text>
+
+    <!-- Tiny Steps -->
+    <circle cx="65" cy="155" r="5" fill="#2563eb"/>
+    <path d="M 68 158 Q 80 180 92 195" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+    <circle cx="95" cy="198" r="4" fill="#2563eb"/>
+    <path d="M 98 201 Q 106 215 115 222" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+    <circle cx="118" cy="224" r="4" fill="#2563eb"/>
+
+    <!-- Description Box -->
+    <rect x="15" y="280" width="280" height="66" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+    <text x="155" y="300" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1e40af">• Module Component (Convergence très lente)</text>
+    <text x="155" y="318" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="500" fill="#1e3a8a">• Module Component (Epochs) Module Component</text>
+    <text x="155" y="334" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="500" fill="#1e3a8a">• Module Component</text>
+  </g>
+
+  <!-- Panel 2: Learning Rate Optimal -->
+  <g transform="translate(370, 95)">
+    <rect width="310" height="360" rx="16" fill="#ffffff" stroke="#86efac" stroke-width="2" filter="url(#soft-shadow-2)"/>
+    <rect width="310" height="34" rx="16" fill="#dcfce7"/>
+    <text x="155" y="23" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#15803d">2. Module Component (Adapté: η = 0.05)</text>
+
+    <!-- Loss Curve Canvas -->
+    <path d="M 45 130 Q 155 350 265 130" stroke="#94a3b8" stroke-width="2.5" fill="none"/>
+    <circle cx="155" cy="240" r="5" fill="#16a34a"/>
+    <text x="155" y="260" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#15803d">Module Component w*</text>
+
+    <!-- Optimal Steps -->
+    <circle cx="65" cy="155" r="5" fill="#16a34a"/>
+    <path d="M 70 160 Q 95 205 118 226" stroke="#16a34a" stroke-width="2.2" fill="none" marker-end="url(#arrow-green)"/>
+    <circle cx="120" cy="228" r="5" fill="#16a34a"/>
+    <path d="M 125 231 Q 140 238 152 240" stroke="#16a34a" stroke-width="2.2" fill="none" marker-end="url(#arrow-green)"/>
+
+    <!-- Description Box -->
+    <rect x="15" y="280" width="280" height="66" rx="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1"/>
+    <text x="155" y="300" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#166534">• Module Component (Convergence rapide)</text>
+    <text x="155" y="318" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="500" fill="#14532d">• Module Component</text>
+    <text x="155" y="334" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="500" fill="#14532d">• Module Component (≈ 200 - 300 Epochs)</text>
+  </g>
+
+  <!-- Panel 3: Learning Rate Too Large -->
+  <g transform="translate(710, 95)">
+    <rect width="310" height="360" rx="16" fill="#ffffff" stroke="#fca5a5" stroke-width="1.5" filter="url(#soft-shadow-2)"/>
+    <rect width="310" height="34" rx="16" fill="#fee2e2"/>
+    <text x="155" y="23" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#b91c1c">3. Module Component (Trop Grand: η ≥ 0.5)</text>
+
+    <!-- Loss Curve Canvas -->
+    <path d="M 45 130 Q 155 350 265 130" stroke="#94a3b8" stroke-width="2.5" fill="none"/>
+    <circle cx="155" cy="240" r="4" fill="#0f172a"/>
+    <text x="155" y="260" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#0f172a">Module Component (Overshooting)</text>
+
+    <!-- Overshooting &amp; Divergence steps -->
+    <circle cx="75" cy="170" r="5" fill="#dc2626"/>
+    <!-- Overshoot across parabola -->
+    <path d="M 80 172 L 235 155" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#arrow-red)"/>
+    <circle cx="237" cy="155" r="5" fill="#dc2626"/>
+    <!-- Overshoot further out -->
+    <path d="M 233 150 L 52 118" stroke="#dc2626" stroke-width="2" stroke-dasharray="4 2" fill="none" marker-end="url(#arrow-red)"/>
+    <circle cx="50" cy="115" r="5" fill="#dc2626"/>
+
+    <!-- Description Box -->
+    <rect x="15" y="280" width="280" height="66" rx="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+    <text x="155" y="300" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#991b1b">• Module Component (Oscillation / Divergence)</text>
+    <text x="155" y="318" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="500" fill="#7f1d1d">• Module Component</text>
+    <text x="155" y="334" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="500" fill="#7f1d1d">• Module Component (NaN / Inf)</text>
+  </g>
+</svg>

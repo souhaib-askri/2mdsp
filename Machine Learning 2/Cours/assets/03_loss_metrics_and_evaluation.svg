@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 480" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <filter id="card-sh-3" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="525" y="38" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Evaluation &amp; Generalization: Loss vs Metrics</text>
+  <text x="525" y="62" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500" fill="#475569">Module Component (Generalization)</text>
+
+  <!-- Left Card: MSE vs MAE Penalization -->
+  <g transform="translate(30, 95)">
+    <rect width="475" height="360" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#card-sh-3)"/>
+    <rect width="475" height="36" rx="16" fill="#f8fafc"/>
+    <text x="237" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e293b">1. Module Component: MSE Module Component MAE</text>
+
+    <!-- Axes -->
+    <line x1="50" y1="240" x2="425" y2="240" stroke="#94a3b8" stroke-width="1.5"/>
+    <line x1="237" y1="260" x2="237" y2="60" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="425" y="255" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#64748b">Module Component e = ŷ - y</text>
+    <text x="245" y="65" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#64748b">Module Component Loss</text>
+    <text x="227" y="255" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">0</text>
+
+    <!-- MAE Curve (V-shape, Blue) -->
+    <path d="M 87 90 L 237 240 L 387 90" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+    <text x="390" y="85" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#2563eb">MAE: |e|</text>
+
+    <!-- MSE Curve (Parabola, Red) -->
+    <path d="M 117 80 Q 237 320 357 80" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+    <text x="360" y="70" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#dc2626">MSE: e²</text>
+
+    <!-- Analytical Notes -->
+    <rect x="25" y="275" width="425" height="70" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="237" y="296" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f172a">• Module Component |e| &gt; 1: Module Component MSE Module Component (Module Component)</text>
+    <text x="237" y="315" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#334155">• Module Component |e| &lt; 1: Module Component MSE Module Component MAE</text>
+    <text x="237" y="333" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#2563eb">• Module Component MAE: Module Component (Robustness)</text>
+  </g>
+
+  <!-- Right Card: Train / Validation Generalization Protocol -->
+  <g transform="translate(545, 95)">
+    <rect width="475" height="360" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#card-sh-3)"/>
+    <rect width="475" height="36" rx="16" fill="#f8fafc"/>
+    <text x="237" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e293b">2. Module Component (Train / Validation Split)</text>
+
+    <!-- Dataset Bar Split -->
+    <g transform="translate(35, 65)">
+      <!-- Training portion (80%) -->
+      <rect x="0" y="0" width="320" height="55" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+      <text x="160" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1d4ed8">Module Component (Train Set - 80%)</text>
+      <text x="160" y="44" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#1e40af">Module Component w Module Component b</text>
+
+      <!-- Validation portion (20%) -->
+      <rect x="330" y="0" width="80" height="55" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+      <text x="370" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#b91c1c">Module Component (20%)</text>
+      <text x="370" y="44" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#dc2626">Val Set</text>
+    </g>
+
+    <!-- Why separate? Detailed Boxes -->
+    <g transform="translate(35, 140)">
+      <rect width="410" height="85" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+      <text x="15" y="24" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#15803d">Module Component: Module Component (Généralisation)</text>
+      <text x="15" y="44" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#166534">• Module Component</text>
+      <text x="15" y="62" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#166534">• Module Component</text>
+      <text x="15" y="79" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0f172a">• Module Component (Surapprentissage / Overfitting)</text>
+    </g>
+
+    <!-- Golden Rule of Machine Learning -->
+    <g transform="translate(35, 245)">
+      <rect width="410" height="95" rx="10" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5"/>
+      <text x="15" y="24" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#b45309">⚠️ Module Component (Data Leakage):</text>
+      <text x="15" y="46" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#78350f">• Module Component.</text>
+      <text x="15" y="65" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#78350f">• Module Component.</text>
+      <text x="15" y="84" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#b45309">Generalization Gap = |Loss_val - Loss_train| ≈ 0</text>
+    </g>
+  </g>
+</svg>

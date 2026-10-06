@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 480" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <!-- Arrowhead markers -->
+    <marker id="arrow-forward" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb" />
+    </marker>
+    <marker id="arrow-backward" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+    <marker id="arrow-loop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a" />
+    </marker>
+    <!-- Soft Drop Shadow for cards -->
+    <filter id="soft-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Title Section -->
+  <text x="525" y="38" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Linear Neuron Computational Architecture</text>
+  <text x="525" y="62" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#475569">Module Component (Forward Pass) Module Component Gradient Descent
+
+  <!-- ================= FORWARD PASS ================= -->
+  
+  <!-- 1. Input Node -->
+  <g transform="translate(40, 110)">
+    <rect width="130" height="110" rx="14" fill="#ffffff" stroke="#3b82f6" stroke-width="2" filter="url(#soft-shadow)"/>
+    <rect width="130" height="30" rx="14" fill="#eff6ff"/>
+    <text x="65" y="21" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e40af">1. Module ComponentInputs (Input)</text>
+    <text x="65" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#0f172a">x</text>
+    <text x="65" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#64748b">Module Component (AveRooms)</text>
+    <text x="65" y="100" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#2563eb">Module Component (X)</text>
+  </g>
+
+  <!-- Connection: Input -> Weight -->
+  <path d="M 170 165 L 230 165" stroke="#2563eb" stroke-width="2.5" fill="none" marker-end="url(#arrow-forward)"/>
+  <text x="200" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#1d4ed8">× w</text>
+
+  <!-- 2. Neuron Body (Summation &amp; Activation) -->
+  <g transform="translate(240, 95)">
+    <rect width="210" height="140" rx="16" fill="#ffffff" stroke="#6366f1" stroke-width="2.5" filter="url(#soft-shadow)"/>
+    <rect width="210" height="32" rx="16" fill="#eef2ff"/>
+    <text x="105" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#4338ca">2. Module Component (Neuron)</text>
+    
+    <!-- Linear combination formula -->
+    <text x="105" y="66" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#0f172a">z = w · x + b</text>
+    <text x="105" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#475569">Module Component: φ(z) = z</text>
+    
+    <!-- Parameter tags -->
+    <rect x="25" y="102" width="70" height="24" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="60" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0f172a">Module Component w</text>
+
+    <rect x="115" y="102" width="70" height="24" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="150" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0f172a">Learnable Bias (b) b</text>
+  </g>
+
+  <!-- Connection: Neuron -> Prediction -->
+  <path d="M 450 165 L 510 165" stroke="#2563eb" stroke-width="2.5" fill="none" marker-end="url(#arrow-forward)"/>
+  <text x="480" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#1d4ed8">ŷ</text>
+
+  <!-- 3. Prediction Output -->
+  <g transform="translate(520, 110)">
+    <rect width="140" height="110" rx="14" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#soft-shadow)"/>
+    <rect width="140" height="30" rx="14" fill="#e0f2fe"/>
+    <text x="70" y="21" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0369a1">3. Module Component (Prediction)</text>
+    <text x="70" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#0f172a">ŷ</text>
+    <text x="70" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#64748b">Module Component (PRICE)</text>
+    <text x="70" y="100" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#0284c7">ŷ = w·x + b</text>
+  </g>
+
+  <!-- Connection: Prediction -> Loss -->
+  <path d="M 660 165 L 720 165" stroke="#2563eb" stroke-width="2.5" fill="none" marker-end="url(#arrow-forward)"/>
+
+  <!-- True Target y input into Loss -->
+  <g transform="translate(730, 30)">
+    <rect width="130" height="40" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+    <text x="65" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Ground Truth Label (y) y</text>
+    <text x="65" y="34" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="500" fill="#64748b">Target (Ground Truth)</text>
+  </g>
+  <path d="M 795 70 L 795 100" stroke="#64748b" stroke-width="2" stroke-dasharray="4" fill="none" marker-end="url(#arrow-forward)"/>
+
+  <!-- 4. Loss Function (MSE) -->
+  <g transform="translate(730, 102)">
+    <rect width="270" height="126" rx="14" fill="#ffffff" stroke="#e11d48" stroke-width="2" filter="url(#soft-shadow)"/>
+    <rect width="270" height="30" rx="14" fill="#ffe4e6"/>
+    <text x="135" y="21" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#be123c">4. Module Component (Loss Function)</text>
+    <text x="135" y="58" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#0f172a">Module Component: e = ŷ - y</text>
+    <text x="135" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#be123c">MSE = (1/N) ∑ (ŷᵢ - yᵢ)²</text>
+    <text x="135" y="112" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#64748b">Module Component (Mean Squared Error)</text>
+  </g>
+
+  <!-- ================= BACKWARD PASS (LEARNING) ================= -->
+
+  <!-- Connection: Loss -> Gradients -->
+  <path d="M 865 228 L 865 275" stroke="#dc2626" stroke-width="2.5" fill="none" marker-end="url(#arrow-backward)"/>
+  <text x="880" y="256" text-anchor="start" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#dc2626">Module Component (Gradients)</text>
+
+  <!-- 5. Gradients Calculation Node -->
+  <g transform="translate(680, 280)">
+    <rect width="320" height="130" rx="14" fill="#ffffff" stroke="#ea580c" stroke-width="2" filter="url(#soft-shadow)"/>
+    <rect width="320" height="30" rx="14" fill="#ffedd5"/>
+    <text x="160" y="21" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#c2410c">5. Module Component (Gradient Computation)</text>
+    <text x="160" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">grad_w = 2 · moy((ŷ - y) · x)</text>
+    <text x="160" y="88" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">grad_b = 2 · moy(ŷ - y)</text>
+    <text x="160" y="114" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#ea580c">Module Component (Direction of steepest ascent)</text>
+  </g>
+
+  <!-- Connection: Gradients -> Parameter Update -->
+  <path d="M 680 345 L 560 345" stroke="#dc2626" stroke-width="2.5" fill="none" marker-end="url(#arrow-backward)"/>
+  <text x="620" y="335" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#dc2626">Module Component (-η)</text>
+
+  <!-- 6. Parameter Update Node -->
+  <g transform="translate(190, 280)">
+    <rect width="360" height="130" rx="14" fill="#ffffff" stroke="#16a34a" stroke-width="2" filter="url(#soft-shadow)"/>
+    <rect width="360" height="30" rx="14" fill="#dcfce7"/>
+    <text x="180" y="21" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#15803d">6. Weight Update Step</text>
+    <text x="180" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#15803d">w ← w - learning_rate × grad_w</text>
+    <text x="180" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#15803d">b ← b - learning_rate × grad_b</text>
+    <text x="180" y="114" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#475569">Module Component (η / Learning Rate) Module Component</text>
+  </g>
+
+  <!-- Connection Loop: Parameter Update back to Neuron -->
+  <path d="M 345 280 L 345 245" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="5 3" fill="none" marker-end="url(#arrow-loop)"/>
+  <text x="355" y="264" text-anchor="start" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#16a34a">Module Component (Next Epoch)</text>
+
+  <!-- Legend Bar -->
+  <g transform="translate(200, 440)">
+    <rect x="0" y="0" width="16" height="16" rx="4" fill="#2563eb"/>
+    <text x="24" y="13" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0f172a">Module Component (Forward Pass)</text>
+
+    <rect x="230" y="0" width="16" height="16" rx="4" fill="#dc2626"/>
+    <text x="254" y="13" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0f172a">Module Component (Backward Pass)</text>
+
+    <rect x="520" y="0" width="16" height="16" rx="4" fill="#16a34a"/>
+    <text x="544" y="13" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0f172a">Module Component (Update &amp; Epoch Loop)</text>
+  </g>
+</svg>

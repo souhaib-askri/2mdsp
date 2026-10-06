@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 320" width="100%" height="auto" style="background:transparent; font-family:system-ui, -apple-system, sans-serif;">
+  <text x="425" y="35" text-anchor="middle" fill="#000000" font-size="20" font-weight="bold">Comparison: Stemming vs. Lemmatization</text>
+
+  <!-- Stemming Box -->
+  <g transform="translate(50, 65)">
+    <rect width="350" height="230" rx="10" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+    <text x="175" y="32" text-anchor="middle" fill="#dc2626" font-size="16" font-weight="bold">Stemming</text>
+    <text x="175" y="52" text-anchor="middle" fill="#475569" font-size="12" font-weight="600">PorterStemmer</text>
+    <line x1="20" y1="65" x2="330" y2="65" stroke="#e2e8f0" stroke-width="1.5"/>
+    
+    <text x="25" y="95" fill="#000000" font-size="13">• Fast rule-based suffix stripping.</text>
+    <text x="25" y="125" fill="#000000" font-size="13">• Does not use a dictionary or morphology.</text>
+    <text x="25" y="155" fill="#b91c1c" font-size="13" font-weight="bold">⚠️ May produce non-words or crude stems:</text>
+    <rect x="25" y="170" width="300" height="45" rx="6" fill="#fef2f2" stroke="#fecaca"/>
+    <text x="35" y="198" fill="#991b1b" font-family="monospace" font-size="12" font-weight="bold">wolves ➔ "wolv" | feet ➔ "feet"</text>
+  </g>
+
+  <!-- Lemmatization Box -->
+  <g transform="translate(450, 65)">
+    <rect width="350" height="230" rx="10" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+    <text x="175" y="32" text-anchor="middle" fill="#059669" font-size="16" font-weight="bold">Lemmatization</text>
+    <text x="175" y="52" text-anchor="middle" fill="#475569" font-size="12" font-weight="600">WordNetLemmatizer</text>
+    <line x1="20" y1="65" x2="330" y2="65" stroke="#e2e8f0" stroke-width="1.5"/>
+
+    <text x="25" y="95" fill="#000000" font-size="13">• Full morphological &amp; dictionary lookup.</text>
+    <text x="25" y="125" fill="#000000" font-size="13">• Returns valid root dictionary base (Lemma).</text>
+    <text x="25" y="155" fill="#047857" font-size="13" font-weight="bold">✓ Always produces valid semantic words:</text>
+    <rect x="25" y="170" width="300" height="45" rx="6" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="35" y="198" fill="#065f46" font-family="monospace" font-size="12" font-weight="bold">wolves ➔ "wolf" | feet ➔ "foot"</text>
+  </g>
+</svg>

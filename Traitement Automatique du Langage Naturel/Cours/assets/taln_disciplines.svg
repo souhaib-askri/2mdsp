@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 420" width="100%" height="auto" style="background:transparent; font-family:system-ui, -apple-system, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="425" y="40" text-anchor="middle" fill="#000000" font-size="22" font-weight="bold">Interdisciplinary Foundations of NLP / TALN</text>
+  <text x="425" y="65" text-anchor="middle" fill="#334155" font-size="14" font-weight="500">Intersection of Artificial Intelligence, Linguistics, and Computer Science</text>
+
+  <!-- Circle 1: Computer Science -->
+  <circle cx="310" cy="230" r="140" fill="#0284c7" fill-opacity="0.12" stroke="#0284c7" stroke-width="2.5"/>
+  <text x="230" y="215" fill="#000000" font-size="17" font-weight="bold">Computer Science</text>
+  <text x="230" y="238" fill="#0369a1" font-size="13" font-weight="600">Algorithms &amp; Systems</text>
+  <text x="230" y="258" fill="#475569" font-size="12">Informatique</text>
+
+  <!-- Circle 2: Linguistics -->
+  <circle cx="540" cy="230" r="140" fill="#10b981" fill-opacity="0.12" stroke="#059669" stroke-width="2.5"/>
+  <text x="610" y="215" fill="#000000" font-size="17" font-weight="bold">Linguistics</text>
+  <text x="610" y="238" fill="#047857" font-size="13" font-weight="600">Grammar &amp; Semantics</text>
+  <text x="610" y="258" fill="#475569" font-size="12">Linguistique</text>
+
+  <!-- Circle 3: Artificial Intelligence -->
+  <circle cx="425" cy="160" r="120" fill="#f59e0b" fill-opacity="0.12" stroke="#d97706" stroke-width="2.5"/>
+  <text x="425" y="115" text-anchor="middle" fill="#000000" font-size="17" font-weight="bold">Artificial Intelligence</text>
+  <text x="425" y="135" text-anchor="middle" fill="#b45309" font-size="13" font-weight="600">Machine Learning &amp; Models</text>
+
+  <!-- Center: NLP Core -->
+  <circle cx="425" cy="235" r="65" fill="#ffffff" filter="url(#shadow)" stroke="#4f46e5" stroke-width="3"/>
+  <text x="425" y="228" text-anchor="middle" fill="#000000" font-size="22" font-weight="bold">NLP</text>
+  <text x="425" y="248" text-anchor="middle" fill="#4338ca" font-size="13" font-weight="bold">TALN</text>
+  <text x="425" y="265" text-anchor="middle" fill="#64748b" font-size="10">Core Discipline</text>
+
+  <!-- Bottom subtitle badge -->
+  <rect x="230" y="375" width="390" height="32" rx="16" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="425" y="396" text-anchor="middle" fill="#000000" font-size="13" font-weight="600">Language Engineering &amp; Human-Computer Interaction</text>
+</svg>
