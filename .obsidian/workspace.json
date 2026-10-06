@@ -191,6 +191,12 @@
   },
   "active": "e7d5af0f7488ed9c",
   "lastOpenFiles": [
+    "Frameworks Big Data/Cours/04_Recherche_Fiabilite_Pipelines_Big_Data.md",
+    "README.ar.md",
+    "Frameworks Big Data/Cours/assets/automated_data_quality_circuit_breaker.svg",
+    "Frameworks Big Data/Cours/assets/retry_mechanisms_and_failure_modes.svg",
+    "Frameworks Big Data/Cours/assets/pipeline_observability_and_lineage.svg",
+    "Frameworks Big Data/Cours/assets",
     "Traitement Automatique du Langage Naturel/Cours/02_Pretraitement_du_texte.md",
     "Traitement Automatique du Langage Naturel/Cours/01_Introduction_au_TALN.md",
     "Machine Learning 2/Cours/01_Introduction_au_Deep_Learning_et_Neurone_Lineaire.md",
@@ -210,15 +216,11 @@
     "Machine Learning 2/Cours/assets/03_loss_metrics_and_evaluation.svg",
     "Machine Learning 2/Cours/assets/01_deep_learning_evolution.svg",
     "Machine Learning 2/TP/01_Introduction_Neurone_Lineaire_Descente_Gradient.md",
-    "Machine Learning 2/TP/assets/03_standardization_and_bias_effect.svg",
-    "Machine Learning 2/TP/assets/02_gradient_descent_learning_rate.svg",
-    "Machine Learning 2/TP/assets/01_single_neuron_architecture.svg",
     "Machine Learning 2/Cours/assets",
     "Machine Learning 2/TP/TP1- Intro_ML2.pdf",
     "Machine Learning 2/TP/assets",
     "Machine Learning 2/TP",
     "_Inbox/TP1- Intro_ML2.pdf",
-    "_Inbox/TP1_ML2.pdf",
     "_Inbox/README.md"
   ]
 }
