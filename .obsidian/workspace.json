@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Traitement Automatique du Langage Naturel/Cours/02_Pretraitement_du_texte.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "02_Pretraitement_du_texte"
+              "title": "README"
             }
           }
         ]
@@ -83,7 +83,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 488.0559768676758
+    "width": 488.0559768676758,
+    "collapsed": true
   },
   "right": {
     "id": "c7af3d2a754785d5",
@@ -190,9 +191,9 @@
   },
   "active": "e7d5af0f7488ed9c",
   "lastOpenFiles": [
+    "Traitement Automatique du Langage Naturel/Cours/02_Pretraitement_du_texte.md",
     "Traitement Automatique du Langage Naturel/Cours/01_Introduction_au_TALN.md",
     "Machine Learning 2/Cours/01_Introduction_au_Deep_Learning_et_Neurone_Lineaire.md",
-    "Traitement Automatique du Langage Naturel/Cours/02_Pretraitement_du_texte.md",
     "Machine Learning 2/TP/TP1_Neurone_Lineaire_Descente_Gradient.ipynb",
     "Machine Learning 2/TP/TP1_Neurone_Lineaire_Descente_Gradient.md",
     "Traitement Automatique du Langage Naturel/TP/NLP_Atelier_1_Partie1.ipynb",
