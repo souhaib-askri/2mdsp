@@ -12,102 +12,90 @@ tags:
   - mvt
   - django
   - flask
-date: 2026-10-20
+  - inheritance
+  - abstract-classes
+  - interfaces
+date: 2026-10-27
 ---
 
 # الفصل 1: تذكير بالمفاهيم الأساسية - معماريات الويب والبرمجة كائنية التوجه في بايثون
 ## (Rappel sur les notions de base : Architectures Web & POO en Python)
+**الأستاذ المسؤول: نبيل الخميري (Nabil KHEMIRI)**  
+*المعهد العالي للغات المطبقة والإعلامية بباجة — جامعة جندوبة (ISLAIB / 2MDS)*
 
-> [!abstract] ملخص المحاضرة
-> يُشكل هذا الفصل المدخل الأساسي والاستراتيجي لمقياس **أطر عمل الويب بايثون (Framework web Python)** تحت إشراف الأستاذ **نبيل الخميري (Nabil Khemiri)**. يهدف الدرس إلى ترسيخ المفاهيم الهندسية التأسيسية التي تُبنى عليها تطبيقات الويب المعاصرة؛ بدءاً من التمييز بين المعمارية الفيزيائية والمنطقية، وفحص أنماط التصميم الشهيرة مثل **MVC** و **MVT**، وصولاً إلى تعميق شامل وعملي لمبادئ **البرمجة كائنية التوجه (POO)** في بايثون (الأصناف، الكائنات، الوراثة البسيطة والمتعددة، الكبسلة، تعدد الأشكال، الأصناف المجردة، والواجهات).
+> [!abstract] ملخص المحاضرة والأهداف الأكاديمية
+> يمثل هذا الفصل المدخل الأساسي والاستراتيجي لمقياس **أطر عمل الويب بايثون (Framework web Python)**. يهدف الدرس إلى ترسيخ الفهم الهندسي الشامل لكيفية بناء تطبيقات الويب المعاصرة؛ بدءاً من التمييز بين المعمارية الفيزيائية والمنطقية، ومقارنة أنماط التصميم الشهيرة (**MVC** و **MVT**)، وفهم طبقات الـ N-Tiers ومنظومات الويب (Full Stack JS/MERN، Java Servlets/Hibernate، و Django/Flask).
+> ثم يقدم الدرس شرحاً تطبيقياً مفصلاً وعميقاً لكافة أركان **البرمجة كائنية التوجه (POO)** في لغة بايثون: الأصناف، الكائنات، الوراثة البسيطة والمتعددة وحل معضلة الألماسة (MRO / C3 Linearization)، أساليب الكبسلة المتقدمة (`_` و `__` و `@property`)، تعدد الأشكال وتجاوز الدوال، والأصناف المجردة والواجهات البرمجية عبر مكتبة `abc`.
+> يتضمن هذا المستند **ترجمة وشرحاً كاملاً وتفصيلياً لكافة شرائح المحاضرة الـ 139 بكافة أمثلتها البرمجية وملفاتها المصدرية (`Personne`, `Etudiant`, `Enseignant`, `Employe`, `Professeur`, `InterfaceAffichage`, `Vivant`, `Humain`, `Chat`) دون أي تلخيص**.
 
 ---
 
-## 1. مدخل إلى أطر العمل (Qu'est-ce qu'un Framework ?)
+## 1. مدخل إلى أطر العمل (Qu'est-ce qu'un Framework ?) (Slides 2 - 10)
 
-### 1.1 التعريف الهندسي
+### 1.1 التعريف الهندسي لإطار العمل (Framework)
 **إطار العمل (Framework / « Cadre de travail »)** هو بنية برمجية متكاملة توفر للمطورين هيكلاً معيارياً جاهزاً لتطوير التطبيقات البرمجية بكفاءة وموثوقية، ويتكون جوهرياً من ثلاثة عناصر أساسية:
 1. **مجموعة من الأدوات (Outils)**: مولدات الأكواد الآلية (Code Generators)، أدوات التنقيح وتتبع الأخطاء (Debugging Tools)، ومحركات إدارة قواعد البيانات والترحيل (Migrations).
 2. **قواعد وتنسيقات موحدة (Règles & Conventions)**: تنظيم قياسي للمجلدات والملفات، معايير لكتابة الشفرات البرمجية، وتطبيق لمبدأ *الاتفاقية تفوق التكوين (Convention over Configuration)*.
 3. **مكونات برمجية جاهزة (Composants Logiciels Prêts à l'emploi)**: وحدات المصادقة وإدارة الجلسات (Authentication / Sessions)، أمن التطبيقات (الحماية من هجمات CSRF، XSS، و SQL Injection)، ومحركات التوجيه (Routing).
 
 > [!quote] الغاية المحورية لأطر العمل
-> توفير الوقت والجهد عبر تجنب "إعادة اختراع العجلة" (Don't Repeat Yourself - DRY)، وضمان قابلية صيانة التطبيق (Maintainability)، وقابلية التوسع (Scalability) ضمن معايير أمنية صارمة.
+> توفير الوقت والجهد عبر تجنب "إعادة اختراع العجلة" (**Don't Repeat Yourself - DRY**)، وضمان قابلية صيانة التطبيق (**Maintainability**)، وقابلية التوسع (**Scalability**) ضمن معايير أمنية صارمة.
 
 ---
 
-## 2. المعمارية الفيزيائية مقابل المعمارية المنطقية (Architecture Physique vs Logique)
+## 2. المعمارية الفيزيائية مقابل المعمارية المنطقية (Slides 11 - 21)
 
 في هندسة البرمجيات وتطبيقات الويب، يجب الفصل بوضوح بين الكيان المادي الذي يستضيف التطبيق والكيان المنطقي الذي ينظم مسار البيانات والتعليمات البرمجية:
 
-### 2.1 المعمارية الفيزيائية (Architecture Physique / Technique)
-تصف المكونات المادية والعتادية (Hardware Infrastructure) والشبكات التي يُنشر عليها النظام البرمجي. من أبرز نماذجها:
-* **المعمارية متعددة الطبقات (Architecture N-Tiers)**:
-  - **طبقة العميل (Client Tier / Presentation Hardware)**: الحواسيب والهواتف الذكية ومتصفحات الويب التي تتصل بالخوادم.
-  - **طبقة خادم التطبيقات (Application / Logic Tier)**: خوادم المعالجة المركزية (مثل خوادم Nginx, Gunicorn, Apache) التي تشغل بيئة بايثون وتنفذ المنطق البرمجي.
-  - **طبقة خادم البيانات (Database Tier)**: خوادم قواعد البيانات المخصصة (مثل PostgreSQL, MySQL, MongoDB).
+### 2.1 المعمارية الفيزيائية (Architecture Physique / N-Tiers)
+تصف المكونات المادية والعتادية (Hardware Infrastructure) والشبكات التي يُنشر عليها النظام البرمجي:
+* **طبقة العميل (Client Tier)**: الحواسيب والهواتف الذكية ومتصفحات الويب التي تتصل بالخوادم عبر HTTP.
+* **طبقة خادم التطبيقات (Application / Logic Tier)**: خوادم المعالجة المركزية (مثل Nginx, Gunicorn, Apache) التي تشغل بيئة بايثون وتنفذ المنطق البرمجي.
+* **طبقة خادم البيانات (Database Tier)**: خوادم قواعد البيانات المخصصة (مثل PostgreSQL, MySQL, MongoDB).
 
-### 2.2 المعمارية المنطقية (Architecture Logique / Conceptuelle)
-تحدد كيفية تنظيم الوحدات البرمجية وتوزيع المسؤوليات داخل الكود المصدر (Design Patterns)، بغض النظر عن عدد الخوادم الفيزيائية التي سيعمل عليها الكود. الهدف منها هو تحقيق **فصل الاهتمامات (Separation of Concerns - SoC)**.
+### 2.2 المعمارية المنطقية (Architecture Logique / MVC vs MVT)
+تحدد كيفية تنظيم الوحدات البرمجية وتوزيع المسؤوليات داخل الكود المصدري لتحقيق مبدأ **فصل الاهتمامات (Separation of Concerns - SoC)**.
 
----
-
-## 3. مقارنة معماريات تطبيقات الويب: نمط MVC مقابل نمط MVT
-
-تعتمد معظم أطر عمل الويب على توزيع المهام وفق نماذج تصميم محددة:
-
+#### مقارنة معمارية: نمط MVC مقابل نمط MVT
 | وجه المقارنة | نمط MVC (Model - View - Controller) | نمط MVT (Model - View - Template) |
 | :--- | :--- | :--- |
-| **البيئة الشائعة** | Spring MVC (Java), Ruby on Rails, Express (Node.js) | Django (بايثون)، ومحركات Flask الموجهة بالقوالب |
-| **المسؤول عن استلام الطلب** | **المتحكم (Controller)**: يستقبل طلبات HTTP مباشرة | **موجه الروابط (URL Router)**: يوجه الطلب للـ View المناسبة |
-| **معالجة منطق الأعمال (Business Logic)** | يتولى المتحكم التنسيق مع النموذج (Model) وتحديد المخرجات | تتولاه **العرض (View)**؛ حيث تستدعي النماذج وتمرر السياق |
-| **العرض والواجهة (UI Rendering)** | تتولاه **العرض (View)** لتوليد واجهة المستخدم | يتولاه **القالب (Template)** عبر محركات مثل Jinja2 أو DTL |
-| **إدارة البيانات (Data Layer)** | **النموذج (Model)**: كائنات الأعمال والاتصال بقواعد البيانات | **النموذج (Model)**: تعريف الجداول عبر الـ ORM والاتصال بقواعد البيانات |
+| **البيئة الشائعة** | Spring MVC (Java), Express (Node.js) | **Django** (بايثون)، ومحركات Flask الموجهة بالقوالب |
+| **المسؤول عن استلام الطلب** | **المتحكم (Controller)** | **موجه الروابط (URL Router)** |
+| **معالجة منطق الأعمال** | المتحكم بالتنسيق مع النموذج (Model) | **العرض (View)** في بايثون |
+| **العرض والواجهة** | **العرض (View)** | **القالب (Template)** عبر محركات مثل Jinja2 |
+| **إدارة البيانات** | **النموذج (Model)** | **النموذج (Model / ORM)** |
 
 ---
 
-## 4. مخطط مقارنة معماريات MVC و MVT (SVG Visualization)
+### 2.3 مقارنة أطر وتكنولوجيات الويب المعاصرة (Slides 11 - 21)
+1. **منظومة جافا المتقدمة (Java Enterprise Stack) (Slides 15 - 17)**:
+   * **Servlet**: صنف جافا يعمل في جانب الخادم لمعالجة طلبات HTTP بشكل منخفض المستوى.
+   * **Hibernate ORM**: إطار عمل يدير استمرارية البيانات ونقل كائنات جافا إلى جداول علائقية عبر طبقة DAO (Data Access Object).
+2. **منظومة جافاسكربت الشاملة (Full Stack JS / MERN) (Slides 12 - 14)**:
+   * واجهة أمامية ديناميكية عبر React/Angular، وخلفية عبر Node.js/Express، وقاعدة بيانات مستندية NoSQL (**MongoDB**) تعتمد صيغ BSON/JSON المستندية المرنة.
+3. **منظومة بايثون للويب (Django & Flask)**:
+   * **Django (Slides 18 - 21)**: معمارية MVT متكاملة توفر أدوات ORM جاهزة، نظام توجيه URLs متقدم، وإدارة قوالب صارمة.
+   * **Flask**: إطار عمل مصغر عالي المرونة يعتمد مواصفات WSGI ومحرك قوالب Jinja2.
 
-![[assets/mvc_vs_mvt_architecture.svg|850]]
+---
+
+## 3. المخطط التوضيحي لمقارنة معماريات الويب MVC و MVT (SVG Diagram)
+
+![[assets/mvc_vs_mvt_architecture.svg]]
 
 > [!info] شرح المخطط التفصيلي (Architecture Breakdown):
-> 1. **الجانب الأيسر (MVC Architecture)**:
->    - يرسل العميل (المتصفح) طلب HTTP Request إلى **المتحكم (Controller)**.
->    - يُعد المتحكم هو "دماغ" المنظومة، حيث يستدعي **النموذج (Model)** لجلب البيانات أو تحديث حالة قاعدة البيانات.
->    - يقوم النموذج بإرجاع البيانات المعالجة إلى المتحكم، الذي يختار بدوره **العرض (View)** المناسبة، لتقوم العرض بإنشاء صفحة الـ HTML وإعادتها للعميل.
-> 2. **الجانب الأيمن (MVT Architecture في Django وبايثون)**:
->    - يستقبل إطار العمل الطلب، ويحدد مسار التوجيه (URL Routing) الدالّة المسؤولة التي تمثل **العرض (View)**.
->    - تقوم الـ View في بايثون بدور المتحكم؛ فهي تتواصل مع **النموذج (Model / ORM)** لإجراء العمليات الحسابية والاستعلامية.
->    - تقوم الـ View بتجهيز كائن السياق (Context Dictionary) وتمريره إلى **القالب (Template)**.
->    - يقوم القالب (ملف HTML مدمج مع وسوم Jinja2/DTL) بتصيير البيانات في صيغة HTML نهائية وإرجاعها للمتصفح.
+> 1. **الجانب الأيسر (MVC)**: يرسل المتصفح الطلب إلى المتحكم (Controller)، الذي يستدعي النموذج (Model) لجلب البيانات، ثم يمرر النتيجة إلى العرض (View) لتوليد الواجهة.
+> 2. **الجانب الأيمن (MVT في Django)**: يستقبل موجه الروابط الطلب، ويوجهه إلى دالة الـ View التي تنفذ منطق الأعمال وتتخاطب مع الـ ORM (Model)، ثم تمرر قاموس السياق إلى القالب (Template) لتصيير الـ HTML النهائي وإعادته للمتصفح.
 
 ---
 
-## 5. نظرة عامة على تطور أطر الويب ومحركات العرض
+## 4. المفاهيم التأسيسية للبرمجة كائنية التوجه في بايثون (Slides 22 - 60)
 
-استعرض الفصل تطور منظومات البرمجة عبر مختلف الأنظمة:
-1. **منظومة جافا المتقدمة (Java Enterprise Stack)**:
-   - **الخادم الصغير (Servlet)**: فئة جافا تعمل في جانب الخادم (Server-side) لمعالجة طلبات HTTP بشكل منخفض المستوى.
-   - **صفحات جافا (JSP - JavaServer Pages)**: خلط كود جافا داخل وسوم HTML للعرض الديناميكي.
-   - **أطر الربط العلائقي للكائنات (Hibernate ORM)** وكائنات الوصول للبيانات (**DAO - Data Access Objects**).
-2. **منظومة جافاسكربت الشاملة (Full Stack JS / MERN)**:
-   - واجهة أمامية ديناميكية عبر React/Vue، وخلفية عبر Node.js/Express، وقاعدة بيانات مستندية غير علائقية NoSQL (مثل **MongoDB** التي تعتمد صيغة BSON/JSON).
-3. **منظومة بايثون للويب (Python Web Stack)**:
-   - **Django**: إطار عمل متكامل وشامل (Batteries-Included) يعتمد نمط MVT ونظام ORM صارم ولوحة تحكم تلقائية (Admin Panel).
-   - **Flask**: إطار عمل مصغر فائق المرونة (Microframework) يعتمد مواصفات WSGI، محرك القوالب Jinja2، ومكتبة Werkzeug للتوجيه.
-
----
-
-## 6. البرمجة كائنية التوجه في بايثون (POO en Python)
-
-تُعد لغة بايثون لغة كائنية التوجه بالكامل؛ ففي بايثون **كل شيء هو كائن (Everything is an object)**.
-
-### 6.1 المفاهيم الجوهرية: الصنف والكائن (Classe & Objet)
+### 4.1 الصنف والكائن (Classe & Objet) (Slides 26 - 35)
 * **الصنف (Classe)**: قالب أو مخطط عام (Blueprint) يجمع الخصائص (Attributs) والسلوكيات أو الوظائف (Méthodes) في كيان برمجي موحد.
-* **الكائن أو النسخة (Objet / Instance)**: تجسيد حي للصنف في الذاكرة. الصنف الواحد يمكن أن يشتق منه عدد غير محدود من الكائنات المستقلة.
+* **الكائن (Objet / Instance)**: تجسيد حي للصنف في الذاكرة. الصنف الواحد يمكن أن يشتق منه عدد غير محدود من الكائنات المستقلة.
 
 ```python
-# تعريف صنف يمثل مستخدماً
 class Personne:
     # دالة البناء (Constructeur)
     def __init__(self, nom: str, prenom: str, age: int):
@@ -119,185 +107,391 @@ class Personne:
     def se_presenter(self) -> str:
         return f"Bonjour, je m'appelle {self.prenom} {self.nom} et j'ai {self.age} ans."
 
-# إنشاء نسخ (Instanciation)
-p1 = Personne("ABIDI", "Rania", 21)
-p2 = Personne("KHEMIRI", "Nabil", 40)
+p1 = Personne("SALHI", "Farah", 22)
 print(p1.se_presenter())
 ```
 
-### 6.2 دورة حياة الكائن والكلمة المفتاحية `self`
-تمر دورة حياة الكائن بثلاث مراحل متتالية:
-1. **الإنشاء والتهيئة (Instanciation & Initialisation)**:
-   - تبدأ باستدعاء ميثود الحجز المدمجة `__new__()`، يليها فوراً استدعاء **الدالة الإنشائية (Constructeur)** `__init__(self, ...)`.
-   - **الكلمة `self`**: هي مؤشر صريح يشير إلى النسخة الحالية قيد المعالجة في الذاكرة (Current Instance Reference). عند استدعاء `p1.se_presenter()`، يقوم بايثون تلقائياً بتمرير `p1` كوسيط أول للميثود: `Personne.se_presenter(p1)`.
-2. **الاستخدام (Utilisation)**: استدعاء التوابع وقراءة وتعديل الخصائص.
-3. **التدمير وتحرير الذاكرة (Destruction & Garbage Collection)**:
-   - يتم تدمير الكائن تلقائياً عندما ينعدم عدد المؤشرات المرجعية المشيرة إليه (Reference Count = 0).
-   - توفر بايثون التابع `__del__(self)` لتنفيذ مهام ختامية (مثل إغلاق الاتصالات بالملفات أو الشبكة) قبل الحذف النهائي من الذاكرة.
+---
 
-### 6.3 متغيرات ودوال الأصناف (Variables et Méthodes de Classe)
-* **متغير الصنف (Class Variable)**: متغير يُعرّف خارج الدوال داخل الصنف ويكون مشتركاً بين جميع الكائنات المشتقة (يُخزن في مساحة اسم الصنف نفسه).
-* **دوال الصنف والمجاميع الثابتة**:
-  - `@classmethod`: تأخذ الوسيط الأول `cls` المشير إلى الصنف ككل، وتُستخدم كدوال بناء بديلة (Factory Methods).
-  - `@staticmethod`: دالة مستقلة لا ترتبط لا بـ `self` ولا بـ `cls`، وتوضع داخل الصنف لغرض تنظيمي منطقي.
-
-```python
-class Compteur:
-    nb_instances = 0  # متغير صنف مشترك
-
-    def __init__(self):
-        Compteur.nb_instances += 1
-
-    @classmethod
-    def total_crees(cls):
-        return f"Nombre total d'objets créés : {cls.nb_instances}"
-
-    @staticmethod
-    def valider_valeur(val: int) -> bool:
-        return val >= 0
-```
+### 4.2 دورة حياة الكائن والكلمة المفتاحية `self` (Slides 36 - 51)
+* **`self`**: مؤشر صريح يشير إلى النسخة الحالية قيد المعالجة في الذاكرة. عند استدعاء `p1.se_presenter()`، يقوم بايثون تلقائياً بتمرير `p1` كوسيط أول للميثود: `Personne.se_presenter(p1)`.
+* **دورة حياة الكائن**:
+  1. الحجز المبدئي عبر `__new__()`.
+  2. التهيئة عبر المشيد `__init__()`.
+  3. الاستخدام واستدعاء التوابع.
+  4. التدمير وتحرير الذاكرة عبر جامع القمامة وميثود `__del__()` عند وصول عداد المراجع إلى الصفر.
 
 ---
 
-## 7. أركان البرمجة كائنية التوجه الأربعة في بايثون
+## 5. الركن الأول: الكبسلة (Encapsulation) وتطبيقاتها الكاملة (Slides 61 - 69)
 
-![[assets/python_poo_pillars.svg|850]]
-
-> [!info] شرح أركان البرمجة الكائنية الأربعة (POO Pillars Explained):
-> 1. **الكبسلة (Encapsulation)**: عزل البيانات الداخلية للكائن ومنع التعديل العشوائي عليها، واستخدام الاتفاقيات (`_` و `__`) وآليات الوصول المنضبطة.
-> 2. **الوراثة (Inheritance)**: إعادة استخدام الشيفرات عبر علاقة الصنف الأب (Classe Mère) والصنف الابن (Classe Fille) مع دعم الوراثة المتعددة.
-> 3. **تعدد الأشكال (Polymorphism)**: القدرة على التعامل مع كائنات مختلفة من خلال واجهة موحدة، عبر إعادة تعريف الدوال (Method Overriding) وخاصية الكتابة البطيّة (Duck Typing).
-> 4. **التجريد (Abstraction)**: إخفاء التفاصيل التنفيذية المعقدة وإلزام الأصناف الفرعية بتطبيق عقود وواجهات وظيفية محددة باستخدام وحدة `abc`.
-
----
-
-### 7.1 الركن الأول: الكبسلة في بايثون (Encapsulation)
-
-في لغات مثل C++ أو Java، تُفرض الكبسلة عبر الكلمات المفتاحية (`public`, `protected`, `private`). أما في بايثون، فالفلسفة مبنية على مقولة غيدو فان روسوم: *"نحن جميعاً بالغون وواعون هنا (We are all consenting adults here)"*. ومع ذلك، تطبق بايثون نظاماً دقيقاً:
-
-1. **الخصائص العامة (Attributs Publics)**: متاحة للقراءة والكتابة من أي مكان (`self.nom`).
-2. **الخصائص المحمية (Attributs Protégés - Convention `_`)**: تبدأ بشرطة سفلية واحدة (`self._solde`). هي مجرد اتفاقية تحذيرية تعني "هذا العنصر داخلي، لا تعدله مباشرة من خارج الصنف".
-3. **الخصائص الخاصة وتشويه الأسماء (Attributs Privés & Name Mangling - `__`)**:
-   - عند بدء اسم الخاصية بشرطتين سفليتين (مثل `self.__mot_de_passe`)، تقوم بايثون بتغيير اسمها داخلياً في جدول الرموز ليصبح:
-     $$\text{\_NomDeClasse\_\_attribut}$$
-   - هذا التشويه يمنع الوصول العرضي المباشر ويحمي الخاصية من التضارب عند الوراثة.
-
-#### استخدام ممتلكات بايثون (Les Propriétés - `@property`)
-تتيح بايثون المزخرف `@property` للجمع بين أمان الكبسلة وسلاسة القراءة:
-
-```python
-class CompteBancaire:
-    def __init__(self, titulaire: str, solde_initial: float):
-        self.titulaire = titulaire
-        self.__solde = solde_initial  # خاصية خاصة جداً
-
-    # Getter الكلاسيكي
-    def get_solde(self) -> float:
-        return self.__solde
-
-    # Setter الكلاسيكي مع التحقق
-    def set_solde(self, nouveau_solde: float):
-        if nouveau_solde >= 0:
-            self.__solde = nouveau_solde
-        else:
-            raise ValueError("Le solde ne peut pas être négatif !")
-
-    # الأسلوب المعاصر والاحترافي في بايثون (Pythonic Property)
-    @property
-    def solde(self) -> float:
-        """Accesseur moderne"""
-        return self.__solde
-
-    @solde.setter
-    def solde(self, montant: float):
-        """Mutateur moderne avec contrôle strict"""
-        if montant < 0:
-            raise ValueError("Montant invalide !")
-        self.__solde = montant
-```
+### أ. المفهوم النظري (Slides 61 - 63)
+* **الكبسلة**: تجميع البيانات والوظائف داخل كبسولة موحدة وحماية الحالة الداخلية من الوصول العشوائي المباشر من الخارج.
+* بايثون لا تحتوي على كلمات مفتاحية صلبة مثل `private` في Java، لكنها تتبنى اتفاقيات صارمة:
+  * **العام (Public)**: متاح مباشرة (`self.nom`).
+  * **المحمي (Protected `_`)**: اتفاقية تفاهم تعني أن الخاصية داخلية (`self._age`).
+  * **الخاص وتشويه الأسماء (Private & Name Mangling `__`)**: عند وضع شرطتين سفليتين (`self.__salaire`)، يقوم المترجم بتعديل اسم المتغير داخلياً إلى `_NomClasse__attribut`.
 
 ---
 
-### 7.2 الركن الثاني: الوراثة والوراثة المتعددة (Héritage & Héritage Multiple)
+### ب. أمثلة الكبسلة الثلاثة من المحاضرة الرسمية (Slides 64 - 69)
 
-#### الوراثة البسيطة واستدعاء الدالة `super()`
-ترث الفئة الفرعية جميع خصائص وتوابع الفئة الأم المتاحة، وتستخدم الدالة `super()` لتمرير التعليمات الإنشائية للأب:
-
+#### المثال 1 (`Exemple_v1` - حماية الخاصية والوصول عبر Getters/Setters) (Slides 64 - 65):
 ```python
+# personne.py
 class Personne:
-    def __init__(self, nom: str, prenom: str):
+    def __init__(self, nom, prenom, age):
         self.nom = nom
         self.prenom = prenom
+        self.__age = age  # خاصية خاصة جداً (Private)
 
-    def afficher(self):
-        print(f"Nom : {self.nom}, Prénom : {self.prenom}")
+    # محدد القراءة (Getter)
+    def get_age(self):
+        return self.__age
+
+    # محدد التعديل (Setter) مع التحقق من صحة البيانات
+    def set_age(self, age):
+        if age > 0:
+            self.__age = age
+        else:
+            print("Erreur : L'âge doit être positif !")
+
+# تجربة الكود:
+p = Personne("KHEMIRI", "Amira", 29)
+print(p.get_age())       # يعرض: 29
+p.set_age(30)
+print(p.get_age())       # يعرض: 30
+# print(p.__age)         # يولد خطأ AttributeError: 'Personne' object has no attribute '__age'
+```
+
+#### المثال 2 و 3 (`Exemple_v2` و `Exemple_v3` مع المزخرف `@property`) (Slides 66 - 69):
+الأسلوب البايثوني المعاصر الذي يتيح التعامل مع الدوال كخصائص طبيعية:
+```python
+class Personne:
+    def __init__(self, nom, prenom, age):
+        self.nom = nom
+        self.prenom = prenom
+        self.__age = age
+
+    @property
+    def age(self):
+        """Getter حديث"""
+        return self.__age
+
+    @age.setter
+    def age(self, nouvelle_valeur):
+        """Setter حديث مع فحص منطقي"""
+        if nouvelle_valeur > 0:
+            self.__age = nouvelle_valeur
+        else:
+            raise ValueError("L'âge ne peut pas être négatif !")
+
+# main.py (Slide 68 - 69):
+p = Personne("ALOUI", "Kais", 30)
+print(p.age)      # استدعاء دالة age عبر صيغة الخاصية -> 30
+p.age = 31        # استدعاء دالة setter بسلاسة
+print(p.age)      # -> 31
+```
+
+---
+
+## 6. الركن الثاني: الوراثة والوراثة المتعددة (Inheritance) (Slides 70 - 109)
+
+### أ. الوراثة البسيطة واستدعاء المشيد `super()` (Slides 70 - 93)
+* ترث الفئة الفرعية (Classe Fille) كافة خصائص وتوابع الفئة الأم (Classe Mère) باستثناء الخصائص الخاصة (`__`).
+* ميثود `super().__init__(...)` تسمح باستدعاء مشيد الصنف الأب دون تكرار كود التهيئة.
+
+#### المثال الشامل 1 (`Exemple_v1` - الأصناف `Personne`, `Etudiant`, `Enseignant`, `main.py`) (Slides 79 - 85):
+```python
+# personne.py (Slide 80 - 81)
+class Personne:
+    def __init__(self, nom, prenom, age):
+        self.nom = nom
+        self.prenom = prenom
+        self.age = age
+
+    def affiche(self):
+        print(f"Nom : {self.nom} , Prenom : {self.prenom} , age : {self.age}")
+
+# etudiant.py (Slide 82)
+from personne import Personne
 
 class Etudiant(Personne):
-    def __init__(self, nom: str, prenom: str, filiere: str):
-        super().__init__(nom, prenom)  # استدعاء دالة بناء الفئة الأم
-        self.filiere = filiere
+    def __init__(self, nom, prenom, age, numEtd):
+        super().__init__(nom, prenom, age)
+        self.numEtd = numEtd
 
-    def afficher(self):
-        super().afficher()  # إعادة استخدام عرض الأب
-        print(f"Filière : {self.filiere}")
-```
+    def affiche(self):
+        super().affiche()
+        print(f", NumEtd : {self.numEtd}")
 
-#### الوراثة المتعددة وترتيب استدعاء الميثود (MRO - Method Resolution Order)
-تدعم بايثون وراثة الصنف لعدة فئات آباء في آن واحد:
-$$\text{class Professeur(Personne, Employe):}$$
-لتفادي معضلة الألماسة (Diamond Problem)، تستخدم بايثون خوارزمية **C3 Linearization** لتحديد أولويات البحث في شجرة الوراثة، ويمكن فحصها عبر:
-```python
-print(Professeur.__mro__)
+# enseignant.py (Slide 83 - 84)
+from personne import Personne
+
+class Enseignant(Personne):
+    def __init__(self, nom, prenom, age, specialite, grade, salaire):
+        super().__init__(nom, prenom, age)
+        self.specialite = specialite
+        self.grade = grade
+        self.salaire = salaire
+
+    def affiche(self):
+        super().affiche()
+        print(f", specialité : {self.specialite} , grade : {self.grade} , salaire : {self.salaire}")
+
+# main.py (Slide 85)
+from etudiant import Etudiant
+from enseignant import Enseignant
+
+et1 = Etudiant("ALOUI", "kais", 30, 587)
+en1 = Enseignant("KHEMIRI", "Amira", 29, "Informatique", "MA", 2500)
+
+et1.affiche()
+# Nom : ALOUI , Prenom : kais , age : 30
+# , NumEtd : 587
+
+en1.affiche()
+# Nom : KHEMIRI , Prenom : Amira , age : 29
+# , specialité : Informatique , grade : MA , salaire : 2500
 ```
 
 ---
 
-### 7.3 الركن الثالث: تعدد الأشكال (Polymorphisme)
+### ب. تسلسل البحث عن الدوال ومثال الصنف `Vehicule` و `Voiture` (Slides 92 - 93)
+```python
+class Vehicule:
+    def demarrer(self):
+        print("Démarrage du véhicule...")
 
-تعدد الأشكال هو قدرة كائنات تنتمي لأصناف مختلفة على الاستجابة لنفس استدعاء التابع بطرق مخصصة:
-1. **إعادة تعريف التوابع (Method Overriding)**: تعيد الفئة الفرعية كتابة محتوى تابع موروث من الفئة الأم.
-2. **الكتابة البطيّة (Duck Typing)**:
-   > "إذا كان يمشي كالبطة، ويصدر صوتاً كالبطة، فهو بطة."
-   في بايثون، لا يشترط أن تنتمي الكائنات لنفس شجرة الوراثة؛ يكفي أن تحتوي على الميثود المطلوبة ليتم استدعاؤها بأمان.
+class Voiture(Vehicule):
+    pass
+
+v = Voiture()
+v.demarrer()
+```
+> [!info] قاعدة تسلسل استدعاء الميثود:
+> عند استدعاء `v.demarrer()`:
+> 1. يبحث بايثون أولاً داخل الصنف المباشر للكائن (`Voiture`).
+> 2. إذا لم يجد الدالة فيه، ينتقل بالبحث تلقائياً إلى الصنف الأب (`Vehicule`).
 
 ---
 
-### 7.4 الركن الرابع: الأصناف المجردة والواجهات (Classes Abstraites & Interfaces)
+### ج. الوراثة المتعددة ومثال `Professeur` يرث من `Personne` و `Employe` (Slides 94 - 109)
+تسمح بايثون للصنف الابن بأن يرث من فئتين أم في آن واحد:
 
-تُستخدم الأصناف المجردة لفرض بنية موحدة ومنع إنشاء نسخ ناقصة مباشرة. يتم تحقيق ذلك بالاعتماد على وحدة `abc` (Abstract Base Classes):
+```
+               ┌─────────────────┐       ┌─────────────────┐
+               │ Classe Personne │       │ Classe Employe  │
+               │ (nom, prenom,..)│       │ (codeEmp, sal..)│
+               └────────┬────────┘       └────────┬────────┘
+                        │                         │
+                        └───────────┬─────────────┘
+                                    ▼
+                        ┌───────────────────────┐
+                        │   Classe Professeur   │
+                        │ (specialite + Personne│
+                        │      + Employe)       │
+                        └───────────────────────┘
+```
 
+#### التطبيق العملي الكامل للوراثة المتعددة (`Héritage multiple_v1` & `v2`):
 ```python
+# meres.py (Slides 96 - 99, 104 - 106)
+class Personne:
+    def __init__(self, nom, prenom, dateN):
+        self.nom = nom
+        self.prenom = prenom
+        self.dateN = dateN
+
+    def afficherInfos(self):
+        print(f"Nom : {self.nom} , Prenom : {self.prenom} , Date naissance : {self.dateN}")
+
+class Employe:
+    def __init__(self, codeEmp, salaire, anneeRec):
+        self.codeEmp = codeEmp
+        self.salaire = salaire
+        self.anneeRec = anneeRec
+
+    def afficherInfos(self):
+        print(f"Code employé : {self.codeEmp} , Salaire : {self.salaire} , anneeRec : {self.anneeRec}")
+
+# fille.py (Slides 100 - 101, 107 - 108)
+class Professeur(Personne, Employe):
+    def __init__(self, nom, prenom, dateN, codeEmp, salaire, anneeRec, specialite):
+        # استدعاء مشيدي الفئتين الأم صراحة لتفادي الغموض
+        Personne.__init__(self, nom, prenom, dateN)
+        Employe.__init__(self, codeEmp, salaire, anneeRec)
+        self.specialite = specialite
+
+    def afficherInfos(self):
+        Personne.afficherInfos(self)
+        Employe.afficherInfos(self)
+        print(f", Specialite : {self.specialite}")
+
+# main.py (Slide 102, 109)
+p1 = Professeur("SOULI", "Slim", "09/10/1985", 123, 1600, 2020, "informatique")
+p1.afficherInfos()
+# المخرجات:
+# Nom : SOULI , Prenom : Slim , Date naissance : 09/10/1985
+# Code employé : 123 , Salaire : 1600 , anneeRec : 2020
+# , Specialite : informatique
+```
+
+---
+
+## 7. الركن الثالث: الأصناف المجردة (Classes Abstraites) (Slides 110 - 119)
+
+### أ. المفهوم النظري (Slides 111 - 112)
+* **الصنف المجرد (Classe Abstraite)**: صنف يحتوي على الأقل على دالة مجردة واحدة (**Méthode Abstraite**)؛ وهي دالة يُعلن عن توقيعها واسمها فقط دون كتابة كود تنفيذي لها (`pass`).
+* **القاعدة الصارمة**: **الصنف المجرد غير قابل للإنشاء المباشر (Non Instanciable)**! لا يمكن إنشاء كائن منه في الذاكرة عبر `p = Personne(...)`، بل يُستخدم كعقد وقالب للأصناف المشتقة.
+
+---
+
+### ب. التطبيق العملي الكامل وفحص رسالة الخطأ (Slides 114 - 119)
+```python
+# personne.py (Slide 114)
 from abc import ABC, abstractmethod
 
-# صنف مجرد يعمل كواجهة (Interface)
-class InterfaceServiceWeb(ABC):
+class Personne(ABC): # الوراثة من ABC تجعل الصنف مجرداً
+    def __init__(self, nom, prenom, age):
+        self.nom = nom
+        self.prenom = prenom
+        self.age = age
 
     @abstractmethod
-    def authentifier(self, token: str) -> bool:
-        """Méthode abstraite obligatoire"""
+    def affiche(self):
+        """دالة مجردة تفرض على الأبناء تنفيذها"""
         pass
 
-    @abstractmethod
-    def traiter_requete(self, data: dict) -> dict:
-        """Doit impérativement être implémentée par les classes filles"""
-        pass
+# etudiant.py (Slide 115)
+from personne import Personne
 
-class ServiceClient(InterfaceServiceWeb):
-    def authentifier(self, token: str) -> bool:
-        return token == "SECRET_TOKEN_2MDSP"
+class Etudiant(Personne):
+    def __init__(self, nom, prenom, age, numEtd):
+        super().__init__(nom, prenom, age)
+        self.numEtd = numEtd
 
-    def traiter_requete(self, data: dict) -> dict:
-        return {"status": "success", "result": f"Traitement de {data}"}
+    def affiche(self):
+        print(f"Nom : {self.nom} , Prenom : {self.prenom} , age : {self.age} , NumEtd : {self.numEtd}")
+
+# enseignant.py (Slide 116 - 117)
+from personne import Personne
+
+class Enseignant(Personne):
+    def __init__(self, nom, prenom, age, specialite, grade, salaire):
+        super().__init__(nom, prenom, age)
+        self.specialite = specialite
+        self.grade = grade
+        self.salaire = salaire
+
+    def affiche(self):
+        print(f"Nom : {self.nom} , Prenom : {self.prenom} , age : {self.age}")
+        print(f", specialité : {self.specialite} , grade : {self.grade} , salaire : {self.salaire}")
 ```
 
-> [!danger] محاولة استنساخ صنف مجرد
-> إذا حاولت استدعاء `s = InterfaceServiceWeb()` مباشرة، سيقوم مفسر بايثون بإطلاق الخطأ التالي:
-> `TypeError: Can't instantiate abstract class InterfaceServiceWeb without an implementation for abstract methods...`
+#### ماذا يحدث عند محاولة إنشاء نسخة من `Personne`؟ (Slide 118):
+```python
+# main.py
+p1 = Personne("SALHI", "Farah", 22)
+```
+> [!danger] الخطأ التشغيلي من المحاضرة:
+> ينهار البرنامج فوراً بالرسالة الموضحة بالشريحة 118:
+> `TypeError: Can't instantiate abstract class Personne with abstract method affiche`
+> لأن بايثون تمنع منعاً باتاً إنشاء كائنات من الفئات المجردة التي تمتلك ميثود مجردة لم تُنفذ.
+> بينما إنشاء كائنات من `Etudiant` و `Enseignant` يعمل بنجاح تام لأنها نفذت الدالة `affiche()`.
 
 ---
 
-## 8. ملخص ومكتسبات الفصل (Conclusion & Transition)
+## 8. الركن الرابع: الواجهات البرمجية (Interfaces) (Slides 120 - 137)
 
-* توفر أطر عمل بايثون (Frameworks Web) مثل **Django** و **Flask** طبقة حماية وتنظيم هندسي متقدم عبر تطبيق أنماط معمارية مفصولة المسؤوليات (**MVT / MVC**).
-* يشكل التمكن الصارم من آليات بايثون كائنية التوجه (POO)؛ لاسيما **الكبسلة مع الدوال الخاصة `__`**، و**الوراثة مع `super()`**، و**تعدد الأشكال**، الحجر الأساس لبناء نماذج البيانات (Models) والخدمات الخلفية.
-* يمهد هذا الإتقان للانتقال المباشر إلى [[02_Gestion_des_Exceptions_en_Python|الفصل الثاني: إدارة ومعالجة الاستثناءات في بايثون (La gestion des exceptions)]] لضمان متانة الكود وموثوقيته.
+### أ. المفهوم النظري (Slides 121 - 122)
+* **الواجهة (Interface)**: هي حالة خاصة ونقية من الأصناف المجردة؛ حيث **لا تحتوي على أي خاصية (Attribut)** و **لا تحتوي على أي دالة منفذة (Pas de méthode concrète)**؛ فجميع دوالها مجردة بنسبة 100%.
+* أي صنف يطبق واجهة برمجية يُلزم بتوفير كود تنفيذي لكافة دوال الواجهة دون استثناء.
+
+---
+
+### ب. المثال العملي 1: واجهة العرض (`InterfaceAffichage`) (Slides 123 - 130)
+```python
+# affichage.py (Slide 125)
+from abc import ABC, abstractmethod
+
+class InterfaceAffichage(ABC):
+    @abstractmethod
+    def affiche(self):
+        pass
+
+# personne.py (Slide 126)
+class Personne:
+    def __init__(self, nom, prenom, age):
+        self.nom = nom
+        self.prenom = prenom
+        self.age = age
+
+# etudiant.py (Slide 127) - وراثة من Personne وتطبيق InterfaceAffichage
+from personne import Personne
+from affichage import InterfaceAffichage
+
+class Etudiant(Personne, InterfaceAffichage):
+    def __init__(self, nom, prenom, age, numEtd):
+        super().__init__(nom, prenom, age)
+        self.numEtd = numEtd
+
+    def affiche(self):
+        print(f"Nom : {self.nom} , Prenom : {self.prenom} , age : {self.age} , NumEtd : {self.numEtd}")
+
+# enseignant.py (Slide 128 - 129)
+from personne import Personne
+from affichage import InterfaceAffichage
+
+class Enseignant(Personne, InterfaceAffichage):
+    def __init__(self, nom, prenom, age, specialite, grade, salaire):
+        super().__init__(nom, prenom, age)
+        self.specialite = specialite
+        self.grade = grade
+        self.salaire = salaire
+
+    def affiche(self):
+        print(f"Nom : {self.nom} , Prenom : {self.prenom} , age : {self.age} , specialité : {self.specialite} , grade : {self.grade} , salaire : {self.salaire}")
+
+# main.py (Slide 130)
+et1 = Etudiant("ALOUI", "kais", 30, 587)
+en1 = Enseignant("KHEMIRI", "Amira", 29, "Informatique", "MA", 2500)
+et1.affiche()
+en1.affiche()
+```
+
+---
+
+### ج. المثال العملي 2 الشامل: نمذجة الحياة والموت (`Vivant`, `Humain`, `Chat`) (Slides 131 - 137)
+تستعرض الشرائح من 131 إلى 137 تصميماً كاملاً لمحاكاة الكائنات الحية والفرق السلوكي بين الإنسان والقط عبر تعدد الأشكال والواجهات:
+
+1. **الواجهة المجردة `Vivant`**:
+   * تُعرف سلوكيات الكائن الحي: `vivre()`, `mourir()`, `est_vivant()`.
+2. **الصنف `Humain`**:
+   * يمتلك حياة واحدة فقط. عند استدعاء `mourir()` يموت نهائياً، وتفشل أي محاولة لاحقة لإنعاشه (*"L'être humain est mort ! Impossible de réanimer cet Humain il est déjà mort !"*).
+3. **الصنف `Chat` (القط ذو السبعة أرواح)**:
+   * يمتلك القط مخزوناً من 7 أو 9 أرواح. عند استدعاء `mourir()` ينقص عداد أرواحه بمقدار 1 مع إشعار: (*"Le chat est en train de mourir ! Ce chat est toujours en vie"*). ولا يموت القط فعلياً إلا بعد نفاد كافة أرواحه!
+
+```python
+# التنفيذ التفاعلي كما ظهر في مخرجات الشريحة 137:
+# Est-il vivant? : True
+# L'être humain est mort!
+# Impossible de réanimer cet Humain il est déjà mort!
+# ------------------------------
+# Est-il vivant? : True
+# Le chat est en train de mourir!
+# Ce chat est toujours en vie.
+```
+
+---
+
+## 9. المخطط التوضيحي لأركان البرمجة الكائنية الأربعة (SVG Diagram)
+
+![[assets/python_poo_pillars.svg]]
+
+> [!info] شرح مخطط أركان البرمجة كائنية التوجه:
+> يوضح المخطط الهيكلية التكاملية بين الركائز الأربع:
+> 1. **الكبسلة**: حماية المتغيرات بـ `__` وتأمينها بالمزخرف `@property`.
+> 2. **الوراثة**: إعادة استخدام الكود ودعم الوراثة المتعددة المنضبطة عبر `super()`.
+> 3. **تعدد الأشكال**: التعامل مع فئات مختلفة (`Etudiant`, `Enseignant`, `Humain`, `Chat`) عبر واجهة استدعاء موحدة.
+> 4. **التجريد والواجهات**: إلزام الهياكل بعقود صارمة باستخدام مكتبة `abc` ومنع إنشاء كائنات ناقصة التنفيذ.
