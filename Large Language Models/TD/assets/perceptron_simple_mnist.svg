@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="480" y="35" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0f172a">
+    Single Layer Perceptron Architecture on MNIST Dataset
+  </text>
+  <text x="480" y="58" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#475569">
+    TensorFlow / Keras: Dense(10, input_shape=(784,), activation='sigmoid')
+  </text>
+
+  <!-- Step 1: Input Image Matrix -->
+  <g transform="translate(40, 90)" filter="url(#shadow)">
+    <rect x="0" y="0" width="160" height="320" rx="10" fill="#ffffff" stroke="#3b82f6" stroke-width="2"/>
+    <rect x="0" y="0" width="160" height="38" rx="10" fill="#eff6ff"/>
+    <text x="80" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1e3a8a">Input Image</text>
+
+    <!-- 28x28 grid representation -->
+    <rect x="25" y="55" width="110" height="110" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+    <!-- Simulated digit 7 or drawing -->
+    <path d="M 45 75 L 115 75 L 80 145" fill="none" stroke="#1e293b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <text x="80" y="190" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#0f172a">2D Matrix</text>
+    <text x="80" y="210" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#334155">28 × 28 pixels</text>
+    <text x="80" y="235" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Normalized:</text>
+    <rect x="20" y="245" width="120" height="26" rx="4" fill="#dbeafe"/>
+    <text x="80" y="262" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#1e40af">x_train / 255.0</text>
+    <text x="80" y="295" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#475569">Values: [0.0 , 1.0]</text>
+  </g>
+
+  <!-- Arrow: Flattening -->
+  <path d="M 205 240 L 255 240" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="230" y="225" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#2563eb">reshape()</text>
+  <text x="230" y="260" text-anchor="middle" font-family="monospace" font-size="10" fill="#475569">28*28</text>
+
+  <!-- Step 2: Flattened Vector (Input Layer) -->
+  <g transform="translate(265, 90)" filter="url(#shadow)">
+    <rect x="0" y="0" width="160" height="320" rx="10" fill="#ffffff" stroke="#10b981" stroke-width="2"/>
+    <rect x="0" y="0" width="160" height="38" rx="10" fill="#ecfdf5"/>
+    <text x="80" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#065f46">Input Layer</text>
+
+    <!-- Vertical vector representation -->
+    <circle cx="80" cy="65" r="14" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+    <text x="80" y="69" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#065f46">x₀</text>
+
+    <circle cx="80" cy="105" r="14" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+    <text x="80" y="109" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#065f46">x₁</text>
+
+    <circle cx="80" cy="145" r="14" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+    <text x="80" y="149" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#065f46">x₂</text>
+
+    <text x="80" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#059669">⋮</text>
+
+    <circle cx="80" cy="225" r="14" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+    <text x="80" y="229" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#065f46">x₇₈₃</text>
+
+    <rect x="15" y="260" width="130" height="42" rx="6" fill="#f1f5f9"/>
+    <text x="80" y="278" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Dimension: 784</text>
+    <text x="80" y="294" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#475569">input_shape=(784,)</text>
+  </g>
+
+  <!-- Connections: Dense Layer (Weights) -->
+  <g opacity="0.35">
+    <line x1="425" y1="155" x2="525" y2="155" stroke="#6366f1" stroke-width="1.2"/>
+    <line x1="425" y1="155" x2="525" y2="195" stroke="#6366f1" stroke-width="1.2"/>
+    <line x1="425" y1="155" x2="525" y2="235" stroke="#6366f1" stroke-width="1.2"/>
+    <line x1="425" y1="155" x2="525" y2="315" stroke="#6366f1" stroke-width="1.2"/>
+    <line x1="425" y1="195" x2="525" y2="155" stroke="#6366f1" stroke-width="1.2"/>
+    <line x1="425" y1="195" x2="525" y2="195" stroke="#6366f1" stroke-width="1.2"/>
+    <line x1="425" y1="195" x2="525" y2="235" stroke="#6366f1" stroke-width="1.2"/>
+    <line x1="425" y1="195" x2="525" y2="315" stroke="#6366f1" stroke-width="1.2"/>
+    <line x1="425" y1="315" x2="525" y2="155" stroke="#6366f1" stroke-width="1.2"/>
+    <line x1="425" y1="315" x2="525" y2="195" stroke="#6366f1" stroke-width="1.2"/>
+    <line x1="425" y1="315" x2="525" y2="315" stroke="#6366f1" stroke-width="1.2"/>
+  </g>
+
+  <!-- Weights Label Box -->
+  <g transform="translate(435, 215)" filter="url(#shadow)">
+    <rect x="0" y="0" width="80" height="50" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="40" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#92400e">Dense Weights</text>
+    <text x="40" y="34" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">W: 784 × 10</text>
+    <text x="40" y="44" text-anchor="middle" font-family="monospace" font-size="9" fill="#0f172a">+ b: 10</text>
+  </g>
+
+  <!-- Step 3: Output Neurons Layer -->
+  <g transform="translate(525, 90)" filter="url(#shadow)">
+    <rect x="0" y="0" width="180" height="320" rx="10" fill="#ffffff" stroke="#8b5cf6" stroke-width="2"/>
+    <rect x="0" y="0" width="180" height="38" rx="10" fill="#f5f3ff"/>
+    <text x="90" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#5b21b6">Dense Layer (10)</text>
+
+    <!-- Neurons with Sigmoid -->
+    <g transform="translate(20, 50)">
+      <circle cx="20" cy="15" r="13" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+      <text x="20" y="19" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#5b21b6">N₀</text>
+      <text x="45" y="19" font-family="monospace" font-size="11" fill="#0f172a">→ σ(z₀)</text>
+    </g>
+
+    <g transform="translate(20, 90)">
+      <circle cx="20" cy="15" r="13" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+      <text x="20" y="19" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#5b21b6">N₁</text>
+      <text x="45" y="19" font-family="monospace" font-size="11" fill="#0f172a">→ σ(z₁)</text>
+    </g>
+
+    <g transform="translate(20, 130)">
+      <circle cx="20" cy="15" r="13" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+      <text x="20" y="19" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#5b21b6">N₂</text>
+      <text x="45" y="19" font-family="monospace" font-size="11" fill="#0f172a">→ σ(z₂)</text>
+    </g>
+
+    <text x="40" y="190" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#7c3aed">⋮</text>
+
+    <g transform="translate(20, 210)">
+      <circle cx="20" cy="15" r="13" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+      <text x="20" y="19" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#5b21b6">N₉</text>
+      <text x="45" y="19" font-family="monospace" font-size="11" fill="#0f172a">→ σ(z₉)</text>
+    </g>
+
+    <rect x="15" y="255" width="150" height="48" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="90" y="273" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">Activation: Sigmoid</text>
+    <text x="90" y="291" text-anchor="middle" font-family="monospace" font-size="10" fill="#4338ca">σ(z) = 1 / (1 + e⁻ᶻ)</text>
+  </g>
+
+  <!-- Arrow: Outputs -->
+  <path d="M 705 240 L 755 240" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="730" y="225" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#2563eb">Output</text>
+
+  <!-- Step 4: Class Probabilities / Predictions -->
+  <g transform="translate(765, 90)" filter="url(#shadow)">
+    <rect x="0" y="0" width="155" height="320" rx="10" fill="#ffffff" stroke="#0ea5e9" stroke-width="2"/>
+    <rect x="0" y="0" width="155" height="38" rx="10" fill="#f0f9ff"/>
+    <text x="77" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0369a1">Predictions</text>
+
+    <!-- Predicted classes list -->
+    <rect x="20" y="55" width="115" height="24" rx="4" fill="#f8fafc"/>
+    <text x="77" y="71" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">Class 0 : P(y=0)</text>
+
+    <rect x="20" y="87" width="115" height="24" rx="4" fill="#f8fafc"/>
+    <text x="77" y="103" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">Class 1 : P(y=1)</text>
+
+    <rect x="20" y="119" width="115" height="24" rx="4" fill="#f8fafc"/>
+    <text x="77" y="135" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">Class 2 : P(y=2)</text>
+
+    <text x="77" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#0284c7">⋮</text>
+
+    <rect x="20" y="200" width="115" height="24" rx="4" fill="#e0f2fe" stroke="#38bdf8"/>
+    <text x="77" y="216" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#0369a1">Class 7 (Argmax)</text>
+
+    <rect x="20" y="232" width="115" height="24" rx="4" fill="#f8fafc"/>
+    <text x="77" y="248" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">Class 9 : P(y=9)</text>
+
+    <rect x="12" y="270" width="131" height="36" rx="6" fill="#f1f5f9"/>
+    <text x="77" y="285" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#0f172a">Total Params: 7,850</text>
+    <text x="77" y="298" text-anchor="middle" font-family="monospace" font-size="9" fill="#475569">784 × 10 + 10</text>
+  </g>
+</svg>

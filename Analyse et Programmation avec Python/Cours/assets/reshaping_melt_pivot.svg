@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 430" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="440" y="30" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Data Reshaping Duality: Wide Format vs Long Format</text>
+  <text x="440" y="50" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#475569">Bi-directional Transformations with pd.melt() and df.pivot() / pivot_table()</text>
+
+  <!-- Left: Wide Format -->
+  <g transform="translate(30, 80)">
+    <rect width="320" height="280" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2" filter="url(#shadow)"/>
+    <rect width="320" height="34" rx="8" fill="#2563eb"/>
+    <text x="160" y="23" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Wide Format (Spreadsheet-friendly)</text>
+
+    <!-- Header -->
+    <rect x="20" y="50" width="80" height="25" fill="#eff6ff"/>
+    <text x="60" y="67" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#1e40af">Product</text>
+
+    <rect x="110" y="50" width="85" height="25" fill="#e0e7ff"/>
+    <text x="152" y="67" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#3730a3">2022</text>
+
+    <rect x="205" y="50" width="85" height="25" fill="#e0e7ff"/>
+    <text x="247" y="67" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#3730a3">2023</text>
+
+    <!-- Row A -->
+    <text x="60" y="105" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#0f172a">"A"</text>
+    <rect x="110" y="88" width="85" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="152" y="105" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">100</text>
+    <rect x="205" y="88" width="85" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="247" y="105" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">120</text>
+
+    <!-- Row B -->
+    <text x="60" y="145" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#0f172a">"B"</text>
+    <rect x="110" y="128" width="85" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="152" y="145" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">150</text>
+    <rect x="205" y="128" width="85" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="247" y="145" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">170</text>
+
+    <!-- Row C -->
+    <text x="60" y="185" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#0f172a">"C"</text>
+    <rect x="110" y="168" width="85" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="152" y="185" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">200</text>
+    <rect x="205" y="168" width="85" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="247" y="185" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">210</text>
+
+    <rect x="20" y="215" width="280" height="50" rx="5" fill="#f1f5f9"/>
+    <text x="30" y="235" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• Variables (Years) stored as column headers</text>
+    <text x="30" y="252" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• Harder to filter/facet in Seaborn &amp; Plotly</text>
+  </g>
+
+  <!-- Middle Transition Arrows -->
+  <g transform="translate(365, 140)">
+    <!-- melt arrow -->
+    <path d="M 0 30 Q 75 0 140 30" fill="none" stroke="#10b981" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="35" y="-5" width="80" height="24" rx="4" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="75" y="11" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#065f46">pd.melt()</text>
+
+    <!-- pivot arrow -->
+    <path d="M 140 100 Q 75 130 5 100" fill="none" stroke="#7c3aed" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="35" y="115" width="80" height="24" rx="4" fill="#faf5ff" stroke="#d8b4fe"/>
+    <text x="75" y="131" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#6b21a8">df.pivot()</text>
+  </g>
+
+  <!-- Right: Long Format -->
+  <g transform="translate(525, 80)">
+    <rect width="325" height="320" rx="10" fill="#ffffff" stroke="#10b981" stroke-width="2" filter="url(#shadow)"/>
+    <rect width="325" height="34" rx="8" fill="#10b981"/>
+    <text x="162" y="23" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Long Format (Tidy / Analysis-ready)</text>
+
+    <!-- Header -->
+    <rect x="20" y="50" width="80" height="22" fill="#d1fae5"/>
+    <text x="60" y="65" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#065f46">Product</text>
+
+    <rect x="110" y="50" width="85" height="22" fill="#d1fae5"/>
+    <text x="152" y="65" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#065f46">Year</text>
+
+    <rect x="205" y="50" width="85" height="22" fill="#d1fae5"/>
+    <text x="247" y="65" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#065f46">Sales</text>
+
+    <!-- Rows -->
+    <text x="60" y="92" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#0f172a">"A"</text> <text x="152" y="92" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#0f172a">"2022"</text> <text x="247" y="92" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#0f172a">100</text>
+    <text x="60" y="116" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#0f172a">"A"</text> <text x="152" y="116" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#0f172a">"2023"</text> <text x="247" y="116" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#0f172a">120</text>
+    <text x="60" y="140" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#0f172a">"B"</text> <text x="152" y="140" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#0f172a">"2022"</text> <text x="247" y="140" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#0f172a">150</text>
+    <text x="60" y="164" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#0f172a">"B"</text> <text x="152" y="164" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#0f172a">"2023"</text> <text x="247" y="164" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#0f172a">170</text>
+    <text x="60" y="188" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#0f172a">"C"</text> <text x="152" y="188" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#0f172a">"2022"</text> <text x="247" y="188" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#0f172a">200</text>
+    <text x="60" y="212" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#0f172a">"C"</text> <text x="152" y="212" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#0f172a">"2023"</text> <text x="247" y="212" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#0f172a">210</text>
+
+    <rect x="20" y="235" width="285" height="70" rx="5" fill="#f0fdf4"/>
+    <text x="30" y="255" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#065f46">• Each row represents exactly 1 observation</text>
+    <text x="30" y="272" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#065f46">• <tspan font-weight="700">pivot():</tspan> requires unique (index, col) pairs</text>
+    <text x="30" y="289" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#065f46">• <tspan font-weight="700">pivot_table():</tspan> handles duplicates via aggfunc</text>
+  </g>
+</svg>

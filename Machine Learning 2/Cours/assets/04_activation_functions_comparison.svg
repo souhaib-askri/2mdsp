@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 500" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <filter id="actShadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="475" y="34" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Core Non-Linear Activation Functions in Deep Learning</text>
+  <text x="475" y="54" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#475569">Mathematical Formulations, Functional Curves, and Derivative Behavior</text>
+
+  <!-- Grid of 4 Activation Functions: 2 rows x 2 cols -->
+  <!-- Col 1: x=40, Col 2: x=490. Row 1: y=75, Row 2: y=285 -->
+
+  <!-- 1. Sigmoid -->
+  <g transform="translate(40, 75)">
+    <rect x="0" y="0" width="420" height="195" rx="8" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5" filter="url(#actShadow)"/>
+    <rect x="0" y="0" width="420" height="32" rx="8" fill="#dbeafe"/>
+    <text x="15" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1e40af">1. Sigmoid Function (Logistic)</text>
+    <text x="405" y="22" text-anchor="end" font-family="monospace" font-size="11" font-weight="600" fill="#2563eb">σ(z) = 1 / (1 + e^-z)</text>
+
+    <!-- Mini Curve Display on the left -->
+    <rect x="15" y="42" width="150" height="140" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+    <!-- Axes -->
+    <line x1="25" y1="112" x2="155" y2="112" stroke="#94a3b8" stroke-width="1"/>
+    <line x1="90" y1="48" x2="90" y2="176" stroke="#94a3b8" stroke-width="1"/>
+    <!-- Sigmoid S-curve -->
+    <path d="M 30 166 C 65 166 75 140 90 112 C 105 84 115 58 150 58" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+    <text x="30" y="160" font-family="monospace" font-size="9" fill="#64748b">0.0</text>
+    <text x="30" y="66" font-family="monospace" font-size="9" fill="#64748b">1.0</text>
+    <text x="94" y="124" font-family="monospace" font-size="9" fill="#64748b">0.5</text>
+
+    <!-- Properties on the right -->
+    <text x="180" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">• Output Range:</text>
+    <text x="270" y="60" font-family="monospace" font-size="11" fill="#2563eb">(0, 1) Probability</text>
+    <text x="180" y="82" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">• Derivative:</text>
+    <text x="255" y="82" font-family="monospace" font-size="11" fill="#0f172a">σ'(z) = σ(z)(1 - σ(z))</text>
+    <text x="180" y="104" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">• Max Derivative:</text>
+    <text x="280" y="104" font-family="monospace" font-size="11" fill="#e11d48">0.25 (at z = 0)</text>
+    <text x="180" y="128" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#dc2626">• Primary Drawback:</text>
+    <text x="180" y="146" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#475569">Severe Vanishing Gradient for |z| &gt; 4</text>
+    <text x="180" y="162" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#475569">Outputs are not zero-centered</text>
+  </g>
+
+  <!-- 2. Hyperbolic Tangent (Tanh) -->
+  <g transform="translate(490, 75)">
+    <rect x="0" y="0" width="420" height="195" rx="8" fill="#ffffff" stroke="#10b981" stroke-width="1.5" filter="url(#actShadow)"/>
+    <rect x="0" y="0" width="420" height="32" rx="8" fill="#d1fae5"/>
+    <text x="15" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#065f46">2. Hyperbolic Tangent (Tanh)</text>
+    <text x="405" y="22" text-anchor="end" font-family="monospace" font-size="11" font-weight="600" fill="#059669">tanh(z) = (e^z - e^-z)/(e^z + e^-z)</text>
+
+    <!-- Mini Curve Display on the left -->
+    <rect x="15" y="42" width="150" height="140" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+    <!-- Axes -->
+    <line x1="25" y1="112" x2="155" y2="112" stroke="#94a3b8" stroke-width="1"/>
+    <line x1="90" y1="48" x2="90" y2="176" stroke="#94a3b8" stroke-width="1"/>
+    <!-- Tanh curve centered at 0 -->
+    <path d="M 30 170 C 65 170 75 145 90 112 C 105 79 115 54 150 54" fill="none" stroke="#10b981" stroke-width="2.5"/>
+    <text x="30" y="172" font-family="monospace" font-size="9" fill="#64748b">-1.0</text>
+    <text x="30" y="60" font-family="monospace" font-size="9" fill="#64748b">+1.0</text>
+    <text x="94" y="124" font-family="monospace" font-size="9" fill="#64748b">0.0</text>
+
+    <!-- Properties on the right -->
+    <text x="180" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">• Output Range:</text>
+    <text x="270" y="60" font-family="monospace" font-size="11" fill="#059669">(-1, +1) Zero-centered</text>
+    <text x="180" y="82" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">• Derivative:</text>
+    <text x="255" y="82" font-family="monospace" font-size="11" fill="#0f172a">tanh'(z) = 1 - tanh²(z)</text>
+    <text x="180" y="104" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">• Max Derivative:</text>
+    <text x="280" y="104" font-family="monospace" font-size="11" fill="#059669">1.0 (at z = 0)</text>
+    <text x="180" y="128" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#166534">• Advantage:</text>
+    <text x="180" y="146" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#475569">Zero-centered gradients speed training</text>
+    <text x="180" y="162" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#475569">Still saturates at high magnitudes</text>
+  </g>
+
+  <!-- 3. Rectified Linear Unit (ReLU) -->
+  <g transform="translate(40, 285)">
+    <rect x="0" y="0" width="420" height="195" rx="8" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5" filter="url(#actShadow)"/>
+    <rect x="0" y="0" width="420" height="32" rx="8" fill="#fef3c7"/>
+    <text x="15" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#92400e">3. Rectified Linear Unit (ReLU)</text>
+    <text x="405" y="22" text-anchor="end" font-family="monospace" font-size="11" font-weight="600" fill="#b45309">ReLU(z) = max(0, z)</text>
+
+    <!-- Mini Curve Display on the left -->
+    <rect x="15" y="42" width="150" height="140" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+    <!-- Axes -->
+    <line x1="25" y1="140" x2="155" y2="140" stroke="#94a3b8" stroke-width="1"/>
+    <line x1="75" y1="48" x2="75" y2="176" stroke="#94a3b8" stroke-width="1"/>
+    <!-- ReLU curve -->
+    <line x1="30" y1="140" x2="75" y2="140" stroke="#d97706" stroke-width="3"/>
+    <line x1="75" y1="140" x2="145" y2="60" stroke="#d97706" stroke-width="3"/>
+
+    <!-- Properties on the right -->
+    <text x="180" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">• Output Range:</text>
+    <text x="270" y="60" font-family="monospace" font-size="11" fill="#b45309">[0, +∞) Non-saturating</text>
+    <text x="180" y="82" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">• Derivative:</text>
+    <text x="255" y="82" font-family="monospace" font-size="11" fill="#0f172a">1 if z &gt; 0, 0 if z &lt; 0</text>
+    <text x="180" y="104" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">• Computational Cost:</text>
+    <text x="310" y="104" font-family="monospace" font-size="11" fill="#059669">Extremely Fast</text>
+    <text x="180" y="128" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#b45309">• Industry Standard:</text>
+    <text x="180" y="146" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#475569">Eliminates vanishing gradient for z &gt; 0</text>
+    <text x="180" y="162" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#dc2626">Risk: "Dying ReLU" when z permanently &lt; 0</text>
+  </g>
+
+  <!-- 4. Leaky ReLU -->
+  <g transform="translate(490, 285)">
+    <rect x="0" y="0" width="420" height="195" rx="8" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5" filter="url(#actShadow)"/>
+    <rect x="0" y="0" width="420" height="32" rx="8" fill="#ede9fe"/>
+    <text x="15" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#5b21b6">4. Leaky ReLU</text>
+    <text x="405" y="22" text-anchor="end" font-family="monospace" font-size="11" font-weight="600" fill="#6d28d9">max(αz, z), α ≈ 0.01</text>
+
+    <!-- Mini Curve Display on the left -->
+    <rect x="15" y="42" width="150" height="140" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+    <!-- Axes -->
+    <line x1="25" y1="130" x2="155" y2="130" stroke="#94a3b8" stroke-width="1"/>
+    <line x1="75" y1="48" x2="75" y2="176" stroke="#94a3b8" stroke-width="1"/>
+    <!-- Leaky ReLU curve -->
+    <line x1="30" y1="137" x2="75" y2="130" stroke="#7c3aed" stroke-width="2.5"/>
+    <line x1="75" y1="130" x2="145" y2="55" stroke="#7c3aed" stroke-width="2.5"/>
+
+    <!-- Properties on the right -->
+    <text x="180" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">• Output Range:</text>
+    <text x="270" y="60" font-family="monospace" font-size="11" fill="#6d28d9">(-∞, +∞)</text>
+    <text x="180" y="82" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">• Derivative:</text>
+    <text x="255" y="82" font-family="monospace" font-size="11" fill="#0f172a">1 if z &gt; 0, α if z &lt; 0</text>
+    <text x="180" y="104" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">• Fixes Dying ReLU:</text>
+    <text x="300" y="104" font-family="monospace" font-size="11" fill="#059669">Small slope for z &lt; 0</text>
+    <text x="180" y="128" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#5b21b6">• Benefit:</text>
+    <text x="180" y="146" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#475569">Ensures gradients flow even when inactive</text>
+    <text x="180" y="162" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#475569">Maintains fast computation efficiency</text>
+  </g>
+</svg>

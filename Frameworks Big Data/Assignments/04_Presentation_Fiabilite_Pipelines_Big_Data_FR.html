@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiabilité des Pipelines Big Data en Production | Présentation Master 2</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --border: #e2e8f0;
+        }
+        body, .reveal {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: #1e293b;
+        }
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: -0.02em;
+        }
+        .reveal .slides section {
+            text-align: left;
+            padding: 20px 40px;
+        }
+        .slide-dark {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+        }
+        .slide-dark h1, .slide-dark h2, .slide-dark h3 {
+            color: #ffffff !important;
+        }
+        .badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-size: 0.45em;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            margin-bottom: 12px;
+        }
+        .slide-title {
+            font-size: 1.4em !important;
+            color: #0f172a;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-bottom: 20px !important;
+        }
+        .flex-container {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        .col-text {
+            flex: 1.1;
+            font-size: 0.6em;
+            line-height: 1.65;
+        }
+        .col-media {
+            flex: 0.9;
+            text-align: center;
+        }
+        .col-media img {
+            max-width: 100%;
+            max-height: 480px;
+            border-radius: 10px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+        }
+        .card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+        .card-title {
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 4px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            font-size: 0.55em;
+        }
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            font-size: 0.52em;
+        }
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.48em;
+            margin-top: 15px;
+        }
+        .table-custom th {
+            background: #0f172a;
+            color: #ffffff;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        .table-custom td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #e2e8f0;
+            background: #ffffff;
+        }
+        .table-custom tr:nth-child(even) td {
+            background: #f8fafc;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Slide 1 -->
+            <section class="slide-dark">
+                <span class="badge" style="background:#0284c7; color:#ffffff;">MASTER 2 DATA SCIENCE & BIG DATA (2MDSP) — ISLAI BÉJA</span>
+                <h1 style="font-size: 1.8em; margin-top: 10px;">Fiabilité des Pipelines Big Data en Production</h1>
+                <h3 style="font-size: 0.9em; color:#94a3b8; font-weight: normal;">Au-delà d'Apache Spark : Les défis des systèmes Big Data modernes</h3>
+                <p style="font-size: 0.55em; color: #cbd5e1; margin-top: 25px;">
+                    Activité de Recherche — <strong>Thème 4</strong> | Module : Frameworks Big Data<br>
+                    Présenté dans le cadre du cursus de Master 2 Data Science & Big Data
+                </p>
+                <div style="font-size: 0.5em; color: #38bdf8; margin-top: 25px; border-top: 1px solid #334155; padding-top: 12px;">
+                    De la tolérance aux pannes d'infrastructure (RDD Lineage) à l'ingénierie globale de la fiabilité des données (DRE)
+                </div>
+                <aside class="notes">
+                    Notes de l'orateur (1 min) :
+                    - Bonjour Monsieur le Professeur, chers collègues.
+                    - Présentation du sujet : Thème 4 sur la fiabilité des pipelines en production au-delà de Spark.
+                </aside>
+            </section>
+
+            <!-- Slide 2 -->
+            <section>
+                <span class="badge">Modèle Mental Pédagogique</span>
+                <h2 class="slide-title">L'Analogie du Réseau de Distribution d'Eau Potable</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title">1. La Rivière Brute (Sources de Données)</div>
+                            Flux ininterrompu d'événements (Kafka, CDC) charriant impuretés et sédiments imprévus.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">2. L'Usine de Traitement (Moteur Spark)</div>
+                            Puissance de calcul distribuée pour filtrer et transformer des volumes colossaux de données.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">3. Vanne de Sécurité & Laboratoire (Quality Gate)</div>
+                            Contrôle continu des échantillons : dérivation immédiate des eaux souillées vers un bassin de quarantaine (DLQ).
+                        </div>
+                        <div class="card">
+                            <div class="card-title">4. Robinets des Citoyens (Consommateurs)</div>
+                            Distribution d'une eau 100% conforme pour les dashboards de décision et les modèles d'intelligence artificielle.
+                        </div>
+                    </div>
+                    <div class="col-media">
+                        <img src="assets/png/data_pipeline_water_analogy.png" alt="Data Pipeline Water Analogy">
+                    </div>
+                </div>
+                <aside class="notes">
+                    L'analogie illustre que le moteur de calcul seul ne protège pas les usagers finaux sans vanne de sécurité.
+                </aside>
+            </section>
+
+            <!-- Slide 3 -->
+            <section>
+                <span class="badge">Problématique Centrale</span>
+                <h2 class="slide-title">Pourquoi Apache Spark ne suffit-il pas en Production ?</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title" style="color:#059669;">Tolérance aux Pannes Interne (In-Memory Scope)</div>
+                            Le modèle RDD Lineage reconstruit automatiquement les partitions perdues lors du crash d'un Worker.
+                        </div>
+                        <div class="card">
+                            <div class="card-title" style="color:#dc2626;">Cécité Sémantique (Semantic Blindness)</div>
+                            Spark termine avec un Exit Code 0 même si 100% des lignes comportent des montants négatifs ou des clés dupliquées.
+                        </div>
+                        <div class="card">
+                            <div class="card-title" style="color:#dc2626;">Crash du Driver (Driver OOM)</div>
+                            Si le Driver manque de mémoire, toute l'application s'arrête brutalement sans reprise globale autonome.
+                        </div>
+                        <div class="card">
+                            <div class="card-title" style="color:#dc2626;">Fragilité aux Frontières Externes</div>
+                            Incapacité à maîtriser les dérives de schéma (Schema Drift) ou les indisponibilités d'APIs amont.
+                        </div>
+                    </div>
+                    <div class="col-media">
+                        <img src="assets/png/spark_boundary_vs_end_to_end_reliability.png" alt="Spark Boundary">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 4 -->
+            <section>
+                <span class="badge">Feuille de Route</span>
+                <h2 class="slide-title">Les 4 Piliers Fondamentaux de la Recherche</h2>
+                <div class="grid-4" style="margin-top:25px;">
+                    <div class="card" style="border-top: 4px solid #2563eb;">
+                        <h4 style="color:#2563eb; font-size:1.1em; margin-bottom:6px;">Pilier 1</h4>
+                        <strong>Reprise des Orchestrateurs</strong><br>
+                        <span style="color:#64748b; font-size:0.85em;">Orchestration Task Recovery</span>
+                        <ul style="padding-left:15px; margin-top:10px;">
+                            <li>Persistance d'état (State Backend)</li>
+                            <li>Reprise granulaire (Downstream Only)</li>
+                            <li>Isolation par conteneurs K8s</li>
+                            <li>Orchestration déclarative par actifs</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="border-top: 4px solid #059669;">
+                        <h4 style="color:#059669; font-size:1.1em; margin-bottom:6px;">Pilier 2</h4>
+                        <strong>Surveillance Qualité</strong><br>
+                        <span style="color:#64748b; font-size:0.85em;">Data Quality Monitoring</span>
+                        <ul style="padding-left:15px; margin-top:10px;">
+                            <li>Les 6 dimensions de la qualité</li>
+                            <li>Architecture Coupe-Circuit</li>
+                            <li>Assertions Great Expectations</li>
+                            <li>Pattern Write-Audit-Publish (WAP)</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="border-top: 4px solid #9333ea;">
+                        <h4 style="color:#9333ea; font-size:1.1em; margin-bottom:6px;">Pilier 3</h4>
+                        <strong>Traçabilité & Observabilité</strong><br>
+                        <span style="color:#64748b; font-size:0.85em;">Lineage & Observability</span>
+                        <ul style="padding-left:15px; margin-top:10px;">
+                            <li>Les 4 piliers de l'observabilité</li>
+                            <li>Analyse causale amont (RCA)</li>
+                            <li>Rayon d'impact aval (Blast Radius)</li>
+                            <li>Précision du Column-Level Lineage</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="border-top: 4px solid #dc2626;">
+                        <h4 style="color:#dc2626; font-size:1.1em; margin-bottom:6px;">Pilier 4</h4>
+                        <strong>Pathologies des Retries</strong><br>
+                        <span style="color:#64748b; font-size:0.85em;">Retries Pitfalls & Patterns</span>
+                        <ul style="padding-left:15px; margin-top:10px;">
+                            <li>Tempête de réessais (Thundering Herd)</li>
+                            <li>Non-idempotence & écritures doubles</li>
+                            <li>Backoff exponentiel avec gigue</li>
+                            <li>Files de messages morts (DLQ)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 5 -->
+            <section>
+                <span class="badge">Pilier 1 : Orchestration</span>
+                <h2 class="slide-title">Mécanismes de Reprise après Échec dans l'Orchestration</h2>
+                <div style="font-size: 0.6em; margin-bottom: 20px; color:#2563eb; font-weight:bold;">
+                    Modélisation formelle en Directed Acyclic Graph : \( G = (V, E) \)
+                </div>
+                <div class="grid-3">
+                    <div class="card" style="border-left: 4px solid #2563eb;">
+                        <div class="card-title">1. Découplage de l'État (State Backend)</div>
+                        Base relationnelle externe (PostgreSQL) enregistrant les statuts en continu :
+                        <code style="font-size:0.9em; display:block; margin:6px 0;">{QUEUED, RUNNING, SUCCESS, FAILED, UPSTREAM_FAILED}</code>
+                        En cas de crash de l'ordonnanceur, l'état global est préservé sans perte d'historique.
+                    </div>
+                    <div class="card" style="border-left: 4px solid #059669;">
+                        <div class="card-title">2. Reprise Granulaire Sélective</div>
+                        Si la tâche 4 échoue après l'achèvement réussi de 3 étapes lourdes, le DAG complet N'EST PAS relancé. L'exécution reprend uniquement à partir du composant défaillant (Downstream Only).
+                    </div>
+                    <div class="card" style="border-left: 4px solid #9333ea;">
+                        <div class="card-title">3. Sonde de Vitalité (Heartbeat)</div>
+                        Surveillance active du signal des nœuds d'exécution. Si un worker s'éteint, la tâche est marquée FAILED pour éviter les tâches fantômes (Zombie Tasks) et libérer les verrous.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 6 -->
+            <section>
+                <span class="badge">Pilier 1 Approfondi</span>
+                <h2 class="slide-title">Isolation par Conteneurs (K8s) et Orchestration par Actifs</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title">Isolation des Pods (KubernetesPodOperator)</div>
+                            Chaque tâche Spark tourne dans un pod K8s autonome avec limites strictes de RAM/CPU, protégeant l'orchestrateur partagé.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">Blocage d'Impact Aval (Upstream Blast Block)</div>
+                            Marquage immédiat des successeurs en UPSTREAM_FAILED pour empêcher l'ingestion de données incomplètes.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">Auto-Scaling de Mémoire au Retry</div>
+                            Relance sélective du pod défaillant avec doublement de la mémoire (8GiB vers 16GiB).
+                        </div>
+                        <div class="card">
+                            <div class="card-title">Orchestration par Actifs (Dagster)</div>
+                            Raisonnement fondé sur l'état des tables cibles plutôt que sur l'enchaînement arbitraire de scripts impératifs.
+                        </div>
+                    </div>
+                    <div class="col-media">
+                        <img src="assets/png/orchestrator_dag_recovery_lifecycle.png" alt="DAG Recovery Lifecycle">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 7 -->
+            <section>
+                <span class="badge">Pilier 2 : Qualité des Données</span>
+                <h2 class="slide-title">Les 6 Dimensions Normatives de la Qualité des Données</h2>
+                <div style="text-align:center; margin-top: 15px;">
+                    <img src="assets/png/data_quality_six_dimensions_fr.png" alt="6 Dimensions of Data Quality" style="max-height: 480px; width: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; background:#fff;">
+                </div>
+                <aside class="notes">
+                    Les 6 dimensions normatives (DAMA/ISO 8000) : Complétude, Unicité, Validité, Cohérence, Précision et Fraîcheur.
+                </aside>
+            </section>
+
+            <!-- Slide 8 -->
+            <section>
+                <span class="badge">Pilier 2 Architectural</span>
+                <h2 class="slide-title">Architecture Coupe-Circuit (Data Quality Circuit Breaker)</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title">1. Zone Bronze (Ingestion Brute)</div>
+                            Réception brute des événements (Kafka / S3) et calcul immédiat des métriques de volumétrie.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">2. Moteur de Validation (Silver)</div>
+                            Exécution des suites d'assertions déclaratives (Great Expectations / Soda Core) sur les tables intermédiaires.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">3. Porte de Décision & Coupe-Circuit</div>
+                            • Succès : promotion fluide vers la couche Gold certifiée.<br>
+                            • Échec : déclenchement du coupe-circuit, séquestration dans une table de quarantaine (DLQ), gel des rapports BI et alerte PagerDuty.
+                        </div>
+                    </div>
+                    <div class="col-media">
+                        <img src="assets/png/automated_data_quality_circuit_breaker.png" alt="Circuit Breaker">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 9 -->
+            <section>
+                <span class="badge">Pilier 2 en Production</span>
+                <h2 class="slide-title">Le Pattern Write-Audit-Publish (WAP) dans les Lakehouses</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title">1. Écriture Isolée (WRITE Stage)</div>
+                            Écriture dans une branche de staging isolée (Apache Iceberg / Delta Lake) sans altérer la branche de production 'main'.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">2. Audit Automatisé (AUDIT Stage)</div>
+                            Vérification intégrale des schémas, métriques et contraintes métier sur la branche de staging isolée.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">3. Publication Atomique ou Annulation</div>
+                            • Succès : permutation atomique du pointeur de métadonnées (Fast-Forward sans temps d'arrêt).<br>
+                            • Échec : destruction intégrale de la branche de staging sans aucune lecture sale (Zero Dirty Reads).
+                        </div>
+                    </div>
+                    <div class="col-media">
+                        <img src="assets/png/write_audit_publish_wap_pattern.png" alt="WAP Pattern">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 10 -->
+            <section>
+                <span class="badge">Pilier 3 : Observabilité</span>
+                <h2 class="slide-title">Diagnostic Rapide via l'Observabilité et le Lignage de Données</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title">Les 4 Piliers de l'Observabilité</div>
+                            Métriques (Metrics) + Journaux (Logs) + Traces distribuées + Lignage (Lineage).
+                        </div>
+                        <div class="card">
+                            <div class="card-title">Analyse Causale Amont (Upstream RCA)</div>
+                            Remontée instantanée des arêtes du graphe pour identifier l'altération source (ex: altération de type dans PostgreSQL).
+                        </div>
+                        <div class="card">
+                            <div class="card-title">Analyse de Rayon d'Impact Aval (Blast Radius)</div>
+                            Cartographie de tous les tableaux de bord et modèles ML impactés pour notification préventive.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">Le Standard Ouvert OpenLineage</div>
+                            Émission continue de métadonnées JSON standardisées vers Marquez ou DataHub.
+                        </div>
+                    </div>
+                    <div class="col-media">
+                        <img src="assets/png/pipeline_observability_and_lineage.png" alt="Observability Lineage">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 11 -->
+            <section>
+                <span class="badge">Pilier 3 au Microscope</span>
+                <h2 class="slide-title">Précision Chirurgicale du Column-Level Lineage</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title">Limite du lignage classique de table</div>
+                            Signale simplement que la table gold_kpi est erronée suite à un problème dans forex_rates, sans explication fine.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">Lignage au Niveau des Colonnes</div>
+                            Relie la formule arithmétique Spark au champ exact :<br>
+                            <code>revenue_usd = (amount_cents / 100.0) * rate_to_usd</code>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">Isolement Racine Immédiat</div>
+                            Identification de la cause unique : valeur NULL dans rate_to_usd. Réduction du MTTR de plusieurs heures à quelques secondes.
+                        </div>
+                    </div>
+                    <div class="col-media">
+                        <img src="assets/png/column_level_lineage_graph.png" alt="Column Level Lineage">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 12 -->
+            <section>
+                <span class="badge">Pilier 4 : Retries Naïfs</span>
+                <h2 class="slide-title">Risques et Effets Pervers des Réessais Naïfs (Naive Retries)</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card" style="border-left: 4px solid #dc2626;">
+                            <div class="card-title" style="color:#dc2626;">1. Tempête de Réessais (Retry Storm)</div>
+                            Des délais d'attente fixes amènent des dizaines de workers à réattaquer simultanément une base affaiblie (Thundering Herd), précipitant son écroulement complet.
+                        </div>
+                        <div class="card" style="border-left: 4px solid #dc2626;">
+                            <div class="card-title" style="color:#dc2626;">2. Opérations Non-Idempotentes</div>
+                            Répéter un 'INSERT INTO' après une coupure transitoire crée des duplications massives et altère les agrégats financiers : \( f(f(x)) 
+eq f(x) \).
+                        </div>
+                        <div class="card" style="border-left: 4px solid #dc2626;">
+                            <div class="card-title" style="color:#dc2626;">3. La Pilule Empoisonnée (Poison Pill)</div>
+                            Erreur déterministe dans une ligne de données (ex: cast invalide). Relancer 10 fois échouera 10 fois à coup sûr en gaspillant des budgets Cloud colossaux.
+                        </div>
+                    </div>
+                    <div class="col-media">
+                        <img src="assets/png/retry_mechanisms_and_failure_modes.png" alt="Retry Mechanisms">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 13 -->
+            <section>
+                <span class="badge">Pilier 4 Ingénierie</span>
+                <h2 class="slide-title">Solutions Avancées et Alternatives Résilientes</h2>
+                <div class="grid-3" style="margin-top:20px;">
+                    <div class="card" style="border-top:4px solid #2563eb;">
+                        <div class="card-title">1. Backoff Exponentiel avec Gigue</div>
+                        Espacement exponentiel avec bruit aléatoire uniforme :<br>
+                        <code>t_wait = min(t_max, U(0, t_base * 2^attempt))</code><br>
+                        Désynchronisation complète des requêtes pour éliminer l'effet de troupeau tonitruant.
+                    </div>
+                    <div class="card" style="border-top:4px solid #059669;">
+                        <div class="card-title">2. Idempotence Stricte (ACID Merge)</div>
+                        Garantie formelle d'état identique en cas de répétition :<br>
+                        <code>f(f(x)) = f(x)</code><br>
+                        Substitution de l'insertion brute par MERGE / UPSERT dans Delta Lake et Iceberg.
+                    </div>
+                    <div class="card" style="border-top:4px solid #9333ea;">
+                        <div class="card-title">3. Files de Quarantaine (DLQ)</div>
+                        Capture et séquestration des enregistrements toxiques dans une table <code>quarantine_records</code> tout en poursuivant le traitement des millions de lignes saines.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 14 -->
+            <section>
+                <span class="badge">Synthèse Comparative</span>
+                <h2 class="slide-title">Matrice Comparative : Pratique Naïve vs Architecture de Production</h2>
+                <table class="table-custom">
+                    <thead>
+                        <tr>
+                            <th>Dimension d'Ingénierie</th>
+                            <th>Pratique Naïve Classique</th>
+                            <th>Architecture Résiliente de Production</th>
+                            <th>Technologies de Référence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Gestion de Reprise</strong></td>
+                            <td>Relance intégrale du DAG depuis le début</td>
+                            <td>Reprise sélective granulaire et isolation en pods K8s</td>
+                            <td>Airflow K8s, Dagster Assets</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Contrôle Qualité</strong></td>
+                            <td>Audit manuel, ou attente des réclamations</td>
+                            <td>Assertions proactives et disjoncteurs automatiques</td>
+                            <td>Great Expectations, Soda Core</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Diagnostic des Pannes</strong></td>
+                            <td>Fouille artisanale dans des logs dispersés</td>
+                            <td>Traçabilité fine au niveau colonne et graphes OpenLineage</td>
+                            <td>OpenLineage, Marquez, DataHub</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Politique de Réessai</strong></td>
+                            <td>Réessais immédiats à intervalles fixes</td>
+                            <td>Backoff exponentiel avec gigue + MERGE + DLQ</td>
+                            <td>Backoff Jitter, Lakehouse, DLQ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Protection des Sorties</strong></td>
+                            <td>Écritures directes dans les tables cibles</td>
+                            <td>Pattern Write-Audit-Publish atomique (branches staging)</td>
+                            <td>Apache Iceberg, Delta Branches</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Slide 15 -->
+            <section class="slide-dark">
+                <span class="badge" style="background:#0284c7; color:#ffffff;">Synthèse & Recommandations</span>
+                <h2 style="font-size: 1.6em; margin-bottom: 25px;">Les 4 Règles d'Or du Data Reliability Engineer</h2>
+                <div style="font-size: 0.6em; line-height: 2; text-align: left; margin-bottom: 30px;">
+                    <div><strong style="color:#38bdf8;">1. La Fiabilité se Conçoit Dès le Départ (Reliability by Design) :</strong> Rendre chaque étape rigoureusement idempotente.</div>
+                    <div><strong style="color:#38bdf8;">2. Zéro Confiance envers les Données Entrantes (Zero-Trust Data) :</strong> Postuler la corruption a priori et valider à chaque palier.</div>
+                    <div><strong style="color:#38bdf8;">3. Lignage comme Citoyen de Premier Rang (First-Class Lineage) :</strong> Intégrer OpenLineage pour effondrer le MTTR à quelques secondes.</div>
+                    <div><strong style="color:#38bdf8;">4. Dompter les Politiques de Retries :</strong> Adopter le Full Jitter Backoff et isoler les anomalies dans des Dead Letter Queues.</div>
+                </div>
+                <h3 style="font-size: 1.1em; color: #ffffff; margin-top: 20px; text-align:center;">Merci pour votre attention — Place aux questions (Session Q&A)</h3>
+            </section>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.js"></script>
+    <script>
+        Reveal.initialize({
+            rtl: false,
+            hash: true,
+            slideNumber: 'c/t',
+            transition: 'slide',
+            plugins: [ RevealNotes, RevealMath.KaTeX ]
+        });
+    </script>
+</body>
+</html>

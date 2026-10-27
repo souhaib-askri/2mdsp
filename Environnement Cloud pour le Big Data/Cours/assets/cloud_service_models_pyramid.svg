@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 520" width="100%" height="100%" style="background:transparent;">
+  <!-- Definitions for Gradients and Filters -->
+  <defs>
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <linearGradient id="onPremGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </linearGradient>
+    <linearGradient id="iaasGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eff6ff"/>
+      <stop offset="100%" stop-color="#dbeafe"/>
+    </linearGradient>
+    <linearGradient id="paasGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0fdf4"/>
+      <stop offset="100%" stop-color="#dcfce7"/>
+    </linearGradient>
+    <linearGradient id="saasGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fef2f2"/>
+      <stop offset="100%" stop-color="#fee2e2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title & Legend -->
+  <text x="475" y="38" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Cloud Computing Service Models: Shared Responsibility Matrix</text>
+  <text x="475" y="60" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#475569">Comparison of Management Layers across On-Premise, IaaS, PaaS, and SaaS</text>
+
+  <!-- Legend -->
+  <rect x="310" y="78" width="16" height="16" rx="4" fill="#3b82f6"/>
+  <text x="334" y="91" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#0f172a">Managed by Customer (User)</text>
+  <rect x="520" y="78" width="16" height="16" rx="4" fill="#10b981"/>
+  <text x="544" y="91" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#0f172a">Managed by Cloud Provider</text>
+
+  <!-- Layers List on the left -->
+  <!-- 8 Stack Layers: Applications, Data, Runtime, Middleware, OS, Virtualization, Servers, Storage, Networking -->
+  <!-- Coordinates: Column Width: 180, Col1: 190, Col2: 380, Col3: 570, Col4: 760 -->
+
+  <!-- Column 1: On-Premise -->
+  <g transform="translate(140, 110)">
+    <rect x="0" y="0" width="170" height="380" rx="8" fill="url(#onPremGrad)" stroke="#cbd5e1" stroke-width="1.5" filter="url(#cardShadow)"/>
+    <rect x="0" y="0" width="170" height="42" rx="8" fill="#e2e8f0"/>
+    <text x="85" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Traditional On-Premise</text>
+    <text x="85" y="36" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#475569">100% Client Managed</text>
+
+    <!-- Layers: All Blue -->
+    <!-- 1. Applications -->
+    <rect x="10" y="50" width="150" height="32" rx="4" fill="#3b82f6"/>
+    <text x="85" y="70" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Applications</text>
+
+    <!-- 2. Data -->
+    <rect x="10" y="86" width="150" height="32" rx="4" fill="#3b82f6"/>
+    <text x="85" y="106" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Data</text>
+
+    <!-- 3. Runtime -->
+    <rect x="10" y="122" width="150" height="32" rx="4" fill="#3b82f6"/>
+    <text x="85" y="142" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Runtime</text>
+
+    <!-- 4. Middleware -->
+    <rect x="10" y="158" width="150" height="32" rx="4" fill="#3b82f6"/>
+    <text x="85" y="178" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Middleware</text>
+
+    <!-- 5. Operating System -->
+    <rect x="10" y="194" width="150" height="32" rx="4" fill="#3b82f6"/>
+    <text x="85" y="214" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Operating System (OS)</text>
+
+    <!-- 6. Virtualization -->
+    <rect x="10" y="230" width="150" height="32" rx="4" fill="#3b82f6"/>
+    <text x="85" y="250" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Virtualization</text>
+
+    <!-- 7. Servers -->
+    <rect x="10" y="266" width="150" height="32" rx="4" fill="#3b82f6"/>
+    <text x="85" y="286" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Servers (Compute)</text>
+
+    <!-- 8. Storage -->
+    <rect x="10" y="302" width="150" height="32" rx="4" fill="#3b82f6"/>
+    <text x="85" y="322" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Storage (Disks)</text>
+
+    <!-- 9. Networking -->
+    <rect x="10" y="338" width="150" height="32" rx="4" fill="#3b82f6"/>
+    <text x="85" y="358" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Networking</text>
+  </g>
+
+  <!-- Column 2: IaaS -->
+  <g transform="translate(330, 110)">
+    <rect x="0" y="0" width="170" height="380" rx="8" fill="url(#iaasGrad)" stroke="#93c5fd" stroke-width="1.5" filter="url(#cardShadow)"/>
+    <rect x="0" y="0" width="170" height="42" rx="8" fill="#bfdbfe"/>
+    <text x="85" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#0f172a">IaaS (Infrastructure)</text>
+    <text x="85" y="36" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#1e40af">AWS EC2, Azure VM, GCP</text>
+
+    <!-- User manages Apps, Data, Runtime, Middleware, OS -->
+    <rect x="10" y="50" width="150" height="32" rx="4" fill="#3b82f6"/>
+    <text x="85" y="70" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Applications</text>
+
+    <rect x="10" y="86" width="150" height="32" rx="4" fill="#3b82f6"/>
+    <text x="85" y="106" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Data</text>
+
+    <rect x="10" y="122" width="150" height="32" rx="4" fill="#3b82f6"/>
+    <text x="85" y="142" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Runtime</text>
+
+    <rect x="10" y="158" width="150" height="32" rx="4" fill="#3b82f6"/>
+    <text x="85" y="178" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Middleware</text>
+
+    <rect x="10" y="194" width="150" height="32" rx="4" fill="#3b82f6"/>
+    <text x="85" y="214" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Operating System (OS)</text>
+
+    <!-- Provider manages Virt, Servers, Storage, Net -->
+    <rect x="10" y="230" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="250" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Virtualization</text>
+
+    <rect x="10" y="266" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="286" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Servers (Compute)</text>
+
+    <rect x="10" y="302" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="322" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Storage (Disks)</text>
+
+    <rect x="10" y="338" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="358" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Networking</text>
+  </g>
+
+  <!-- Column 3: PaaS -->
+  <g transform="translate(520, 110)">
+    <rect x="0" y="0" width="170" height="380" rx="8" fill="url(#paasGrad)" stroke="#86efac" stroke-width="1.5" filter="url(#cardShadow)"/>
+    <rect x="0" y="0" width="170" height="42" rx="8" fill="#bbf7d0"/>
+    <text x="85" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#0f172a">PaaS (Platform)</text>
+    <text x="85" y="36" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#166534">Google App Engine, Heroku</text>
+
+    <!-- User manages Apps, Data -->
+    <rect x="10" y="50" width="150" height="32" rx="4" fill="#3b82f6"/>
+    <text x="85" y="70" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Applications</text>
+
+    <rect x="10" y="86" width="150" height="32" rx="4" fill="#3b82f6"/>
+    <text x="85" y="106" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Data</text>
+
+    <!-- Provider manages Runtime, Middleware, OS, Virt, Servers, Storage, Net -->
+    <rect x="10" y="122" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="142" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Runtime</text>
+
+    <rect x="10" y="158" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="178" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Middleware</text>
+
+    <rect x="10" y="194" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="214" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Operating System (OS)</text>
+
+    <rect x="10" y="230" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="250" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Virtualization</text>
+
+    <rect x="10" y="266" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="286" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Servers (Compute)</text>
+
+    <rect x="10" y="302" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="322" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Storage (Disks)</text>
+
+    <rect x="10" y="338" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="358" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Networking</text>
+  </g>
+
+  <!-- Column 4: SaaS -->
+  <g transform="translate(710, 110)">
+    <rect x="0" y="0" width="170" height="380" rx="8" fill="url(#saasGrad)" stroke="#fca5a5" stroke-width="1.5" filter="url(#cardShadow)"/>
+    <rect x="0" y="0" width="170" height="42" rx="8" fill="#fecaca"/>
+    <text x="85" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#0f172a">SaaS (Software)</text>
+    <text x="85" y="36" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#991b1b">Gmail, Salesforce, M365</text>
+
+    <!-- Provider manages ALL layers -->
+    <rect x="10" y="50" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="70" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Applications</text>
+
+    <rect x="10" y="86" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="106" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Data</text>
+
+    <rect x="10" y="122" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="142" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Runtime</text>
+
+    <rect x="10" y="158" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="178" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Middleware</text>
+
+    <rect x="10" y="194" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="214" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Operating System (OS)</text>
+
+    <rect x="10" y="230" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="250" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Virtualization</text>
+
+    <rect x="10" y="266" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="286" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Servers (Compute)</text>
+
+    <rect x="10" y="302" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="322" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Storage (Disks)</text>
+
+    <rect x="10" y="338" width="150" height="32" rx="4" fill="#10b981"/>
+    <text x="85" y="358" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Networking</text>
+  </g>
+</svg>

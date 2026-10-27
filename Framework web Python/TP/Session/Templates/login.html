@@ -1,0 +1,13 @@
+
+<!-- Permet de réutiliser la structure HTML définie dans layout.html. -->
+{% extends "layout.html" %}
+
+    <!-- Délimite le contenu spécifique de cette page. -->
+	{% block content %}
+	   <h1>Inscription </h1>
+	   <form action="/login" method="POST">
+		  <label><b> Nom : </b></label><input placeholder="Votre nom" type="text" name="name" autofocus required>
+		  <input type="submit" value="Envoyer">
+	   </form>
+	{% endblock %}
+

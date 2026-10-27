@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="100%" height="auto" style="background:transparent; font-family:system-ui, -apple-system, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0284c7"/>
+    </marker>
+    <marker id="arr-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#059669"/>
+    </marker>
+    <marker id="arr-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#7c3aed"/>
+    </marker>
+    <!-- UML Inheritance Hollow Triangle Marker -->
+    <marker id="uml-inheritance" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <polygon points="1,1 11,6 1,11" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+    </marker>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="480" y="36" text-anchor="middle" fill="#000000" font-size="22" font-weight="bold">Flask OOP Inheritance Architecture &amp; Password Hashing</text>
+  <text x="480" y="62" text-anchor="middle" fill="#334155" font-size="14" font-weight="500">TP 3: User Base Class, Etudiant Child Class, Werkzeug Cryptographic Security &amp; Jinja2 Rendering</text>
+
+  <!-- 1. UML Class Hierarchy (Left) -->
+  <g transform="translate(30, 95)">
+    <rect x="0" y="0" width="300" height="380" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="12" y="14" width="276" height="34" rx="6" fill="#eff6ff"/>
+    <text x="150" y="37" text-anchor="middle" fill="#1d4ed8" font-size="14" font-weight="bold">1. OOP UML Model Structure</text>
+
+    <!-- Base Class: User -->
+    <g transform="translate(15, 60)">
+      <rect x="0" y="0" width="270" height="135" rx="8" fill="#f8fafc" stroke="#3b82f6" stroke-width="1.5"/>
+      <rect x="0" y="0" width="270" height="26" rx="8" fill="#dbeafe"/>
+      <text x="135" y="18" text-anchor="middle" fill="#1e40af" font-size="12" font-weight="bold">«Class» User (Base Model)</text>
+      
+      <!-- Attributes -->
+      <text x="10" y="44" fill="#0f172a" font-size="10" font-family="monospace">- __nom, __prenom, __email: str</text>
+      <text x="10" y="58" fill="#dc2626" font-size="10" font-family="monospace">- __mot_de_passe: str (Hashed)</text>
+      <text x="10" y="72" fill="#0f172a" font-size="10" font-family="monospace">- __age: int</text>
+      
+      <line x1="0" y1="80" x2="270" y2="80" stroke="#cbd5e1" stroke-width="1"/>
+      <!-- Methods -->
+      <text x="10" y="96" fill="#15803d" font-size="10" font-family="monospace">+ __init__(nom, prenom, email, mdp, age)</text>
+      <text x="10" y="110" fill="#15803d" font-size="10" font-family="monospace">+ get_nom(), get_email(), get_age()...</text>
+      <text x="10" y="124" fill="#7c3aed" font-size="10" font-family="monospace">+ verifier_mot_de_passe(mdp): bool</text>
+    </g>
+
+    <!-- Inheritance Arrow from Child to Base -->
+    <path d="M 150 255 L 150 205" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#uml-inheritance)"/>
+    <text x="195" y="235" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="bold">inherits (extends)</text>
+
+    <!-- Child Class: Etudiant -->
+    <g transform="translate(15, 255)">
+      <rect x="0" y="0" width="270" height="110" rx="8" fill="#f0fdf4" stroke="#10b981" stroke-width="1.5"/>
+      <rect x="0" y="0" width="270" height="26" rx="8" fill="#d1fae5"/>
+      <text x="135" y="18" text-anchor="middle" fill="#065f46" font-size="12" font-weight="bold">«Class» Etudiant(User)</text>
+      
+      <!-- Attributes -->
+      <text x="10" y="44" fill="#0f172a" font-size="10" font-family="monospace">- __niveau: str (e.g. "2MDS")</text>
+      <text x="10" y="58" fill="#0f172a" font-size="10" font-family="monospace">- __specialite: str (e.g. "Data Science")</text>
+      
+      <line x1="0" y1="66" x2="270" y2="66" stroke="#a7f3d0" stroke-width="1"/>
+      <!-- Methods -->
+      <text x="10" y="82" fill="#047857" font-size="10" font-family="monospace">+ __init__(..., niveau, specialite)</text>
+      <text x="10" y="96" fill="#047857" font-size="10" font-family="monospace">+ get_niveau(), get_specialite()</text>
+    </g>
+  </g>
+
+  <!-- Connective Arrow from Model to Controller -->
+  <path d="M 330 285 L 380 285" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arr-blue)"/>
+  <text x="355" y="275" text-anchor="middle" fill="#1d4ed8" font-size="10" font-weight="bold">Imports</text>
+
+  <!-- 2. Flask Application & Controller (Middle) -->
+  <g transform="translate(385, 95)">
+    <rect x="0" y="0" width="270" height="380" rx="12" fill="#ffffff" stroke="#7c3aed" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="12" y="14" width="246" height="34" rx="6" fill="#f5f3ff"/>
+    <text x="135" y="37" text-anchor="middle" fill="#6d28d9" font-size="14" font-weight="bold">2. Flask Controller (app.py)</text>
+
+    <!-- Route @app.route("/") -->
+    <rect x="15" y="60" width="240" height="60" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="25" y="80" fill="#0f172a" font-size="11" font-weight="bold">@app.route("/")</text>
+    <text x="25" y="98" fill="#475569" font-size="10">GET: Display Form</text>
+    <text x="25" y="112" fill="#7c3aed" font-size="10">return render_template("inscription.html")</text>
+
+    <!-- Route @app.route("/inscription", methods=["POST"]) -->
+    <rect x="15" y="130" width="240" height="150" rx="8" fill="#faf5ff" stroke="#c084fc" stroke-width="1.5"/>
+    <text x="25" y="150" fill="#0f172a" font-size="11" font-weight="bold">@app.route("/inscription", POST)</text>
+    <text x="25" y="170" fill="#64748b" font-size="10"># 1. Extract Form Fields</text>
+    <text x="25" y="186" fill="#475569" font-size="9" font-family="monospace">nom = request.form["nom"] ...</text>
+    <text x="25" y="202" fill="#64748b" font-size="10"># 2. Instantiation (Encapsulation)</text>
+    <text x="25" y="218" fill="#16a34a" font-size="9" font-family="monospace">e1 = Etudiant(nom, ..., mdp, ...)</text>
+    <text x="25" y="234" fill="#64748b" font-size="10"># 3. Pass Object to Jinja2</text>
+    <text x="25" y="250" fill="#7c3aed" font-size="9" font-family="monospace">return render_template("resultat.html",</text>
+    <text x="35" y="266" fill="#7c3aed" font-size="9" font-family="monospace">                       E1=e1)</text>
+
+    <!-- Security Box -->
+    <rect x="15" y="290" width="240" height="75" rx="8" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5"/>
+    <text x="25" y="310" fill="#b45309" font-size="11" font-weight="bold">Security: Werkzeug Hashing</text>
+    <text x="25" y="328" fill="#475569" font-size="10">generate_password_hash(mdp)</text>
+    <text x="25" y="344" fill="#0f172a" font-size="9" font-family="monospace">scrypt:32768:8:1$7f...$9a...</text>
+    <text x="25" y="358" fill="#b45309" font-size="9">Passwords never stored in plain text</text>
+  </g>
+
+  <!-- Connective Arrow from Controller to Jinja2 Template -->
+  <path d="M 655 240 L 705 240" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arr-green)"/>
+  <text x="680" y="230" text-anchor="middle" fill="#047857" font-size="10" font-weight="bold">E1=e1</text>
+
+  <!-- 3. Jinja2 Presentation Layer (Right) -->
+  <g transform="translate(710, 95)">
+    <rect x="0" y="0" width="220" height="380" rx="12" fill="#ffffff" stroke="#059669" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="12" y="14" width="196" height="34" rx="6" fill="#dcfce7"/>
+    <text x="110" y="37" text-anchor="middle" fill="#15803d" font-size="14" font-weight="bold">3. Jinja2 Template</text>
+
+    <!-- Result View -->
+    <rect x="15" y="60" width="190" height="210" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+    <text x="25" y="80" fill="#065f46" font-size="12" font-weight="bold">resultat.html</text>
+    <text x="25" y="100" fill="#475569" font-size="10">Inherited Attributes:</text>
+    <text x="30" y="118" fill="#1e40af" font-size="10" font-family="monospace">{{ E1.get_nom() }}</text>
+    <text x="30" y="134" fill="#1e40af" font-size="10" font-family="monospace">{{ E1.get_prenom() }}</text>
+    <text x="30" y="150" fill="#1e40af" font-size="10" font-family="monospace">{{ E1.get_email() }}</text>
+    <text x="30" y="166" fill="#1e40af" font-size="10" font-family="monospace">{{ E1.get_age() }}</text>
+    
+    <text x="25" y="188" fill="#475569" font-size="10">Child Attributes:</text>
+    <text x="30" y="206" fill="#047857" font-size="10" font-family="monospace">{{ E1.get_niveau() }}</text>
+    <text x="30" y="222" fill="#047857" font-size="10" font-family="monospace">{{ E1.get_specialite() }}</text>
+
+    <text x="25" y="244" fill="#475569" font-size="10">Hashed Secret:</text>
+    <text x="30" y="260" fill="#dc2626" font-size="9" font-family="monospace">{{ E1.get_mot_de_passe() }}</text>
+
+    <!-- Styling -->
+    <rect x="15" y="285" width="190" height="80" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="25" y="305" fill="#0f172a" font-size="11" font-weight="bold">Presentation Asset:</text>
+    <text x="25" y="325" fill="#0284c7" font-size="10">static/style.css</text>
+    <text x="25" y="342" fill="#64748b" font-size="10">Card design, modern borders,</text>
+    <text x="25" y="356" fill="#64748b" font-size="10">responsive form fields</text>
+  </g>
+</svg>

@@ -13,15 +13,28 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Frameworks Big Data/Assignments/04_Guide_Simplifie_Fiabilite_Pipelines_Big_Data.md",
+                "file": "Framework web Python/Cours/01_Rappels_Architectures_Web_et_POO_Python.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "04_Guide_Simplifie_Fiabilite_Pipelines_Big_Data"
+              "title": "01_Rappels_Architectures_Web_et_POO_Python"
+            }
+          },
+          {
+            "id": "fe2c369b1e7934ff",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Analyse et Programmation avec Python/Cours/Chapitre 2 - Panda 3.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "Chapitre 2 - Panda 3"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -188,42 +201,53 @@
       "bases:Create new base": false
     }
   },
-  "active": "e7d5af0f7488ed9c",
+  "active": "fe2c369b1e7934ff",
   "lastOpenFiles": [
-    "README.md",
-    "Frameworks Big Data/Assignments/04_Guide_Simplifie_Fiabilite_Pipelines_Big_Data.md",
-    "Frameworks Big Data/Assignments/assets/column_level_lineage_graph.svg",
-    "Frameworks Big Data/Assignments/assets/data_pipeline_water_analogy.svg",
-    "Frameworks Big Data/Assignments/04_Recherche_Fiabilite_Pipelines_Big_Data.md",
-    "Frameworks Big Data/Assignments/assets/write_audit_publish_wap_pattern.svg",
-    "Frameworks Big Data/Assignments/assets/orchestrator_dag_recovery_lifecycle.svg",
-    "Frameworks Big Data/Assignments/assets/spark_boundary_vs_end_to_end_reliability.svg",
-    "Frameworks Big Data/تكليفات/04_Recherche_Fiabilite_Pipelines_Big_Data.md",
-    "Frameworks Big Data/Assignments/assets/retry_mechanisms_and_failure_modes.svg",
-    "Frameworks Big Data/Assignments/assets/pipeline_observability_and_lineage.svg",
-    "Frameworks Big Data/Assignments/assets/automated_data_quality_circuit_breaker.svg",
-    "Frameworks Big Data/Assignments/assets",
-    "Frameworks Big Data/Assignments",
-    "Frameworks Big Data/تكليفات/assets/retry_mechanisms_and_failure_modes.svg",
-    "Frameworks Big Data/تكليفات/assets/pipeline_observability_and_lineage.svg",
-    "Frameworks Big Data/تكليفات/assets",
-    "Frameworks Big Data/تكليفات",
-    "Frameworks Big Data/Cours/04_Recherche_Fiabilite_Pipelines_Big_Data.md",
-    "README.ar.md",
-    "Frameworks Big Data/Cours/assets",
-    "Traitement Automatique du Langage Naturel/Cours/02_Pretraitement_du_texte.md",
-    "Traitement Automatique du Langage Naturel/Cours/01_Introduction_au_TALN.md",
-    "Machine Learning 2/Cours/01_Introduction_au_Deep_Learning_et_Neurone_Lineaire.md",
-    "Machine Learning 2/TP/TP1_Neurone_Lineaire_Descente_Gradient.ipynb",
-    "Machine Learning 2/TP/TP1_Neurone_Lineaire_Descente_Gradient.md",
-    "Traitement Automatique du Langage Naturel/TP/NLP_Atelier_1_Partie1.ipynb",
-    "Traitement Automatique du Langage Naturel/TP/NLP_Atelier_1_Partie1.md",
-    "Traitement Automatique du Langage Naturel/TP/01_Atelier_1_Pretraitement_Twitter.md",
-    "AGENTS.md",
+    "Analyse et Programmation avec Python/Cours/04_Pandas_Partie_3_Groupby_Pivot_Jointures_et_Reshaping.md",
+    "Analyse et Programmation avec Python/Cours/03_Pandas_Partie_2_Exploration_Modification_et_Tri.md",
+    "Analyse et Programmation avec Python/Cours/Chapitre 2 - Panda 3.pdf",
+    "Analyse et Programmation avec Python/Cours/02_Pandas_Partie_1_Prise_en_Main_et_Structures_de_Donnees.md",
+    "Traitement Automatique du Langage Naturel/Cours/Prétraitement du texte.pdf",
+    "Traitement Automatique du Langage Naturel/Cours/Introduction au TALN.pdf",
     "Traitement Automatique du Langage Naturel/TP/NLP_Atelier 1-Partie1-2526.pdf",
-    "Machine Learning 2/TP/TP1_ML2.pdf",
-    "Machine Learning 2/TP/01_Introduction_Neurone_Lineaire_Descente_Gradient.md",
-    "Machine Learning 2/Cours/assets",
-    "_Inbox/README.md"
+    "Traitement Automatique du Langage Naturel/TP/Extraction de la racine du mot.pdf",
+    "Large Language Models/Assignments/01_Cahier_Des_Charges_Mini_Projets_LLM.md",
+    "Large Language Models/Assignments/assets/mini_projets_llm_architecture_blueprint.svg",
+    "Large Language Models/TP/01_Atelier_Evolution_Architectures_RNN_au_Transformer.md",
+    "Large Language Models/TP/TP1_Evolution_Architectures_RNN_Transformer_tmp_jupytext_2818195.md",
+    "Large Language Models/TP/TP1_Evolution_Architectures_RNN_Transformer.ipynb",
+    "Large Language Models/TP/TP1_Evolution_Architectures_RNN_Transformer.md",
+    "Large Language Models/TP/assets/scaled_dot_product_multi_head_attention.svg",
+    "Large Language Models/TP/assets/architectures_evolution_comparison.svg",
+    "Large Language Models/Cours/01_Introduction_aux_LLM.md",
+    "Large Language Models/Cours/assets/transformer_attention_vs_rnn_bottleneck.svg",
+    "Large Language Models/Cours/assets/evolution_ngrams_to_transformers.svg",
+    "Large Language Models/Cours/assets/llm_landscape_hierarchy.svg",
+    "Large Language Models/Assignments/assets",
+    "Large Language Models/TP/assets",
+    "Large Language Models/Cours/assets",
+    "Large Language Models/TP/TP1.pdf",
+    "Framework web Python/TP/TP3_Heritage_POO_et_Securite_Flask.md",
+    "Framework web Python/TP/02_Atelier_3_Heritage_POO_et_Securite_Flask.md",
+    "Framework web Python/TP/assets/flask_poo_inheritance_workflow.svg",
+    "Framework web Python/Cours/03_Les_Sessions_avec_Flask.md",
+    "Framework web Python/Cours/assets/flask_session_workflow.svg",
+    "Framework web Python/TP/TP3 Héritage/MonProjetFlask/venv/Lib/site-packages/werkzeug/debug/shared/more.png",
+    "Framework web Python/TP/TP3 Héritage/MonProjetFlask/venv/Lib/site-packages/werkzeug/debug/shared/less.png",
+    "Framework web Python/TP/TP3 Héritage/MonProjetFlask/venv/Lib/site-packages/werkzeug/debug/shared/ICON_LICENSE.md",
+    "Framework web Python/TP/TP3 Héritage/MonProjetFlask/venv/Lib/site-packages/pip-26.2.1.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
+    "Framework web Python/TP/TP3 Héritage/MonProjetFlask/venv/Lib/site-packages/pip/_vendor/idna/LICENSE.md",
+    "Framework web Python/TP/TP3 Héritage/MonProjetFlask/venv/Lib/site-packages/flask/sansio/README.md",
+    "Framework web Python/TP/Session/venv/Lib/site-packages/werkzeug/debug/shared/ICON_LICENSE.md",
+    "Framework web Python/TP/Session/venv/Lib/site-packages/pip-26.2.2.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
+    "Framework web Python/TP/Session/venv/Lib/site-packages/pip/_vendor/idna/LICENSE.md",
+    "Framework web Python/TP/Session/venv/Lib/site-packages/flask/sansio/README.md",
+    "Framework web Python/TP/TP1_Installation_Flask_et_Application_Web_POO.md",
+    "Framework web Python/TP/Correction app POO/README.md",
+    "Framework web Python/TP/Correction app POO/README_AR.md",
+    "Framework web Python/Cours/02_Gestion_des_Exceptions_en_Python.md",
+    "Framework web Python/TP/App1/README.md",
+    "Framework web Python/Cours/01_Rappels_Architectures_Web_et_POO_Python.md",
+    "Framework web Python/TP/01_Atelier_1_Installation_Flask_et_Application_Web_POO.md"
   ]
 }

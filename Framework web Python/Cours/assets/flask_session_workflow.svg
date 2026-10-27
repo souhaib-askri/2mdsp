@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="100%" height="auto" style="background:transparent; font-family:system-ui, -apple-system, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0284c7"/>
+    </marker>
+    <marker id="arr-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#059669"/>
+    </marker>
+    <marker id="arr-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#7c3aed"/>
+    </marker>
+    <marker id="arr-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="480" y="36" text-anchor="middle" fill="#000000" font-size="22" font-weight="bold">Flask Server-Side Session Architecture (Flask-Session)</text>
+  <text x="480" y="62" text-anchor="middle" fill="#334155" font-size="14" font-weight="500">Stateless HTTP vs. Stateful Persistence: Cookie Exchange &amp; Server Filesystem Storage</text>
+
+  <!-- 1. Client / Browser -->
+  <g transform="translate(30, 95)">
+    <rect x="0" y="0" width="220" height="380" rx="12" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="12" y="14" width="196" height="36" rx="6" fill="#e0f2fe"/>
+    <text x="110" y="38" text-anchor="middle" fill="#0369a1" font-size="14" font-weight="bold">1. Web Client (Browser)</text>
+
+    <!-- Browser Cookie Storage -->
+    <rect x="15" y="65" width="190" height="90" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="25" y="85" fill="#0f172a" font-size="12" font-weight="bold">Client Cookie Jar</text>
+    <text x="25" y="105" fill="#64748b" font-size="11">Key: <tspan fill="#0369a1" font-weight="bold">session</tspan></text>
+    <text x="25" y="125" fill="#64748b" font-size="10">Val: <tspan fill="#0f172a" font-family="monospace">s:79bc207e... (signed)</tspan></text>
+    <text x="25" y="143" fill="#059669" font-size="10">Flags: HttpOnly; SameSite=Lax</text>
+
+    <!-- Client Actions -->
+    <rect x="15" y="170" width="190" height="60" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
+    <text x="110" y="192" text-anchor="middle" fill="#1d4ed8" font-size="11" font-weight="bold">Step A: POST /login</text>
+    <text x="110" y="212" text-anchor="middle" fill="#475569" font-size="11">Submits {name: "Souhaib"}</text>
+
+    <rect x="15" y="245" width="190" height="60" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+    <text x="110" y="267" text-anchor="middle" fill="#15803d" font-size="11" font-weight="bold">Step B: GET /</text>
+    <text x="110" y="287" text-anchor="middle" fill="#475569" font-size="11">Sends Session Cookie in Header</text>
+
+    <rect x="15" y="320" width="190" height="45" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+    <text x="110" y="340" text-anchor="middle" fill="#b91c1c" font-size="11" font-weight="bold">Step C: GET /logout</text>
+    <text x="110" y="355" text-anchor="middle" fill="#7f1d1d" font-size="10">Clears Session &amp; Redirects</text>
+  </g>
+
+  <!-- Flow Arrows between Client and Server -->
+  <g transform="translate(255, 95)">
+    <!-- Arrow 1: POST Login -->
+    <path d="M 0 85 L 85 85" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arr-blue)"/>
+    <text x="42" y="78" text-anchor="middle" fill="#0369a1" font-size="10" font-weight="bold">1. POST /login</text>
+
+    <!-- Arrow 2: Set-Cookie Header -->
+    <path d="M 85 130 L 0 130" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arr-green)"/>
+    <text x="42" y="123" text-anchor="middle" fill="#047857" font-size="10" font-weight="bold">2. Set-Cookie: session=...</text>
+
+    <!-- Arrow 3: GET / with Cookie -->
+    <path d="M 0 200 L 85 200" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arr-purple)"/>
+    <text x="42" y="193" text-anchor="middle" fill="#6d28d9" font-size="10" font-weight="bold">3. Cookie: session=...</text>
+
+    <!-- Arrow 4: 200 OK HTML -->
+    <path d="M 85 245 L 0 245" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arr-green)"/>
+    <text x="42" y="238" text-anchor="middle" fill="#047857" font-size="10" font-weight="bold">4. Rendered HTML (index)</text>
+
+    <!-- Arrow 5: Logout -->
+    <path d="M 0 315 L 85 315" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arr-red)"/>
+    <text x="42" y="308" text-anchor="middle" fill="#b91c1c" font-size="10" font-weight="bold">5. GET /logout</text>
+  </g>
+
+  <!-- 2. Flask Application Server -->
+  <g transform="translate(345, 95)">
+    <rect x="0" y="0" width="310" height="380" rx="12" fill="#ffffff" stroke="#7c3aed" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="12" y="14" width="286" height="36" rx="6" fill="#f5f3ff"/>
+    <text x="155" y="38" text-anchor="middle" fill="#6d28d9" font-size="14" font-weight="bold">2. Flask Application (app.py)</text>
+
+    <!-- Configuration Box -->
+    <rect x="15" y="60" width="280" height="75" rx="8" fill="#faf5ff" stroke="#d8b4fe" stroke-width="1"/>
+    <text x="25" y="78" fill="#581c87" font-size="11" font-weight="bold">Flask-Session Configuration:</text>
+    <text x="25" y="96" fill="#0f172a" font-size="10" font-family="monospace">app.config["SECRET_KEY"] = secrets.token_hex()</text>
+    <text x="25" y="112" fill="#0f172a" font-size="10" font-family="monospace">app.config["SESSION_TYPE"] = "filesystem"</text>
+    <text x="25" y="128" fill="#0f172a" font-size="10" font-family="monospace">Session(app)  # Enables Server-Side Store</text>
+
+    <!-- Route Controllers -->
+    <rect x="15" y="145" width="280" height="70" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="25" y="165" fill="#0f172a" font-size="11" font-weight="bold">@app.route("/login", methods=["POST"])</text>
+    <text x="35" y="183" fill="#475569" font-size="10">session["name"] = request.form["name"]</text>
+    <text x="35" y="199" fill="#0284c7" font-size="10">session["session_id"] = str(uuid.uuid4())</text>
+
+    <rect x="15" y="225" width="280" height="65" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="25" y="245" fill="#0f172a" font-size="11" font-weight="bold">@app.route("/") - Auth Guard</text>
+    <text x="35" y="263" fill="#dc2626" font-size="10">if not session.get("name"): redirect("/login")</text>
+    <text x="35" y="279" fill="#059669" font-size="10">render_template("index.html", name=...)</text>
+
+    <rect x="15" y="300" width="280" height="65" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+    <text x="25" y="320" fill="#0f172a" font-size="11" font-weight="bold">@app.route("/logout")</text>
+    <text x="35" y="338" fill="#b91c1c" font-size="10">session.clear()  # Removes Server File &amp; Data</text>
+    <text x="35" y="354" fill="#64748b" font-size="10">return redirect("/login")</text>
+  </g>
+
+  <!-- Flow Arrows between Server and Filesystem -->
+  <g transform="translate(660, 95)">
+    <!-- Read/Write Arrows -->
+    <path d="M 0 160 L 50 160" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arr-purple)"/>
+    <text x="25" y="152" text-anchor="middle" fill="#6d28d9" font-size="10" font-weight="bold">Write</text>
+
+    <path d="M 50 250 L 0 250" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arr-green)"/>
+    <text x="25" y="242" text-anchor="middle" fill="#047857" font-size="10" font-weight="bold">Read</text>
+
+    <path d="M 0 325 L 50 325" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arr-red)"/>
+    <text x="25" y="318" text-anchor="middle" fill="#b91c1c" font-size="10" font-weight="bold">Delete</text>
+  </g>
+
+  <!-- 3. Server Filesystem Storage -->
+  <g transform="translate(715, 95)">
+    <rect x="0" y="0" width="215" height="380" rx="12" fill="#ffffff" stroke="#059669" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="12" y="14" width="191" height="36" rx="6" fill="#dcfce7"/>
+    <text x="107" y="38" text-anchor="middle" fill="#15803d" font-size="14" font-weight="bold">3. Server Storage</text>
+
+    <!-- Filesystem Directory -->
+    <rect x="15" y="65" width="185" height="295" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="25" y="90" fill="#0f172a" font-size="12" font-weight="bold">Directory: flask_session/</text>
+
+    <!-- File Item 1 -->
+    <rect x="22" y="110" width="170" height="95" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+    <text x="30" y="130" fill="#047857" font-size="11" font-weight="bold">Session File (Active):</text>
+    <text x="30" y="148" fill="#0f172a" font-size="9" font-family="monospace">79bc207ee04a581ab2...</text>
+    <text x="30" y="168" fill="#475569" font-size="10">Serialized Payload:</text>
+    <text x="30" y="184" fill="#0f172a" font-size="9" font-family="monospace">{'name': 'Souhaib', ...}</text>
+    <text x="30" y="198" fill="#15803d" font-size="9">uuid: 4f3a9e21-...</text>
+
+    <!-- Security Note -->
+    <rect x="22" y="220" width="170" height="125" rx="6" fill="#fffbeb" stroke="#fde68a" stroke-width="1"/>
+    <text x="30" y="240" fill="#b45309" font-size="11" font-weight="bold">Security Properties:</text>
+    <text x="30" y="260" fill="#475569" font-size="10">- Data never sent to client</text>
+    <text x="30" y="278" fill="#475569" font-size="10">- Client receives only ID</text>
+    <text x="30" y="296" fill="#475569" font-size="10">- Cryptographically signed</text>
+    <text x="30" y="314" fill="#475569" font-size="10">- Tamper-proof validation</text>
+    <text x="30" y="332" fill="#475569" font-size="10">- Fast lookup on server</text>
+  </g>
+</svg>

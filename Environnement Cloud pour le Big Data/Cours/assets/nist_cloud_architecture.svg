@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 560" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <filter id="nistShadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="475" y="36" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0f172a">NIST Cloud Computing Architectural Framework</text>
+  <text x="475" y="58" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#475569">Essential Characteristics, Service Models, and Deployment Strategies (SP 800-145)</text>
+
+  <!-- Section 1: 5 Essential Characteristics -->
+  <text x="40" y="92" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#1e3a8a">1. Five Essential Characteristics (NIST)</text>
+
+  <!-- 5 Cards in a row -->
+  <!-- Card 1: On-demand Self-service -->
+  <g transform="translate(40, 105)">
+    <rect x="0" y="0" width="162" height="130" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5" filter="url(#nistShadow)"/>
+    <rect x="0" y="0" width="162" height="28" rx="8" fill="#3b82f6"/>
+    <text x="81" y="19" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#ffffff">On-Demand Self-Service</text>
+    <text x="10" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">• Instant Provisioning</text>
+    <text x="10" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#334155">• Unilateral provisioning</text>
+    <text x="10" y="84" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#334155">• No human interaction</text>
+    <text x="10" y="102" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#334155">  with cloud provider</text>
+    <text x="10" y="120" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#2563eb">Storage &amp; Server time</text>
+  </g>
+
+  <!-- Card 2: Broad Network Access -->
+  <g transform="translate(217, 105)">
+    <rect x="0" y="0" width="162" height="130" rx="8" fill="#f0fdf4" stroke="#10b981" stroke-width="1.5" filter="url(#nistShadow)"/>
+    <rect x="0" y="0" width="162" height="28" rx="8" fill="#10b981"/>
+    <text x="81" y="19" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#ffffff">Broad Network Access</text>
+    <text x="10" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">• Ubiquitous Access</text>
+    <text x="10" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#334155">• Standard mechanisms</text>
+    <text x="10" y="84" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#334155">• Heterogeneous clients:</text>
+    <text x="10" y="102" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#334155">  Mobiles, PCs, Tablets</text>
+    <text x="10" y="120" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#059669">Accessible everywhere</text>
+  </g>
+
+  <!-- Card 3: Resource Pooling -->
+  <g transform="translate(394, 105)">
+    <rect x="0" y="0" width="162" height="130" rx="8" fill="#fdf4ff" stroke="#a855f7" stroke-width="1.5" filter="url(#nistShadow)"/>
+    <rect x="0" y="0" width="162" height="28" rx="8" fill="#a855f7"/>
+    <text x="81" y="19" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#ffffff">Resource Pooling</text>
+    <text x="10" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">• Multi-Tenancy Model</text>
+    <text x="10" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#334155">• Shared infrastructure</text>
+    <text x="10" y="84" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#334155">• Dynamic assignment</text>
+    <text x="10" y="102" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#334155">• Location independence</text>
+    <text x="10" y="120" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#7e22ce">Economies of scale</text>
+  </g>
+
+  <!-- Card 4: Rapid Elasticity -->
+  <g transform="translate(571, 105)">
+    <rect x="0" y="0" width="162" height="130" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5" filter="url(#nistShadow)"/>
+    <rect x="0" y="0" width="162" height="28" rx="8" fill="#f59e0b"/>
+    <text x="81" y="19" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#ffffff">Rapid Elasticity</text>
+    <text x="10" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">• Scale Up / Scale Out</text>
+    <text x="10" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#334155">• Fast provisioning</text>
+    <text x="10" y="84" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#334155">• Automatic release</text>
+    <text x="10" y="102" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#334155">• Illusion of infinite</text>
+    <text x="10" y="120" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#d97706">resources available</text>
+  </g>
+
+  <!-- Card 5: Measured Service -->
+  <g transform="translate(748, 105)">
+    <rect x="0" y="0" width="162" height="130" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5" filter="url(#nistShadow)"/>
+    <rect x="0" y="0" width="162" height="28" rx="8" fill="#ef4444"/>
+    <text x="81" y="19" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#ffffff">Measured Service</text>
+    <text x="10" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">• Pay-Per-Use Pricing</text>
+    <text x="10" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#334155">• Resource metering</text>
+    <text x="10" y="84" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#334155">• Complete transparency</text>
+    <text x="10" y="102" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#334155">• Monitored &amp; audited</text>
+    <text x="10" y="120" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#dc2626">CPU, GB/s, storage cost</text>
+  </g>
+
+  <!-- Section 2: 3 Deployment Models -->
+  <text x="40" y="275" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#1e3a8a">2. Deployment Models</text>
+
+  <!-- Deployment Model 1: Public Cloud -->
+  <g transform="translate(40, 290)">
+    <rect x="0" y="0" width="270" height="230" rx="8" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5" filter="url(#nistShadow)"/>
+    <path d="M 0 8 Q 0 0 8 0 L 262 0 Q 270 0 270 8 L 270 36 L 0 36 Z" fill="#dbeafe"/>
+    <text x="135" y="24" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1e40af">Public Cloud</text>
+    <text x="16" y="58" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0f172a">• Ownership: Third-party Cloud Provider</text>
+    <text x="16" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• Open to the general public / businesses</text>
+    <text x="16" y="102" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• Multi-tenant infrastructure</text>
+    <text x="16" y="124" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• Pros: Zero capital investment (CapEx)</text>
+    <text x="16" y="146" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• Cons: Shared tenancy, compliance risks</text>
+    <rect x="16" y="165" width="238" height="50" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="135" y="185" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Examples:</text>
+    <text x="135" y="202" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#475569">Amazon Web Services, MS Azure, Google Cloud</text>
+  </g>
+
+  <!-- Deployment Model 2: Private Cloud -->
+  <g transform="translate(340, 290)">
+    <rect x="0" y="0" width="270" height="230" rx="8" fill="#ffffff" stroke="#10b981" stroke-width="1.5" filter="url(#nistShadow)"/>
+    <path d="M 0 8 Q 0 0 8 0 L 262 0 Q 270 0 270 8 L 270 36 L 0 36 Z" fill="#d1fae5"/>
+    <text x="135" y="24" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#065f46">Private Cloud</text>
+    <text x="16" y="58" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0f172a">• Ownership: Single organization solely</text>
+    <text x="16" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• Managed internally or hosted by third party</text>
+    <text x="16" y="102" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• Behind corporate perimeter firewall</text>
+    <text x="16" y="124" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• Pros: Maximum security, full governance</text>
+    <text x="16" y="146" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• Cons: High infrastructure &amp; maintenance costs</text>
+    <rect x="16" y="165" width="238" height="50" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="135" y="185" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Examples:</text>
+    <text x="135" y="202" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#475569">OpenStack, VMware vSphere, On-premise Datacenter</text>
+  </g>
+
+  <!-- Deployment Model 3: Hybrid Cloud -->
+  <g transform="translate(640, 290)">
+    <rect x="0" y="0" width="270" height="230" rx="8" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5" filter="url(#nistShadow)"/>
+    <path d="M 0 8 Q 0 0 8 0 L 262 0 Q 270 0 270 8 L 270 36 L 0 36 Z" fill="#fef3c7"/>
+    <text x="135" y="24" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#92400e">Hybrid Cloud</text>
+    <text x="16" y="58" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0f172a">• Composition: Private + Public combined</text>
+    <text x="16" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• Bound together by standardized technology</text>
+    <text x="16" y="102" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• Cloud Bursting: overflow to public cloud</text>
+    <text x="16" y="124" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• Pros: Sensitive data on-site, compute elasticity</text>
+    <text x="16" y="146" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• Cons: Integration complexity, network latency</text>
+    <rect x="16" y="165" width="238" height="50" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="135" y="185" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Use Case:</text>
+    <text x="135" y="202" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#475569">Disaster Recovery (DR), Peak Load Bursting</text>
+  </g>
+</svg>

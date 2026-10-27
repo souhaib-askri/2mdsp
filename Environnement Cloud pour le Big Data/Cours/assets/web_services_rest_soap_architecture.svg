@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 480" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <filter id="wsShadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2563eb" />
+    </marker>
+    <marker id="arrowhead-purple" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#7c3aed" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="475" y="36" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Cloud Web Services &amp; APIs: REST vs SOAP Architecture</text>
+  <text x="475" y="58" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#475569">Machine-to-Machine Communication in Distributed Cloud Environments</text>
+
+  <!-- Left: REST Architecture Card -->
+  <g transform="translate(50, 90)">
+    <rect x="0" y="0" width="400" height="360" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="1.5" filter="url(#wsShadow)"/>
+    <rect x="0" y="0" width="400" height="38" rx="8" fill="#dbeafe"/>
+    <text x="200" y="24" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#1e40af">REST (Representational State Transfer)</text>
+
+    <!-- Client Box -->
+    <rect x="25" y="60" width="100" height="70" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>
+    <text x="75" y="90" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Cloud Client</text>
+    <text x="75" y="106" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="500" fill="#475569">App / CLI / SDK</text>
+
+    <!-- Server Box -->
+    <rect x="275" y="60" width="100" height="70" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+    <text x="325" y="90" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Cloud API</text>
+    <text x="325" y="106" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="500" fill="#2563eb">RESTful Service</text>
+
+    <!-- Request Arrow -->
+    <path d="M 130 80 L 265 80" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="200" y="74" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#2563eb">HTTP GET / POST / PUT</text>
+
+    <!-- Response Arrow -->
+    <path d="M 270 110 L 135 110" stroke="#10b981" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="200" y="125" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#059669">JSON / XML (Lightweight)</text>
+
+    <!-- Properties -->
+    <rect x="25" y="150" width="350" height="190" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="40" y="175" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Key Attributes:</text>
+    <text x="40" y="198" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• <tspan font-weight="700">Architectural Style</tspan> (Resource-oriented via URIs)</text>
+    <text x="40" y="221" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• <tspan font-weight="700">Protocols</tspan>: Pure HTTP / HTTPS (Stateless)</text>
+    <text x="40" y="244" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• <tspan font-weight="700">Data Formats</tspan>: JSON (preferred), XML, Plain Text</text>
+    <text x="40" y="267" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• <tspan font-weight="700">Performance</tspan>: High speed, easily cached</text>
+    <text x="40" y="290" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• <tspan font-weight="700">Standard for Cloud</tspan>: AWS, Azure, GCP public APIs</text>
+    <text x="40" y="313" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#2563eb">→ Modern industry default for cloud interoperability</text>
+  </g>
+
+  <!-- Right: SOAP Architecture Card -->
+  <g transform="translate(500, 90)">
+    <rect x="0" y="0" width="400" height="360" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5" filter="url(#wsShadow)"/>
+    <rect x="0" y="0" width="400" height="38" rx="8" fill="#ede9fe"/>
+    <text x="200" y="24" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#5b21b6">SOAP (Simple Object Access Protocol)</text>
+
+    <!-- Client Box -->
+    <rect x="25" y="60" width="100" height="70" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>
+    <text x="75" y="90" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Enterprise Client</text>
+    <text x="75" y="106" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="500" fill="#475569">Legacy System</text>
+
+    <!-- Server Box -->
+    <rect x="275" y="60" width="100" height="70" rx="6" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.2"/>
+    <text x="325" y="90" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">SOAP Service</text>
+    <text x="325" y="106" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="500" fill="#7c3aed">WSDL Interface</text>
+
+    <!-- Request Arrow -->
+    <path d="M 130 80 L 265 80" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowhead-purple)"/>
+    <text x="200" y="74" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#7c3aed">SOAP Envelope (XML)</text>
+
+    <!-- Response Arrow -->
+    <path d="M 270 110 L 135 110" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowhead-purple)"/>
+    <text x="200" y="125" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#d97706">SOAP Response (XML)</text>
+
+    <!-- Properties -->
+    <rect x="25" y="150" width="350" height="190" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="40" y="175" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Key Attributes:</text>
+    <text x="40" y="198" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• <tspan font-weight="700">Strict Protocol</tspan> (Formal contract via WSDL)</text>
+    <text x="40" y="221" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• <tspan font-weight="700">Protocols</tspan>: HTTP, SMTP, TCP transport layer</text>
+    <text x="40" y="244" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• <tspan font-weight="700">Data Formats</tspan>: XML strictly (Higher bandwidth overhead)</text>
+    <text x="40" y="267" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• <tspan font-weight="700">Security</tspan>: Built-in WS-Security, ACID transactions</text>
+    <text x="40" y="290" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#334155">• <tspan font-weight="700">Use Cases</tspan>: Banking, telecom, financial transactions</text>
+    <text x="40" y="313" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#7c3aed">→ Heavyweight enterprise standard with rigorous contracts</text>
+  </g>
+</svg>

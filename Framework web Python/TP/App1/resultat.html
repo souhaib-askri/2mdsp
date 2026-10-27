@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Résultat de l'inscription</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+
+        <h2> Informations de l'utilisateur </h2>
+
+        <p>
+            <strong> Bonjour  :</strong>
+            {{ nom }} {{ prenom }}
+        </p>
+
+        
+        <p>
+            <strong>E-mail :</strong>
+            {{ email }}
+        </p>
+
+        <p>
+            <strong>Mot de passe :</strong>
+            {{ mot_de_passe }}
+        </p>
+
+        <p>
+            <strong>Date de naissance :</strong>
+            {{ date_naissance }}
+        </p>
+
+        
+        <a href="/">
+            Retour au formulaire
+        </a>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+      <!-- Vérifie si la variable "name" existe dans la session
+        et contient une valeur -->
+   {% if session.name %}
+       <!-- Affiche la valeur de l'attribut "name" stocké dans la session -->
+      <strong> Vous êtes enregistré(e) en tant que :  </strong> {{ session.name }}. <br>
+	   <!-- Affiche l'identifiant de session transmis par Flask
+           au template sous le nom "session_id" -->
+	  <strong> Votre ID de session est  :  </strong> {{ session_id }}. <br><br>
+	  <form action="/logout" method="GET">
+            <button type="submit">Se déconnecter</button>
+      </form>
+
+   {% else %}
+      <strong>Vous n'êtes pas enregistré(e). </strong><a href="/login">Login</a>.
+   {% endif %}
+{% endblock %}
+
+

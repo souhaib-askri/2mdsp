@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 480" width="100%" height="auto" style="background:transparent; font-family:system-ui, -apple-system, sans-serif;">
+  <defs>
+    <!-- Arrow Markers -->
+    <marker id="arrow-down-fr" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 1 1 L 5 9 L 9 1 z" fill="#475569"/>
+    </marker>
+    <marker id="arrow-blue-fr" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 1 1 L 5 9 L 9 1 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-green-fr" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 1 1 L 5 9 L 9 1 z" fill="#059669"/>
+    </marker>
+    <marker id="arrow-purple-fr" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 1 1 L 5 9 L 9 1 z" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrow-amber-fr" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 1 1 L 5 9 L 9 1 z" fill="#d97706"/>
+    </marker>
+    <marker id="arrow-teal-fr" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 1 1 L 5 9 L 9 1 z" fill="#0d9488"/>
+    </marker>
+    <marker id="arrow-rose-fr" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 1 1 L 5 9 L 9 1 z" fill="#e11d48"/>
+    </marker>
+  </defs>
+
+  <!-- Title & Scope Header -->
+  <text x="530" y="28" text-anchor="middle" fill="#000000" font-size="20" font-weight="bold">Les 6 Dimensions Normatives de la Qualité des Données</text>
+  <text x="530" y="50" text-anchor="middle" fill="#475569" font-size="13" font-weight="500">Cadre Méthodologique DAMA &amp; ISO 8000 pour les Pipelines Big Data</text>
+
+  <!-- ROOT PARENT CARD -->
+  <g transform="translate(230, 75)">
+    <rect width="600" height="60" rx="12" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+    <rect width="600" height="26" rx="12" fill="#0f172a"/>
+    <text x="300" y="18" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold" letter-spacing="1">CADRE QUALITÉ DES DONNÉES (STANDARDS DAMA / ISO 8000)</text>
+    <text x="300" y="47" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="bold">Assertions Statistiques &amp; Barrières de Contrôle Automatisées</text>
+  </g>
+
+  <!-- Distribution Bus (Trunk & Branches) -->
+  <path d="M 530 135 L 530 160" stroke="#475569" stroke-width="2.5" fill="none"/>
+  <!-- Horizontal Bus -->
+  <path d="M 105 160 L 955 160" stroke="#475569" stroke-width="2.5" fill="none"/>
+
+  <!-- Vertical Branch Lines to Cards -->
+  <path d="M 105 160 L 105 195" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue-fr)"/>
+  <path d="M 275 160 L 275 195" stroke="#059669" stroke-width="2" fill="none" marker-end="url(#arrow-green-fr)"/>
+  <path d="M 445 160 L 445 195" stroke="#7c3aed" stroke-width="2" fill="none" marker-end="url(#arrow-purple-fr)"/>
+  <path d="M 615 160 L 615 195" stroke="#d97706" stroke-width="2" fill="none" marker-end="url(#arrow-amber-fr)"/>
+  <path d="M 785 160 L 785 195" stroke="#0d9488" stroke-width="2" fill="none" marker-end="url(#arrow-teal-fr)"/>
+  <path d="M 955 160 L 955 195" stroke="#e11d48" stroke-width="2" fill="none" marker-end="url(#arrow-rose-fr)"/>
+
+  <!-- ==================== CARD 1: COMPLÉTUDE ==================== -->
+  <g transform="translate(25, 200)">
+    <rect width="160" height="260" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="1.8"/>
+    <rect width="160" height="34" rx="10" fill="#eff6ff"/>
+    <text x="80" y="22" text-anchor="middle" fill="#1e40af" font-size="13" font-weight="bold">1. Complétude</text>
+    
+    <text x="80" y="55" text-anchor="middle" fill="#0f172a" font-size="11" font-weight="bold">Zéro Donnée Manquante</text>
+    
+    <rect x="10" y="68" width="140" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="80" y="84" text-anchor="middle" fill="#475569" font-size="9" font-weight="600">Seuil Métrique :</text>
+    <text x="80" y="100" text-anchor="middle" fill="#2563eb" font-size="10" font-weight="bold">Null Ratio &#8804; &#949;</text>
+
+    <text x="12" y="128" fill="#0f172a" font-size="10" font-weight="bold">Test Automatisé :</text>
+    <text x="12" y="144" fill="#475569" font-size="9">&#8226; expect_column_values</text>
+    <text x="12" y="158" fill="#475569" font-size="9">  _to_not_be_null()</text>
+
+    <line x1="10" y1="172" x2="150" y2="172" stroke="#e2e8f0" stroke-width="1"/>
+
+    <text x="12" y="190" fill="#0f172a" font-size="10" font-weight="bold">Risque Métier :</text>
+    <text x="12" y="206" fill="#64748b" font-size="9">&#8226; user_id manquant</text>
+    <text x="12" y="220" fill="#64748b" font-size="9">&#8226; Rupture des jointures</text>
+    <text x="12" y="234" fill="#64748b" font-size="9">  (INNER JOIN aval)</text>
+    <text x="12" y="248" fill="#dc2626" font-size="8.5" font-weight="600">&#9888; Chute des indicateurs</text>
+  </g>
+
+  <!-- ==================== CARD 2: UNICITÉ ==================== -->
+  <g transform="translate(195, 200)">
+    <rect width="160" height="260" rx="10" fill="#ffffff" stroke="#059669" stroke-width="1.8"/>
+    <rect width="160" height="34" rx="10" fill="#ecfdf5"/>
+    <text x="80" y="22" text-anchor="middle" fill="#065f46" font-size="13" font-weight="bold">2. Unicité</text>
+    
+    <text x="80" y="55" text-anchor="middle" fill="#0f172a" font-size="11" font-weight="bold">Zéro Duplication</text>
+    
+    <rect x="10" y="68" width="140" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="80" y="84" text-anchor="middle" fill="#475569" font-size="9" font-weight="600">Seuil Métrique :</text>
+    <text x="80" y="100" text-anchor="middle" fill="#059669" font-size="10" font-weight="bold">Distinct Count == Lignes</text>
+
+    <text x="12" y="128" fill="#0f172a" font-size="10" font-weight="bold">Test Automatisé :</text>
+    <text x="12" y="144" fill="#475569" font-size="9">&#8226; expect_column_values</text>
+    <text x="12" y="158" fill="#475569" font-size="9">  _to_be_unique()</text>
+
+    <line x1="10" y1="172" x2="150" y2="172" stroke="#e2e8f0" stroke-width="1"/>
+
+    <text x="12" y="190" fill="#0f172a" font-size="10" font-weight="bold">Risque Métier :</text>
+    <text x="12" y="206" fill="#64748b" font-size="9">&#8226; Facturation en double</text>
+    <text x="12" y="220" fill="#64748b" font-size="9">&#8226; Explosion cartésienne</text>
+    <text x="12" y="234" fill="#64748b" font-size="9">&#8226; Métriques gonflées</text>
+    <text x="12" y="248" fill="#dc2626" font-size="8.5" font-weight="600">&#9888; Bilan faussé</text>
+  </g>
+
+  <!-- ==================== CARD 3: VALIDITÉ ==================== -->
+  <g transform="translate(365, 200)">
+    <rect width="160" height="260" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="1.8"/>
+    <rect width="160" height="34" rx="10" fill="#f5f3ff"/>
+    <text x="80" y="22" text-anchor="middle" fill="#5b21b6" font-size="13" font-weight="bold">3. Validité</text>
+    
+    <text x="80" y="55" text-anchor="middle" fill="#0f172a" font-size="11" font-weight="bold">Conformité au Domaine</text>
+    
+    <rect x="10" y="68" width="140" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="80" y="84" text-anchor="middle" fill="#475569" font-size="9" font-weight="600">Seuil Métrique :</text>
+    <text x="80" y="100" text-anchor="middle" fill="#7c3aed" font-size="10" font-weight="bold">Regex / Bornes Conformes</text>
+
+    <text x="12" y="128" fill="#0f172a" font-size="10" font-weight="bold">Test Automatisé :</text>
+    <text x="12" y="144" fill="#475569" font-size="9">&#8226; expect_column_values</text>
+    <text x="12" y="158" fill="#475569" font-size="9">  _to_be_between()</text>
+
+    <line x1="10" y1="172" x2="150" y2="172" stroke="#e2e8f0" stroke-width="1"/>
+
+    <text x="12" y="190" fill="#0f172a" font-size="10" font-weight="bold">Risque Métier :</text>
+    <text x="12" y="206" fill="#64748b" font-size="9">&#8226; Prix négatif (-50 €)</text>
+    <text x="12" y="220" fill="#64748b" font-size="9">&#8226; Email sans arobase</text>
+    <text x="12" y="234" fill="#64748b" font-size="9">&#8226; Âge &gt; 150 ou &lt; 0</text>
+    <text x="12" y="248" fill="#dc2626" font-size="8.5" font-weight="600">&#9888; Crash de conversion</text>
+  </g>
+
+  <!-- ==================== CARD 4: COHÉRENCE ==================== -->
+  <g transform="translate(535, 200)">
+    <rect width="160" height="260" rx="10" fill="#ffffff" stroke="#d97706" stroke-width="1.8"/>
+    <rect width="160" height="34" rx="10" fill="#fffbeb"/>
+    <text x="80" y="22" text-anchor="middle" fill="#92400e" font-size="13" font-weight="bold">4. Cohérence</text>
+    
+    <text x="80" y="55" text-anchor="middle" fill="#0f172a" font-size="11" font-weight="bold">Harmonie Inter-Systèmes</text>
+    
+    <rect x="10" y="68" width="140" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="80" y="84" text-anchor="middle" fill="#475569" font-size="9" font-weight="600">Seuil Métrique :</text>
+    <text x="80" y="100" text-anchor="middle" fill="#d97706" font-size="10" font-weight="bold">Concordance Clés == 1</text>
+
+    <text x="12" y="128" fill="#0f172a" font-size="10" font-weight="bold">Test Automatisé :</text>
+    <text x="12" y="144" fill="#475569" font-size="9">&#8226; expect_table_row_count</text>
+    <text x="12" y="158" fill="#475569" font-size="9">  _to_equal_other_table()</text>
+
+    <line x1="10" y1="172" x2="150" y2="172" stroke="#e2e8f0" stroke-width="1"/>
+
+    <text x="12" y="190" fill="#0f172a" font-size="10" font-weight="bold">Risque Métier :</text>
+    <text x="12" y="206" fill="#64748b" font-size="9">&#8226; Commandes orphelines</text>
+    <text x="12" y="220" fill="#64748b" font-size="9">&#8226; Écart CRM vs Factures</text>
+    <text x="12" y="234" fill="#64748b" font-size="9">&#8226; Stocks divergents</text>
+    <text x="12" y="248" fill="#dc2626" font-size="8.5" font-weight="600">&#9888; Désynchronisation</text>
+  </g>
+
+  <!-- ==================== CARD 5: PRÉCISION ==================== -->
+  <g transform="translate(705, 200)">
+    <rect width="160" height="260" rx="10" fill="#ffffff" stroke="#0d9488" stroke-width="1.8"/>
+    <rect width="160" height="34" rx="10" fill="#f0fdfa"/>
+    <text x="80" y="22" text-anchor="middle" fill="#115e59" font-size="13" font-weight="bold">5. Précision</text>
+    
+    <text x="80" y="55" text-anchor="middle" fill="#0f172a" font-size="11" font-weight="bold">Fidélité à la Réalité</text>
+    
+    <rect x="10" y="68" width="140" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="80" y="84" text-anchor="middle" fill="#475569" font-size="9" font-weight="600">Seuil Métrique :</text>
+    <text x="80" y="100" text-anchor="middle" fill="#0d9488" font-size="10" font-weight="bold">Écart vs Réel &lt; &#948;</text>
+
+    <text x="12" y="128" fill="#0f172a" font-size="10" font-weight="bold">Test Automatisé :</text>
+    <text x="12" y="144" fill="#475569" font-size="9">&#8226; expect_column_mean</text>
+    <text x="12" y="158" fill="#475569" font-size="9">  _to_be_between(min,max)</text>
+
+    <line x1="10" y1="172" x2="150" y2="172" stroke="#e2e8f0" stroke-width="1"/>
+
+    <text x="12" y="190" fill="#0f172a" font-size="10" font-weight="bold">Risque Métier :</text>
+    <text x="12" y="206" fill="#64748b" font-size="9">&#8226; Arrondi fautif de devise</text>
+    <text x="12" y="220" fill="#64748b" font-size="9">&#8226; Dérive capteur IoT</text>
+    <text x="12" y="234" fill="#64748b" font-size="9">&#8226; Décalage virgule</text>
+    <text x="12" y="248" fill="#dc2626" font-size="8.5" font-weight="600">&#9888; Perte financière</text>
+  </g>
+
+  <!-- ==================== CARD 6: FRAÎCHEUR ==================== -->
+  <g transform="translate(875, 200)">
+    <rect width="160" height="260" rx="10" fill="#ffffff" stroke="#e11d48" stroke-width="1.8"/>
+    <rect width="160" height="34" rx="10" fill="#fff1f2"/>
+    <text x="80" y="22" text-anchor="middle" fill="#9f1239" font-size="13" font-weight="bold">6. Fraîcheur</text>
+    
+    <text x="80" y="55" text-anchor="middle" fill="#0f172a" font-size="11" font-weight="bold">Ponctualité &amp; SLAs</text>
+    
+    <rect x="10" y="68" width="140" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="80" y="84" text-anchor="middle" fill="#475569" font-size="9" font-weight="600">Seuil Métrique :</text>
+    <text x="80" y="100" text-anchor="middle" fill="#e11d48" font-size="10" font-weight="bold">Latence &#8804; SLA Fixé</text>
+
+    <text x="12" y="128" fill="#0f172a" font-size="10" font-weight="bold">Test Automatisé :</text>
+    <text x="12" y="144" fill="#475569" font-size="9">&#8226; expect_row_freshness</text>
+    <text x="12" y="158" fill="#475569" font-size="9">  _within(hours=2)</text>
+
+    <line x1="10" y1="172" x2="150" y2="172" stroke="#e2e8f0" stroke-width="1"/>
+
+    <text x="12" y="190" fill="#0f172a" font-size="10" font-weight="bold">Risque Métier :</text>
+    <text x="12" y="206" fill="#64748b" font-size="9">&#8226; Pipeline/CDC gelé</text>
+    <text x="12" y="220" fill="#64748b" font-size="9">&#8226; Panne muette</text>
+    <text x="12" y="234" fill="#64748b" font-size="9">&#8226; Dashboards obsolètes</text>
+    <text x="12" y="248" fill="#dc2626" font-size="8.5" font-weight="600">&#9888; Faux sentiment de calme</text>
+  </g>
+</svg>

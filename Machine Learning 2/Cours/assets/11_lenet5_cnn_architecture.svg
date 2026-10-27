@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 500" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <filter id="lenetShadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <marker id="lenetArrow" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#2563eb" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="475" y="34" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Classic LeNet-5 Architecture for MNIST Digit Classification</text>
+  <text x="475" y="54" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#475569">Yann LeCun et al. (1998): Conv2D → Subsampling → Conv2D → Subsampling → Dense → Softmax</text>
+
+  <!-- Outer Canvas -->
+  <rect x="30" y="70" width="890" height="410" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#lenetShadow)"/>
+
+  <!-- Stage 0: Input Image 28x28 -->
+  <g transform="translate(50, 160)">
+    <rect x="0" y="0" width="80" height="80" rx="4" fill="#0f172a" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="40" y="48" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="bold" fill="#ffffff">7</text>
+    <text x="40" y="105" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Input Image</text>
+    <text x="40" y="122" text-anchor="middle" font-family="monospace" font-size="10" fill="#2563eb">28 x 28 x 1</text>
+  </g>
+
+  <path d="M 140 200 L 170 200" stroke="#2563eb" stroke-width="2" marker-end="url(#lenetArrow)"/>
+  <text x="155" y="190" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="600" fill="#64748b">5x5 Conv</text>
+
+  <!-- Stage 1: Conv Layer 1 (C1: 6 Maps of 24x24) -->
+  <g transform="translate(180, 135)">
+    <!-- 6 Stacked Feature Maps -->
+    <rect x="25" y="0" width="70" height="70" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2"/>
+    <rect x="20" y="10" width="70" height="70" rx="3" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.2"/>
+    <rect x="15" y="20" width="70" height="70" rx="3" fill="#bfdbfe" stroke="#3b82f6" stroke-width="1.2"/>
+    <rect x="10" y="30" width="70" height="70" rx="3" fill="#93c5fd" stroke="#3b82f6" stroke-width="1.2"/>
+    <rect x="5" y="40" width="70" height="70" rx="3" fill="#60a5fa" stroke="#3b82f6" stroke-width="1.2"/>
+    <rect x="0" y="50" width="70" height="70" rx="3" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1.2"/>
+
+    <text x="45" y="145" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e40af">Layer C1</text>
+    <text x="45" y="162" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#1e40af">6 Feature Maps</text>
+    <text x="45" y="177" text-anchor="middle" font-family="monospace" font-size="10" fill="#2563eb">24 x 24</text>
+  </g>
+
+  <path d="M 285 200 L 315 200" stroke="#2563eb" stroke-width="2" marker-end="url(#lenetArrow)"/>
+  <text x="300" y="190" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="600" fill="#64748b">2x2 Pool</text>
+
+  <!-- Stage 2: Subsampling Layer 1 (S2: 6 Maps of 12x12) -->
+  <g transform="translate(325, 155)">
+    <rect x="15" y="0" width="50" height="50" rx="3" fill="#dcfce7" stroke="#10b981" stroke-width="1.2"/>
+    <rect x="10" y="10" width="50" height="50" rx="3" fill="#bbf7d0" stroke="#10b981" stroke-width="1.2"/>
+    <rect x="5" y="20" width="50" height="50" rx="3" fill="#86efac" stroke="#10b981" stroke-width="1.2"/>
+    <rect x="0" y="30" width="50" height="50" rx="3" fill="#4ade80" stroke="#15803d" stroke-width="1.2"/>
+
+    <text x="32" y="105" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#065f46">Layer S2</text>
+    <text x="32" y="122" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#065f46">Max/Avg Pool</text>
+    <text x="32" y="137" text-anchor="middle" font-family="monospace" font-size="10" fill="#059669">12 x 12</text>
+  </g>
+
+  <path d="M 400 200 L 430 200" stroke="#2563eb" stroke-width="2" marker-end="url(#lenetArrow)"/>
+  <text x="415" y="190" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="600" fill="#64748b">5x5 Conv</text>
+
+  <!-- Stage 3: Conv Layer 2 (C3: 16 Maps of 8x8) -->
+  <g transform="translate(440, 145)">
+    <rect x="18" y="0" width="45" height="45" rx="3" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.2"/>
+    <rect x="12" y="15" width="45" height="45" rx="3" fill="#fde68a" stroke="#f59e0b" stroke-width="1.2"/>
+    <rect x="6" y="30" width="45" height="45" rx="3" fill="#fcd34d" stroke="#f59e0b" stroke-width="1.2"/>
+    <rect x="0" y="45" width="45" height="45" rx="3" fill="#fbbf24" stroke="#b45309" stroke-width="1.2"/>
+
+    <text x="30" y="115" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#92400e">Layer C3</text>
+    <text x="30" y="132" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#92400e">16 Feature Maps</text>
+    <text x="30" y="147" text-anchor="middle" font-family="monospace" font-size="10" fill="#d97706">8 x 8</text>
+  </g>
+
+  <path d="M 515 200 L 545 200" stroke="#2563eb" stroke-width="2" marker-end="url(#lenetArrow)"/>
+  <text x="530" y="190" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="600" fill="#64748b">2x2 Pool</text>
+
+  <!-- Stage 4: Subsampling Layer 2 (S4: 16 Maps of 4x4) -->
+  <g transform="translate(555, 165)">
+    <rect x="10" y="0" width="35" height="35" rx="2" fill="#f3e8ff" stroke="#a855f7" stroke-width="1.2"/>
+    <rect x="5" y="10" width="35" height="35" rx="2" fill="#e9d5ff" stroke="#a855f7" stroke-width="1.2"/>
+    <rect x="0" y="20" width="35" height="35" rx="2" fill="#d8b4fe" stroke="#7e22ce" stroke-width="1.2"/>
+
+    <text x="25" y="80" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#6b21a8">Layer S4</text>
+    <text x="25" y="97" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#6b21a8">Pooling</text>
+    <text x="25" y="112" text-anchor="middle" font-family="monospace" font-size="10" fill="#7e22ce">4 x 4</text>
+  </g>
+
+  <path d="M 615 200 L 645 200" stroke="#2563eb" stroke-width="2" marker-end="url(#lenetArrow)"/>
+  <text x="630" y="190" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="600" fill="#64748b">Flatten</text>
+
+  <!-- Stage 5: Dense / FC Layers -->
+  <g transform="translate(655, 115)">
+    <!-- Dense 120 -->
+    <rect x="0" y="0" width="22" height="170" rx="4" fill="#fce7f3" stroke="#ec4899" stroke-width="1.5"/>
+    <text x="11" y="190" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#9d174d">C5</text>
+    <text x="11" y="205" text-anchor="middle" font-family="monospace" font-size="9" fill="#db2777">120</text>
+
+    <!-- Dense 84 -->
+    <rect x="42" y="25" width="22" height="120" rx="4" fill="#fce7f3" stroke="#ec4899" stroke-width="1.5"/>
+    <text x="53" y="165" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#9d174d">F6</text>
+    <text x="53" y="180" text-anchor="middle" font-family="monospace" font-size="9" fill="#db2777">84</text>
+  </g>
+
+  <path d="M 735 200 L 765 200" stroke="#2563eb" stroke-width="2" marker-end="url(#lenetArrow)"/>
+  <text x="750" y="190" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="600" fill="#64748b">Softmax</text>
+
+  <!-- Stage 6: Output 10 Digits -->
+  <g transform="translate(775, 140)">
+    <rect x="0" y="0" width="125" height="120" rx="6" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="62" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#991b1b">Output (10)</text>
+    <text x="62" y="42" text-anchor="middle" font-family="monospace" font-size="9" fill="#dc2626">p₀, p₁, ..., p₉</text>
+    <text x="62" y="66" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#0f172a">Prediction:</text>
+    <rect x="25" y="75" width="75" height="32" rx="4" fill="#dc2626"/>
+    <text x="62" y="97" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" fill="#ffffff">Digit = 7</text>
+  </g>
+
+  <!-- Bottom Explanatory Ribbon -->
+  <g transform="translate(50, 360)">
+    <rect x="0" y="0" width="850" height="95" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="25" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Key Principles of Convolutional Networks Demonstrated by LeNet-5:</text>
+    <text x="25" y="46" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="500" fill="#334155">• <tspan font-weight="700">Local Receptive Fields</tspan>: Neurons extract local edges and motifs instead of connecting to all 784 pixels.</text>
+    <text x="25" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="500" fill="#334155">• <tspan font-weight="700">Weight Sharing</tspan>: The same 5x5 kernel weights scan across the entire image (huge parameter reduction).</text>
+    <text x="25" y="86" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="500" fill="#334155">• <tspan font-weight="700">Spatial Downsampling (Pooling)</tspan>: Compresses spatial dimension while granting translation invariance.</text>
+  </g>
+</svg>

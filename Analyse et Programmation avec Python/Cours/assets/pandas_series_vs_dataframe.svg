@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 420" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="430" y="30" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Anatomy of Pandas Data Structures: Series &amp; DataFrame</text>
+  <text x="430" y="50" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#475569">1D Labeled Array (Series) Aligned to Form a 2D Tabular Grid (DataFrame)</text>
+
+  <!-- Left: Series Structure -->
+  <g transform="translate(40, 80)">
+    <rect width="280" height="300" rx="10" fill="#ffffff" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+    <rect width="280" height="32" rx="8" fill="#3b82f6"/>
+    <text x="140" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">pd.Series (1-Dimensional)</text>
+
+    <!-- Column labels -->
+    <rect x="25" y="48" width="80" height="24" rx="4" fill="#e0e7ff"/>
+    <text x="65" y="64" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#3730a3">Index</text>
+
+    <rect x="115" y="48" width="140" height="24" rx="4" fill="#dbeafe"/>
+    <text x="185" y="64" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#1e40af">Values (dtype: float)</text>
+
+    <!-- Rows -->
+    <text x="65" y="100" text-anchor="middle" font-family="monospace" font-size="12" fill="#4338ca">"first"</text>
+    <rect x="115" y="82" width="140" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="185" y="100" text-anchor="middle" font-family="monospace" font-size="12" fill="#0f172a">51.2</text>
+
+    <text x="65" y="135" text-anchor="middle" font-family="monospace" font-size="12" fill="#4338ca">"second"</text>
+    <rect x="115" y="117" width="140" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="185" y="135" text-anchor="middle" font-family="monospace" font-size="12" fill="#0f172a">47.8</text>
+
+    <text x="65" y="170" text-anchor="middle" font-family="monospace" font-size="12" fill="#4338ca">"third"</text>
+    <rect x="115" y="152" width="140" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="185" y="170" text-anchor="middle" font-family="monospace" font-size="12" fill="#0f172a">61.3</text>
+
+    <!-- Series attributes -->
+    <rect x="25" y="200" width="230" height="85" rx="6" fill="#f1f5f9"/>
+    <text x="35" y="222" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0f172a">Key Properties:</text>
+    <text x="35" y="240" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• <tspan font-family="monospace">s.index</tspan> : Explicit labeled axis</text>
+    <text x="35" y="258" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• <tspan font-family="monospace">s.values</tspan> : Underling NumPy 1D array</text>
+    <text x="35" y="276" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• <tspan font-family="monospace">s.name</tspan> : Identifier (column name)</text>
+  </g>
+
+  <!-- Connective arrow -->
+  <line x1="330" y1="210" x2="385" y2="210" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="358" y="195" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#64748b">Align</text>
+  <text x="358" y="228" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#64748b">Indices</text>
+
+  <!-- Right: DataFrame Structure -->
+  <g transform="translate(395, 80)">
+    <rect width="425" height="300" rx="10" fill="#ffffff" stroke="#10b981" stroke-width="2" filter="url(#shadow)"/>
+    <rect width="425" height="32" rx="8" fill="#10b981"/>
+    <text x="212" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">pd.DataFrame (2-Dimensional Collection of Series)</text>
+
+    <!-- Columns Header -->
+    <rect x="20" y="48" width="60" height="24" rx="4" fill="#e0e7ff"/>
+    <text x="50" y="64" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#3730a3">Index</text>
+
+    <rect x="90" y="48" width="100" height="24" rx="4" fill="#d1fae5"/>
+    <text x="140" y="64" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#065f46">"Candidate"</text>
+
+    <rect x="200" y="48" width="100" height="24" rx="4" fill="#d1fae5"/>
+    <text x="250" y="64" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#065f46">"Party"</text>
+
+    <rect x="310" y="48" width="95" height="24" rx="4" fill="#d1fae5"/>
+    <text x="357" y="64" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#065f46">"%"</text>
+
+    <!-- Row 0 -->
+    <text x="50" y="100" text-anchor="middle" font-family="monospace" font-size="11" fill="#4338ca">0</text>
+    <rect x="90" y="82" width="100" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="140" y="100" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">"Obama"</text>
+    <rect x="200" y="82" width="100" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="250" y="100" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">"Democrat"</text>
+    <rect x="310" y="82" width="95" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="357" y="100" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">52.9</text>
+
+    <!-- Row 1 -->
+    <text x="50" y="135" text-anchor="middle" font-family="monospace" font-size="11" fill="#4338ca">1</text>
+    <rect x="90" y="117" width="100" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="140" y="135" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">"Romney"</text>
+    <rect x="200" y="117" width="100" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="250" y="135" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">"Republican"</text>
+    <rect x="310" y="117" width="95" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="357" y="135" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">47.2</text>
+
+    <!-- Row 2 -->
+    <text x="50" y="170" text-anchor="middle" font-family="monospace" font-size="11" fill="#4338ca">2</text>
+    <rect x="90" y="152" width="100" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="140" y="170" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">"Johnson"</text>
+    <rect x="200" y="152" width="100" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="250" y="170" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">"Democrat"</text>
+    <rect x="310" y="152" width="95" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="357" y="170" text-anchor="middle" font-family="monospace" font-size="11" fill="#0f172a">61.3</text>
+
+    <!-- DataFrame attributes -->
+    <rect x="20" y="200" width="385" height="85" rx="6" fill="#f1f5f9"/>
+    <text x="30" y="222" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0f172a">Structural Attributes:</text>
+    <text x="30" y="240" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• <tspan font-family="monospace">df.shape</tspan> ➔ (3, 3) (rows, cols)  |  <tspan font-family="monospace">df.size</tspan> ➔ 9 elements</text>
+    <text x="30" y="258" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• <tspan font-family="monospace">df.columns</tspan> : Index of column labels  |  <tspan font-family="monospace">df.index</tspan> : Index of row labels</text>
+    <text x="30" y="276" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• Alignment: Operations automatically align on Index labels!</text>
+  </g>
+</svg>

@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <filter id="boxShadow" x="-3%" y="-3%" width="106%" height="106%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrowhead" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#0f172a"/>
+    </marker>
+    <marker id="arrowhead-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrowhead-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="480" y="34" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Structural Paradigm Shift: RNN Bottleneck vs Transformer Self-Attention</text>
+  <text x="480" y="55" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#475569">Why sequential recurrence failed at scale and how direct attention matrices solved context propagation</text>
+
+  <!-- LEFT PANEL: RNN Sequential Bottleneck -->
+  <rect x="30" y="75" width="435" height="425" rx="12" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5" filter="url(#boxShadow)"/>
+  <rect x="30" y="75" width="435" height="38" rx="12" fill="#fee2e2"/>
+  <text x="247" y="100" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#991b1b">RNN / LSTM: Sequential Information Bottleneck</text>
+
+  <!-- RNN Nodes & Transitions -->
+  <!-- Token 1 -->
+  <g transform="translate(60, 240)">
+    <rect x="0" y="0" width="65" height="50" rx="8" fill="#ffffff" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="32" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">h&#8321;</text>
+    <text x="32" y="38" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#dc2626">RNN Cell</text>
+    <!-- Input below -->
+    <rect x="0" y="80" width="65" height="30" rx="6" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="32" y="100" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">x&#8321; ("The")</text>
+    <line x1="32" y1="80" x2="32" y2="52" stroke="#0f172a" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  </g>
+
+  <!-- Arrow h1 -> h2 -->
+  <line x1="127" y1="265" x2="158" y2="265" stroke="#ef4444" stroke-width="2.5" marker-end="url(#arrowhead-red)"/>
+
+  <!-- Token 2 -->
+  <g transform="translate(160, 240)">
+    <rect x="0" y="0" width="65" height="50" rx="8" fill="#ffffff" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="32" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">h&#8322;</text>
+    <text x="32" y="38" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#dc2626">RNN Cell</text>
+    <rect x="0" y="80" width="65" height="30" rx="6" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="32" y="100" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">x&#8322; ("book")</text>
+    <line x1="32" y1="80" x2="32" y2="52" stroke="#0f172a" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  </g>
+
+  <!-- Arrow h2 -> ... -->
+  <line x1="227" y1="265" x2="258" y2="265" stroke="#ef4444" stroke-width="2" stroke-dasharray="3,3" marker-end="url(#arrowhead-red)"/>
+
+  <!-- Token T -->
+  <g transform="translate(260, 240)">
+    <rect x="0" y="0" width="85" height="50" rx="8" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+    <text x="42" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#991b1b">h&#7524; (Context)</text>
+    <text x="42" y="38" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#dc2626">Fixed Vector</text>
+    <rect x="0" y="80" width="85" height="30" rx="6" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="42" y="100" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">x&#7524; ("was")</text>
+    <line x1="42" y1="80" x2="42" y2="52" stroke="#0f172a" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  </g>
+
+  <!-- Output prediction -->
+  <line x1="302" y1="240" x2="302" y2="200" stroke="#0f172a" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <rect x="250" y="165" width="105" height="32" rx="6" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="302" y="185" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#991b1b">&#375; ("difficult")</text>
+
+  <!-- Callout notes on RNN drawbacks -->
+  <rect x="45" y="405" width="405" height="80" rx="8" fill="#ffffff" stroke="#fca5a5"/>
+  <text x="55" y="423" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700" fill="#991b1b">&#9888; Critical Weaknesses:</text>
+  <text x="55" y="441" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#334155">1. Sequential dependency: Step t cannot be computed until t-1 finishes.</text>
+  <text x="55" y="457" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#334155">2. Vanishing gradient: Information from x&#8321; fades exponentially as T grows.</text>
+  <text x="55" y="473" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#334155">3. Fixed-size vector h&#7524; acts as an informational compression bottleneck.</text>
+
+
+  <!-- RIGHT PANEL: Transformer All-to-All Self-Attention -->
+  <rect x="495" y="75" width="435" height="425" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5" filter="url(#boxShadow)"/>
+  <rect x="495" y="75" width="435" height="38" rx="12" fill="#dcfce7"/>
+  <text x="712" y="100" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#14532d">Transformer: Direct Multi-Head Self-Attention</text>
+
+  <!-- Transformer Layers representation -->
+  <g transform="translate(525, 230)">
+    <!-- Attention Core Matrix Box -->
+    <rect x="0" y="0" width="375" height="80" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+    <text x="187" y="24" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#14532d">Self-Attention Matrix: Softmax(Q &#183; K&#7510; / &#8730;d&#7522;) &#183; V</text>
+    <text x="187" y="45" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#15803d">Direct O(1) connection between any pair of tokens (i, j)</text>
+    
+    <!-- Mini attention lines inside -->
+    <line x1="40" y1="58" x2="330" y2="58" stroke="#86efac" stroke-width="1.5" stroke-dasharray="2,2"/>
+    <circle cx="50" cy="58" r="4" fill="#16a34a"/>
+    <circle cx="140" cy="58" r="4" fill="#16a34a"/>
+    <circle cx="230" cy="58" r="4" fill="#16a34a"/>
+    <circle cx="320" cy="58" r="4" fill="#16a34a"/>
+  </g>
+
+  <!-- Parallel inputs below -->
+  <g transform="translate(540, 345)">
+    <rect x="0" y="0" width="65" height="30" rx="6" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="32" y="20" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">x&#8321; ("The")</text>
+    <line x1="32" y1="0" x2="32" y2="-33" stroke="#16a34a" stroke-width="1.5" marker-end="url(#arrowhead-green)"/>
+  </g>
+
+  <g transform="translate(630, 345)">
+    <rect x="0" y="0" width="65" height="30" rx="6" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="32" y="20" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">x&#8322; ("book")</text>
+    <line x1="32" y1="0" x2="32" y2="-33" stroke="#16a34a" stroke-width="1.5" marker-end="url(#arrowhead-green)"/>
+  </g>
+
+  <g transform="translate(720, 345)">
+    <rect x="0" y="0" width="65" height="30" rx="6" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="32" y="20" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">x&#8323; ("was")</text>
+    <line x1="32" y1="0" x2="32" y2="-33" stroke="#16a34a" stroke-width="1.5" marker-end="url(#arrowhead-green)"/>
+  </g>
+
+  <g transform="translate(810, 345)">
+    <rect x="0" y="0" width="75" height="30" rx="6" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="37" y="20" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#0f172a">x&#8324; ("fragile")</text>
+    <line x1="37" y1="0" x2="37" y2="-33" stroke="#16a34a" stroke-width="1.5" marker-end="url(#arrowhead-green)"/>
+  </g>
+
+  <!-- Output above -->
+  <line x1="712" y1="230" x2="712" y2="195" stroke="#0f172a" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <rect x="635" y="165" width="155" height="30" rx="6" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="712" y="185" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#14532d">Contextual Embeddings [Z]</text>
+
+  <!-- Callout notes on Transformer advantages -->
+  <rect x="510" y="405" width="405" height="80" rx="8" fill="#ffffff" stroke="#86efac"/>
+  <text x="520" y="423" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700" fill="#14532d">&#10004; Architectural Advantages:</text>
+  <text x="520" y="441" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#334155">1. 100% Parallel processing: All tokens are processed simultaneously on GPUs.</text>
+  <text x="520" y="457" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#334155">2. Constant path length O(1) between any two tokens across arbitrary distance.</text>
+  <text x="520" y="473" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#334155">3. Multi-Head Attention captures diverse linguistic relationships concurrently.</text>
+</svg>

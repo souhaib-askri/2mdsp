@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 480" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <filter id="mnistShadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <marker id="mnistArrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2563eb" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="475" y="36" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0f172a">MNIST Image Representation &amp; Deep Learning Pipeline</text>
+  <text x="475" y="58" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#475569">From Handwritten Digits to 28x28 Grayscale Pixel Matrix (0 to 255)</text>
+
+  <!-- Left: Handwritten Digit Visual -->
+  <g transform="translate(50, 90)">
+    <rect x="0" y="0" width="240" height="360" rx="8" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5" filter="url(#mnistShadow)"/>
+    <rect x="0" y="0" width="240" height="38" rx="8" fill="#dbeafe"/>
+    <text x="120" y="24" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1e40af">1. Handwritten Image</text>
+
+    <!-- Simulated 28x28 canvas -->
+    <rect x="30" y="60" width="180" height="180" rx="4" fill="#0f172a"/>
+    <!-- Drawn Digit '5' -->
+    <path d="M 65 95 L 145 95 L 85 140 C 130 115 175 135 170 190 C 165 230 115 235 65 215" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <text x="120" y="265" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#0f172a">Digit Label: y = 5</text>
+    <text x="120" y="285" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#475569">Resolution: 28 x 28 pixels</text>
+    <text x="120" y="305" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#475569">Total: 784 pixels per image</text>
+    <text x="120" y="335" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#2563eb">Grayscale Single Channel (8-bit)</text>
+  </g>
+
+  <!-- Middle Arrow -->
+  <path d="M 305 270 L 345 270" stroke="#2563eb" stroke-width="3" marker-end="url(#mnistArrow)"/>
+  <text x="325" y="255" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#2563eb">Matrix Grid</text>
+
+  <!-- Center: Pixel Intensity Matrix (28x28) -->
+  <g transform="translate(360, 90)">
+    <rect x="0" y="0" width="290" height="360" rx="8" fill="#ffffff" stroke="#10b981" stroke-width="1.5" filter="url(#mnistShadow)"/>
+    <rect x="0" y="0" width="290" height="38" rx="8" fill="#d1fae5"/>
+    <text x="145" y="24" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#065f46">2. 2D Pixel Intensity Matrix</text>
+
+    <!-- Matrix sample numbers -->
+    <rect x="20" y="55" width="250" height="200" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+    
+    <text x="30" y="80" font-family="monospace" font-size="10" fill="#94a3b8">[[  0,   0,   0, ...,   0,   0],</text>
+    <text x="30" y="105" font-family="monospace" font-size="10" fill="#94a3b8"> [  0,   0,   0, ...,   0,   0],</text>
+    <text x="30" y="130" font-family="monospace" font-size="10" fill="#334155"> [  0,  35, 180, ...,  42,   0],</text>
+    <text x="30" y="155" font-family="monospace" font-size="10" fill="#0f172a" font-weight="bold"> [  0, 245, 255, ..., 190,   0],</text>
+    <text x="30" y="180" font-family="monospace" font-size="10" fill="#334155"> [  0, 110, 254, ...,  12,   0],</text>
+    <text x="30" y="205" font-family="monospace" font-size="10" fill="#94a3b8"> [  0,   0,   0, ...,   0,   0],</text>
+    <text x="30" y="230" font-family="monospace" font-size="10" fill="#94a3b8"> [  0,   0,   0, ...,   0,   0]]</text>
+
+    <text x="145" y="275" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Range: [0, 255] (uint8)</text>
+    <text x="145" y="295" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#475569">0 = Black (Background)</text>
+    <text x="145" y="312" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#475569">255 = White (Stroke / Foregound)</text>
+    <text x="145" y="338" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#059669">Normalization: x / 255.0 -&gt; [0.0, 1.0]</text>
+  </g>
+
+  <!-- Right Arrow -->
+  <path d="M 665 270 L 705 270" stroke="#2563eb" stroke-width="3" marker-end="url(#mnistArrow)"/>
+  <text x="685" y="255" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#2563eb">Dataset</text>
+
+  <!-- Right: Dataset Partitioning -->
+  <g transform="translate(720, 90)">
+    <rect x="0" y="0" width="180" height="360" rx="8" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5" filter="url(#mnistShadow)"/>
+    <rect x="0" y="0" width="180" height="38" rx="8" fill="#fef3c7"/>
+    <text x="90" y="24" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#92400e">3. Partitioning</text>
+
+    <!-- Train Box -->
+    <rect x="15" y="60" width="150" height="110" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2"/>
+    <text x="90" y="85" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#1e40af">Training Set</text>
+    <text x="90" y="108" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" fill="#0f172a">60,000</text>
+    <text x="90" y="128" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#475569">images &amp; labels</text>
+    <text x="90" y="150" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#2563eb">x_train, y_train</text>
+
+    <!-- Test Box -->
+    <rect x="15" y="190" width="150" height="110" rx="6" fill="#f0fdf4" stroke="#10b981" stroke-width="1.2"/>
+    <text x="90" y="215" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#065f46">Test Set</text>
+    <text x="90" y="238" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" fill="#0f172a">10,000</text>
+    <text x="90" y="258" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#475569">images &amp; labels</text>
+    <text x="90" y="280" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#059669">x_test, y_test</text>
+
+    <text x="90" y="335" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Total: 70,000</text>
+  </g>
+</svg>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Résultat de l'inscription</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+
+        <h2> Informations de l'étudiant </h2>
+
+        <p>
+            <strong> Bonjour  :</strong>
+            {{ E1.get_nom() }} {{ E1.get_prenom() }}
+        </p>
+
+        
+        <p>
+            <strong>E-mail :</strong>
+            {{ E1.get_email() }}
+        </p>
+
+        <p>
+            <strong>Age :</strong>
+            {{ E1.get_age() }}
+        </p>
+        <p>
+            <strong> Niveau :</strong>
+            {{ E1.get_niveau() }}
+        </p>
+		<p>
+            <strong> Specialité :</strong>
+            {{ E1.get_specialite() }}
+        </p>
+        <a href="/">
+            Retour au formulaire
+        </a>
+
+    </div>
+
+</body>
+</html>

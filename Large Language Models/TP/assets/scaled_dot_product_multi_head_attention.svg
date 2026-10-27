@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <filter id="mhaShadow" x="-3%" y="-3%" width="106%" height="106%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <marker id="mhaArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#0f172a"/>
+    </marker>
+    <marker id="mhaBlueArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#0284c7"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="500" y="32" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Mechanisms of Attention: Scaled Dot-Product &amp; Multi-Head Attention</text>
+  <text x="500" y="52" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#475569">Detailed computational flow from scratch as implemented in TP1 (TensorFlow / Keras Layer)</text>
+
+  <!-- LEFT PANEL: Scaled Dot-Product Attention -->
+  <rect x="30" y="75" width="440" height="520" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" filter="url(#mhaShadow)"/>
+  <rect x="30" y="75" width="440" height="38" rx="12" fill="#e2e8f0"/>
+  <text x="250" y="100" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#0f172a">1. Scaled Dot-Product Attention (call)</text>
+
+  <!-- Inputs Q, K, V -->
+  <g transform="translate(60, 130)">
+    <rect x="0" y="0" width="80" height="32" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="40" y="21" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#1e40af">Query (Q)</text>
+
+    <rect x="130" y="0" width="80" height="32" rx="6" fill="#fdf4ff" stroke="#d946ef" stroke-width="1.5"/>
+    <text x="170" y="21" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#86198f">Key (K)</text>
+
+    <rect x="280" y="0" width="80" height="32" rx="6" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="320" y="21" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#14532d">Value (V)</text>
+  </g>
+
+  <!-- Step 1: Matmul Q and K^T -->
+  <line x1="100" y1="162" x2="155" y2="200" stroke="#0f172a" stroke-width="1.5" marker-end="url(#mhaArrow)"/>
+  <line x1="230" y1="162" x2="175" y2="200" stroke="#0f172a" stroke-width="1.5" marker-end="url(#mhaArrow)"/>
+  <rect x="110" y="200" width="110" height="36" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="165" y="216" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">MatMul</text>
+  <text x="165" y="229" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#475569">Q &#183; K&#7510; (transpose_b)</text>
+
+  <!-- Step 2: Scale -->
+  <line x1="165" y1="236" x2="165" y2="265" stroke="#0f172a" stroke-width="1.5" marker-end="url(#mhaArrow)"/>
+  <rect x="115" y="265" width="100" height="32" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="165" y="280" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Scale</text>
+  <text x="165" y="292" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#0284c7">Divide by &#8730;d&#7522;</text>
+
+  <!-- Step 3: Mask (Optional) -->
+  <line x1="165" y1="297" x2="165" y2="325" stroke="#0f172a" stroke-width="1.5" marker-end="url(#mhaArrow)"/>
+  <rect x="105" y="325" width="120" height="32" rx="6" fill="#fff7ed" stroke="#f97316" stroke-width="1.5"/>
+  <text x="165" y="340" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700" fill="#c2410c">Mask (Opt)</text>
+  <text x="165" y="352" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#7c2d12">+ (mask * -1e9)</text>
+
+  <!-- Step 4: Softmax -->
+  <line x1="165" y1="357" x2="165" y2="385" stroke="#0f172a" stroke-width="1.5" marker-end="url(#mhaArrow)"/>
+  <rect x="110" y="385" width="110" height="36" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="165" y="401" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#14532d">Softmax</text>
+  <text x="165" y="415" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#15803d">axis = -1 (Weights)</text>
+
+  <!-- Step 5: Matmul with V -->
+  <line x1="165" y1="421" x2="230" y2="460" stroke="#0f172a" stroke-width="1.5" marker-end="url(#mhaArrow)"/>
+  <line x1="340" y1="162" x2="255" y2="460" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#mhaArrow)"/>
+  <rect x="190" y="460" width="110" height="36" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="245" y="476" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">MatMul</text>
+  <text x="245" y="489" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#475569">Weights &#183; V</text>
+
+  <!-- Output -->
+  <line x1="245" y1="496" x2="245" y2="525" stroke="#0f172a" stroke-width="1.5" marker-end="url(#mhaArrow)"/>
+  <rect x="170" y="525" width="150" height="32" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="245" y="545" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#14532d">Output Tensor + Weights</text>
+
+
+  <!-- RIGHT PANEL: Multi-Head Attention Flow -->
+  <rect x="500" y="75" width="470" height="520" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" filter="url(#mhaShadow)"/>
+  <rect x="500" y="75" width="470" height="38" rx="12" fill="#e2e8f0"/>
+  <text x="735" y="100" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#0f172a">2. Multi-Head Attention Architecture</text>
+
+  <!-- Input Tensors -->
+  <rect x="585" y="125" width="300" height="30" rx="6" fill="#ffffff" stroke="#64748b"/>
+  <text x="735" y="145" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Input Sequences (V, K, Q) &#8712; &#8477;^(batch, seq, d_model)</text>
+
+  <!-- 4 Dense Linear Projections -->
+  <line x1="640" y1="155" x2="640" y2="185" stroke="#0f172a" stroke-width="1.5" marker-end="url(#mhaArrow)"/>
+  <line x1="735" y1="155" x2="735" y2="185" stroke="#0f172a" stroke-width="1.5" marker-end="url(#mhaArrow)"/>
+  <line x1="830" y1="155" x2="830" y2="185" stroke="#0f172a" stroke-width="1.5" marker-end="url(#mhaArrow)"/>
+
+  <rect x="590" y="185" width="95" height="32" rx="6" fill="#eff6ff" stroke="#3b82f6"/>
+  <text x="637" y="200" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#1e40af">Dense Wq</text>
+  <text x="637" y="211" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#1e3a8a">dim = d_model</text>
+
+  <rect x="688" y="185" width="95" height="32" rx="6" fill="#fdf4ff" stroke="#d946ef"/>
+  <text x="735" y="200" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#86198f">Dense Wk</text>
+  <text x="735" y="211" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#701a75">dim = d_model</text>
+
+  <rect x="785" y="185" width="95" height="32" rx="6" fill="#f0fdf4" stroke="#22c55e"/>
+  <text x="832" y="200" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#14532d">Dense Wv</text>
+  <text x="832" y="211" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#166534">dim = d_model</text>
+
+  <!-- split_heads function -->
+  <line x1="735" y1="217" x2="735" y2="245" stroke="#0f172a" stroke-width="1.5" marker-end="url(#mhaArrow)"/>
+  <rect x="575" y="245" width="320" height="42" rx="6" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="735" y="263" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">split_heads() Function</text>
+  <text x="735" y="278" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#0369a1">reshape(b, -1, num_heads, depth) &#8594; transpose [0, 2, 1, 3]</text>
+
+  <!-- Parallel Heads Boxes -->
+  <line x1="735" y1="287" x2="735" y2="315" stroke="#0f172a" stroke-width="1.5" marker-end="url(#mhaArrow)"/>
+
+  <g transform="translate(540, 315)">
+    <rect x="0" y="0" width="85" height="50" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+    <text x="42" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#0369a1">Head 1</text>
+    <text x="42" y="38" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#0f172a">ScaledDotAttn</text>
+
+    <rect x="100" y="0" width="85" height="50" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+    <text x="142" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#0369a1">Head 2</text>
+    <text x="142" y="38" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#0f172a">ScaledDotAttn</text>
+
+    <text x="210" y="30" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#64748b">&#8226;&#8226;&#8226;</text>
+
+    <rect x="235" y="0" width="95" height="50" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+    <text x="282" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#0369a1">Head h (num_heads)</text>
+    <text x="282" y="38" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#0f172a">ScaledDotAttn</text>
+  </g>
+
+  <!-- Recombine Heads -->
+  <line x1="735" y1="365" x2="735" y2="395" stroke="#0f172a" stroke-width="1.5" marker-end="url(#mhaArrow)"/>
+  <rect x="560" y="395" width="350" height="42" rx="6" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="735" y="413" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Recombine Heads (Concatenation)</text>
+  <text x="735" y="428" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#0369a1">transpose [0, 2, 1, 3] &#8594; reshape(batch, -1, d_model)</text>
+
+  <!-- Final Dense Layer -->
+  <line x1="735" y1="437" x2="735" y2="465" stroke="#0f172a" stroke-width="1.5" marker-end="url(#mhaArrow)"/>
+  <rect x="635" y="465" width="200" height="34" rx="6" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="735" y="482" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#5b21b6">Final Linear Projection</text>
+  <text x="735" y="494" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#6d28d9">self.dense = Dense(d_model)</text>
+
+  <!-- Final Output -->
+  <line x1="735" y1="499" x2="735" y2="525" stroke="#0f172a" stroke-width="1.5" marker-end="url(#mhaArrow)"/>
+  <rect x="610" y="525" width="250" height="32" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="735" y="545" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#14532d">Multi-Head Output &#8712; &#8477;^(batch, seq, d_model)</text>
+</svg>

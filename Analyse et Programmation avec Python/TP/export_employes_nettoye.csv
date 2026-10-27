@@ -1,0 +1,8 @@
+employe_id,nom,departement,date_embauche,salaire,performance_score,anciennete_annees,nom_complet_maj,prenom,prime_annuelle,niveau_seniorite
+E01,Mohamed Ben Ali,Data Science,2021-03-15,4500.0,92.0,5.6,MOHAMED BEN ALI,Mohamed,6750.0,Senior
+E02,Sonia Trabelsi,Machine Learning,2020-07-01,5200.0,95.0,6.3,SONIA TRABELSI,Sonia,7800.0,Senior
+E03,Karim Mansour,Data Engineering,2022-01-10,4650.0,88.0,4.8,KARIM MANSOUR,Karim,2325.0,Confirmé
+E04,Ines Jaziri,Data Science,2019-11-20,6100.0,87.0,6.9,INES JAZIRI,Ines,3050.0,Senior
+E05,Walid Gharbi,Marketing,2023-05-04,3200.0,74.0,3.5,WALID GHARBI,Walid,1600.0,Confirmé
+E06,Aya Bouazizi,Data Engineering,2021-09-12,4800.0,91.0,5.1,AYA BOUAZIZI,Aya,7200.0,Senior
+E07,Nader Hammami,Machine Learning,2024-02-01,3900.0,82.0,2.7,NADER HAMMAMI,Nader,1950.0,Confirmé

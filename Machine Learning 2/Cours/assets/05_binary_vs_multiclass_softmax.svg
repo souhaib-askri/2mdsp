@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 480" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <filter id="clsShadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <marker id="clsArrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2563eb" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="475" y="34" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Classification Output Layers: Binary Sigmoid vs Multi-Class Softmax</text>
+  <text x="475" y="54" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#475569">Probability Distribution Mapping &amp; Cross-Entropy Optimization (MNIST Context)</text>
+
+  <!-- Left: Binary Classification (Sigmoid) -->
+  <g transform="translate(40, 80)">
+    <rect x="0" y="0" width="410" height="370" rx="8" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5" filter="url(#clsShadow)"/>
+    <rect x="0" y="0" width="410" height="38" rx="8" fill="#dbeafe"/>
+    <text x="205" y="24" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#1e40af">Binary Classification (2 Classes)</text>
+
+    <!-- Linear Logit z -->
+    <rect x="30" y="65" width="90" height="45" rx="6" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.2"/>
+    <text x="75" y="88" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#475569">Linear Logit</text>
+    <text x="75" y="102" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#0f172a">z = wᵀx + b</text>
+
+    <!-- Arrow to Sigmoid -->
+    <path d="M 125 87 L 165 87" stroke="#2563eb" stroke-width="2" marker-end="url(#clsArrow)"/>
+
+    <!-- Sigmoid Box -->
+    <rect x="175" y="60" width="100" height="55" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="225" y="83" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1e40af">Sigmoid σ(z)</text>
+    <text x="225" y="101" text-anchor="middle" font-family="monospace" font-size="10" fill="#2563eb">1 / (1 + e⁻ᶻ)</text>
+
+    <!-- Arrow to Probability -->
+    <path d="M 280 87 L 315 87" stroke="#2563eb" stroke-width="2" marker-end="url(#clsArrow)"/>
+
+    <!-- Probability Output -->
+    <rect x="325" y="65" width="60" height="45" rx="6" fill="#dcfce7" stroke="#10b981" stroke-width="1.2"/>
+    <text x="355" y="86" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#065f46">ŷ ∈ (0,1)</text>
+    <text x="355" y="100" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#065f46">P(y=1|x)</text>
+
+    <!-- Decision Rule -->
+    <rect x="25" y="130" width="360" height="50" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="35" y="150" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Decision Threshold (τ = 0.5):</text>
+    <text x="35" y="168" font-family="monospace" font-size="11" fill="#2563eb">Class = 1 if ŷ ≥ 0.5 (i.e. z ≥ 0), else Class = 0</text>
+
+    <!-- Loss Formulation -->
+    <rect x="25" y="195" width="360" height="150" rx="6" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
+    <text x="35" y="220" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#1e40af">Loss: Binary Cross-Entropy (BCE)</text>
+    <text x="35" y="246" font-family="monospace" font-size="11" font-weight="600" fill="#0f172a">ℒ(y, ŷ) = - [ y·log(ŷ) + (1-y)·log(1-ŷ) ]</text>
+    
+    <text x="35" y="278" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#334155">• If true y = 1 : ℒ = -log(ŷ) → penalizes small ŷ</text>
+    <text x="35" y="296" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#334155">• If true y = 0 : ℒ = -log(1-ŷ) → penalizes large ŷ</text>
+    <text x="35" y="324" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#166534">Gradient: ∂ℒ/∂z = ŷ - y (Remarkably simple &amp; linear error)</text>
+  </g>
+
+  <!-- Right: Multi-Class Classification (Softmax - MNIST Context) -->
+  <g transform="translate(485, 80)">
+    <rect x="0" y="0" width="425" height="370" rx="8" fill="#ffffff" stroke="#10b981" stroke-width="1.5" filter="url(#clsShadow)"/>
+    <rect x="0" y="0" width="425" height="38" rx="8" fill="#d1fae5"/>
+    <text x="212" y="24" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#065f46">Multi-Class Classification (K = 10 Classes - MNIST)</text>
+
+    <!-- Multiple Logits z1..zK -->
+    <rect x="25" y="55" width="95" height="65" rx="6" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.2"/>
+    <text x="72" y="75" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#475569">K Logits Vector</text>
+    <text x="72" y="93" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#0f172a">z = [z₀, z₁, ..., z₉]ᵀ</text>
+    <text x="72" y="110" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#64748b">Raw scores ∈ ℝ¹⁰</text>
+
+    <!-- Arrow to Softmax -->
+    <path d="M 125 87 L 165 87" stroke="#10b981" stroke-width="2" marker-end="url(#clsArrow)"/>
+
+    <!-- Softmax Layer -->
+    <rect x="175" y="55" width="115" height="65" rx="6" fill="#f0fdf4" stroke="#10b981" stroke-width="1.5"/>
+    <text x="232" y="77" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#065f46">Softmax Layer</text>
+    <text x="232" y="96" text-anchor="middle" font-family="monospace" font-size="10" fill="#059669">pₖ = e^zₖ / ∑ e^zⱼ</text>
+    <text x="232" y="112" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#047857">Normalizes to 1.0</text>
+
+    <!-- Arrow to Probabilities Vector -->
+    <path d="M 295 87 L 330 87" stroke="#10b981" stroke-width="2" marker-end="url(#clsArrow)"/>
+
+    <!-- Probabilities Vector -->
+    <rect x="338" y="55" width="70" height="65" rx="6" fill="#ecfdf5" stroke="#059669" stroke-width="1.2"/>
+    <text x="373" y="76" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#065f46">Probabilities</text>
+    <text x="373" y="94" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#065f46">p ∈ [0, 1]¹⁰</text>
+    <text x="373" y="111" text-anchor="middle" font-family="monospace" font-size="9" fill="#047857">∑ pₖ = 1.0</text>
+
+    <!-- Decision Rule -->
+    <rect x="25" y="130" width="375" height="50" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="35" y="150" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Argmax Prediction Rule:</text>
+    <text x="35" y="168" font-family="monospace" font-size="11" fill="#059669">Predicted Digit = argmax_k ( pₖ ) ∈ {0, 1, ..., 9}</text>
+
+    <!-- Loss Formulation -->
+    <rect x="25" y="195" width="375" height="150" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+    <text x="35" y="220" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#065f46">Loss: Categorical Cross-Entropy (CCE)</text>
+    <text x="35" y="246" font-family="monospace" font-size="11" font-weight="600" fill="#0f172a">ℒ(y, p) = - ∑ₖ yₖ · log(pₖ) = - log(p_c)</text>
+    
+    <text x="35" y="278" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#334155">• y is One-Hot Encoded: y = [0, ..., 1, ..., 0]ᵀ</text>
+    <text x="35" y="296" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#334155">• Only the correct class c contributes: ℒ = -log(p_c)</text>
+    <text x="35" y="324" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#166534">Gradient: ∂ℒ/∂zₖ = pₖ - yₖ (Exact Softmax residual vector!)</text>
+  </g>
+</svg>

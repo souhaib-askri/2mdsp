@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 500" width="100%" height="auto" style="background:transparent; font-family:system-ui, -apple-system, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="470" y="38" text-anchor="middle" fill="#000000" font-size="22" font-weight="bold">Core Pillars of Object-Oriented Programming (OOP) in Python</text>
+  <text x="470" y="64" text-anchor="middle" fill="#334155" font-size="14" font-weight="500">Language Mechanics: Encapsulation, Inheritance, Polymorphism &amp; Abstraction</text>
+
+  <!-- Pillar 1: Encapsulation -->
+  <g transform="translate(25, 95)">
+    <rect x="0" y="0" width="205" height="375" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="12" y="14" width="181" height="34" rx="6" fill="#eff6ff"/>
+    <text x="102" y="37" text-anchor="middle" fill="#1d4ed8" font-size="15" font-weight="bold">1. Encapsulation</text>
+
+    <text x="16" y="75" fill="#000000" font-size="12" font-weight="bold">Data Hiding &amp; Scope:</text>
+    <rect x="15" y="85" width="175" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="22" y="102" fill="#000000" font-size="11" font-family="monospace">public_var</text>
+    <text x="135" y="102" fill="#64748b" font-size="10">Accessible</text>
+
+    <rect x="15" y="118" width="175" height="26" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="22" y="135" fill="#000000" font-size="11" font-family="monospace">_protected</text>
+    <text x="135" y="135" fill="#d97706" font-size="10">Convention</text>
+
+    <rect x="15" y="151" width="175" height="26" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+    <text x="22" y="168" fill="#b91c1c" font-size="11" font-family="monospace">__private</text>
+    <text x="110" y="168" fill="#b91c1c" font-size="10">Name Mangling</text>
+
+    <text x="16" y="205" fill="#000000" font-size="12" font-weight="bold">Control Accessors:</text>
+    <text x="16" y="225" fill="#334155" font-size="11">• Traditional Getters &amp; Setters:</text>
+    <text x="24" y="242" fill="#475569" font-size="10" font-family="monospace">get_nom() / set_nom()</text>
+    <text x="16" y="265" fill="#334155" font-size="11">• Pythonic Properties:</text>
+    <text x="24" y="282" fill="#475569" font-size="10" font-family="monospace">@property</text>
+    <text x="24" y="298" fill="#475569" font-size="10" font-family="monospace">@nom.setter</text>
+
+    <rect x="12" y="320" width="181" height="42" rx="6" fill="#f1f5f9"/>
+    <text x="102" y="337" text-anchor="middle" fill="#0f172a" font-size="10" font-weight="bold">Protection Goal:</text>
+    <text x="102" y="352" text-anchor="middle" fill="#475569" font-size="10">Guards internal object state</text>
+  </g>
+
+  <!-- Pillar 2: Inheritance -->
+  <g transform="translate(255, 95)">
+    <rect x="0" y="0" width="205" height="375" rx="12" fill="#ffffff" stroke="#059669" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="12" y="14" width="181" height="34" rx="6" fill="#ecfdf5"/>
+    <text x="102" y="37" text-anchor="middle" fill="#047857" font-size="15" font-weight="bold">2. Inheritance</text>
+
+    <text x="16" y="75" fill="#000000" font-size="12" font-weight="bold">Class Hierarchies:</text>
+    <rect x="25" y="88" width="155" height="30" rx="5" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+    <text x="102" y="108" text-anchor="middle" fill="#000000" font-size="11" font-weight="bold">Base / Parent Class</text>
+
+    <line x1="102" y1="118" x2="102" y2="135" stroke="#059669" stroke-width="2"/>
+    <polygon points="102,137 98,131 106,131" fill="#059669"/>
+
+    <rect x="25" y="139" width="155" height="30" rx="5" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+    <text x="102" y="159" text-anchor="middle" fill="#000000" font-size="11" font-weight="bold">Child / Derived Class</text>
+
+    <text x="16" y="195" fill="#000000" font-size="12" font-weight="bold">Core Capabilities:</text>
+    <text x="16" y="215" fill="#334155" font-size="11">• Code Reuse &amp; Specialization</text>
+    <text x="16" y="235" fill="#334155" font-size="11">• <tspan font-family="monospace">super().__init__(...)</tspan></text>
+    <text x="16" y="255" fill="#334155" font-size="11">• Multiple Inheritance:</text>
+    <text x="24" y="272" fill="#475569" font-size="10" font-family="monospace">class Child(M1, M2):</text>
+    <text x="16" y="295" fill="#334155" font-size="11">• MRO (Resolution Order):</text>
+    <text x="24" y="310" fill="#475569" font-size="10" font-family="monospace">ClassName.__mro__</text>
+
+    <rect x="12" y="320" width="181" height="42" rx="6" fill="#f1f5f9"/>
+    <text x="102" y="337" text-anchor="middle" fill="#0f172a" font-size="10" font-weight="bold">Reusability Goal:</text>
+    <text x="102" y="352" text-anchor="middle" fill="#475569" font-size="10">Factorize common logic</text>
+  </g>
+
+  <!-- Pillar 3: Polymorphism -->
+  <g transform="translate(485, 95)">
+    <rect x="0" y="0" width="205" height="375" rx="12" fill="#ffffff" stroke="#7c3aed" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="12" y="14" width="181" height="34" rx="6" fill="#f5f3ff"/>
+    <text x="102" y="37" text-anchor="middle" fill="#6d28d9" font-size="15" font-weight="bold">3. Polymorphism</text>
+
+    <text x="16" y="75" fill="#000000" font-size="12" font-weight="bold">One Interface, Many Forms:</text>
+    <rect x="15" y="88" width="175" height="48" rx="6" fill="#faf5ff" stroke="#d8b4fe" stroke-width="1"/>
+    <text x="22" y="106" fill="#000000" font-size="11" font-family="monospace">def afficher(self):</text>
+    <text x="22" y="124" fill="#6b21a8" font-size="10">Overridden in each subclass</text>
+
+    <text x="16" y="160" fill="#000000" font-size="12" font-weight="bold">Types in Python:</text>
+    <text x="16" y="180" fill="#334155" font-size="11">• <tspan font-weight="bold">Method Overriding:</tspan></text>
+    <text x="24" y="196" fill="#475569" font-size="10">Dynamic dispatch at runtime</text>
+    <text x="16" y="216" fill="#334155" font-size="11">• <tspan font-weight="bold">Duck Typing:</tspan></text>
+    <text x="24" y="232" fill="#475569" font-size="10">"If it walks like a duck..."</text>
+    <text x="16" y="252" fill="#334155" font-size="11">• <tspan font-weight="bold">Overloading Emulation:</tspan></text>
+    <text x="24" y="268" fill="#475569" font-size="10">Default values &amp; <tspan font-family="monospace">*args</tspan></text>
+
+    <rect x="12" y="320" width="181" height="42" rx="6" fill="#f1f5f9"/>
+    <text x="102" y="337" text-anchor="middle" fill="#0f172a" font-size="10" font-weight="bold">Flexibility Goal:</text>
+    <text x="102" y="352" text-anchor="middle" fill="#475569" font-size="10">Uniform client invocation</text>
+  </g>
+
+  <!-- Pillar 4: Abstraction -->
+  <g transform="translate(715, 95)">
+    <rect x="0" y="0" width="200" height="375" rx="12" fill="#ffffff" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="12" y="14" width="176" height="34" rx="6" fill="#fffbeb"/>
+    <text x="100" y="37" text-anchor="middle" fill="#b45309" font-size="15" font-weight="bold">4. Abstraction</text>
+
+    <text x="16" y="75" fill="#000000" font-size="12" font-weight="bold">Contract Enforcement:</text>
+    <rect x="15" y="88" width="170" height="52" rx="6" fill="#fffbeb" stroke="#fde68a" stroke-width="1"/>
+    <text x="22" y="106" fill="#000000" font-size="10" font-family="monospace">from abc import ABC,</text>
+    <text x="22" y="122" fill="#000000" font-size="10" font-family="monospace">abstractmethod</text>
+    <text x="22" y="134" fill="#b45309" font-size="9">class Shape(ABC): ...</text>
+
+    <text x="16" y="165" fill="#000000" font-size="12" font-weight="bold">Key Characteristics:</text>
+    <text x="16" y="185" fill="#334155" font-size="11">• Cannot instantiate directly</text>
+    <text x="16" y="205" fill="#334155" font-size="11">• Mandates implementation:</text>
+    <text x="24" y="221" fill="#475569" font-size="10">Subclasses MUST implement</text>
+    <text x="16" y="245" fill="#334155" font-size="11">• Pure Interfaces:</text>
+    <text x="24" y="261" fill="#475569" font-size="10">Only abstract methods</text>
+    <text x="24" y="277" fill="#475569" font-size="10">No concrete attributes</text>
+
+    <rect x="12" y="320" width="176" height="42" rx="6" fill="#f1f5f9"/>
+    <text x="100" y="337" text-anchor="middle" fill="#0f172a" font-size="10" font-weight="bold">Design Goal:</text>
+    <text x="100" y="352" text-anchor="middle" fill="#475569" font-size="10">Enforce architectural contracts</text>
+  </g>
+</svg>

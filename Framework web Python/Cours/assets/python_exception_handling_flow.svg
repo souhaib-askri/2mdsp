@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 520" width="100%" height="auto" style="background:transparent; font-family:system-ui, -apple-system, sans-serif;">
+  <defs>
+    <filter id="flow-shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0284c7"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#16a34a"/>
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="470" y="38" text-anchor="middle" fill="#000000" font-size="22" font-weight="bold">Python Exception Handling Control Flow</text>
+  <text x="470" y="64" text-anchor="middle" fill="#334155" font-size="14" font-weight="500">Execution Lifecycle: try, except, else, and finally Structure</text>
+
+  <!-- Step 1: try block -->
+  <rect x="360" y="90" width="220" height="60" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2" filter="url(#flow-shadow)"/>
+  <rect x="370" y="96" width="60" height="22" rx="4" fill="#dbeafe"/>
+  <text x="400" y="112" text-anchor="middle" fill="#1d4ed8" font-size="12" font-weight="bold">TRY</text>
+  <text x="470" y="132" text-anchor="middle" fill="#000000" font-size="13" font-weight="bold">Execute Protected Code</text>
+
+  <!-- Decision: Error Occurred? -->
+  <polygon points="470,180 575,230 470,280 365,230" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#flow-shadow)"/>
+  <text x="470" y="226" text-anchor="middle" fill="#000000" font-size="13" font-weight="bold">Exception</text>
+  <text x="470" y="244" text-anchor="middle" fill="#0369a1" font-size="12" font-weight="bold">Raised?</text>
+
+  <path d="M 470 150 L 470 176" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Path NO -> ELSE Block -->
+  <path d="M 365 230 L 190 230 L 190 270" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <rect x="235" y="212" width="70" height="22" rx="4" fill="#dcfce7"/>
+  <text x="270" y="227" text-anchor="middle" fill="#15803d" font-size="11" font-weight="bold">NO (Success)</text>
+
+  <rect x="80" y="275" width="220" height="75" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="2" filter="url(#flow-shadow)"/>
+  <rect x="90" y="283" width="70" height="22" rx="4" fill="#dcfce7"/>
+  <text x="125" y="299" text-anchor="middle" fill="#15803d" font-size="12" font-weight="bold">ELSE</text>
+  <text x="190" y="322" text-anchor="middle" fill="#000000" font-size="12" font-weight="bold">Runs ONLY on Success</text>
+  <text x="190" y="340" text-anchor="middle" fill="#475569" font-size="11">Data parsing, commit, forward</text>
+
+  <!-- Path YES -> EXCEPT Blocks -->
+  <path d="M 575 230 L 750 230 L 750 270" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red)"/>
+  <rect x="635" y="212" width="70" height="22" rx="4" fill="#fee2e2"/>
+  <text x="670" y="227" text-anchor="middle" fill="#b91c1c" font-size="11" font-weight="bold">YES (Error)</text>
+
+  <rect x="640" y="275" width="220" height="75" rx="10" fill="#ffffff" stroke="#dc2626" stroke-width="2" filter="url(#flow-shadow)"/>
+  <rect x="650" y="283" width="70" height="22" rx="4" fill="#fee2e2"/>
+  <text x="685" y="299" text-anchor="middle" fill="#b91c1c" font-size="12" font-weight="bold">EXCEPT</text>
+  <text x="750" y="322" text-anchor="middle" fill="#000000" font-size="12" font-weight="bold">Catch &amp; Handle Error</text>
+  <text x="750" y="340" text-anchor="middle" fill="#475569" font-size="11">ZeroDivision, ValueError, Custom</text>
+
+  <!-- Merge into FINALLY Block -->
+  <rect x="360" y="390" width="220" height="75" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="2" filter="url(#flow-shadow)"/>
+  <rect x="370" y="398" width="75" height="22" rx="4" fill="#ede9fe"/>
+  <text x="407" y="414" text-anchor="middle" fill="#6d28d9" font-size="12" font-weight="bold">FINALLY</text>
+  <text x="470" y="437" text-anchor="middle" fill="#000000" font-size="12" font-weight="bold">Guaranteed Cleanup</text>
+  <text x="470" y="455" text-anchor="middle" fill="#475569" font-size="11">Always runs: close files &amp; DB</text>
+
+  <!-- Connectors to FINALLY -->
+  <path d="M 190 350 L 190 427 L 354 427" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-purple)"/>
+  <path d="M 750 350 L 750 427 L 586 427" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-purple)"/>
+
+  <!-- Exit Badge -->
+  <rect x="370" y="485" width="200" height="26" rx="13" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
+  <text x="470" y="502" text-anchor="middle" fill="#334155" font-size="11" font-weight="600">Resume Normal Script Flow</text>
+</svg>

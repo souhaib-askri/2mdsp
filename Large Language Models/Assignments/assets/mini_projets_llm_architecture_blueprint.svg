@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 640" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <filter id="pShadow" x="-3%" y="-3%" width="106%" height="106%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <marker id="flowArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#0284c7"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="510" y="32" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0f172a">End-to-End Enterprise LLM Project Architecture Blueprint</text>
+  <text x="510" y="52" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#475569">Mastering the 6 Mandatory Technical Constraints: Architecture, Frameworks, Prompting, Evaluation, Safety, Optimization</text>
+
+  <!-- Pillar 1: Base Model & Foundation -->
+  <g transform="translate(25, 75)">
+    <rect x="0" y="0" width="145" height="535" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" filter="url(#pShadow)"/>
+    <rect x="0" y="0" width="145" height="34" rx="10" fill="#dbeafe"/>
+    <text x="72" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" font-weight="700" fill="#1e40af">1. Foundation</text>
+
+    <text x="12" y="55" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700" fill="#1e3a8a">Model Selection:</text>
+    <text x="12" y="73" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#334155">&#8226; LLaMA 3.1 (8B)</text>
+    <text x="12" y="90" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#334155">&#8226; Mistral 7B / Nemo</text>
+    <text x="12" y="107" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#334155">&#8226; Qwen 2.5 (7B/14B)</text>
+    <text x="12" y="124" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#334155">&#8226; DeepSeek-V3 / R1</text>
+
+    <rect x="8" y="145" width="129" height="150" rx="6" fill="#ffffff" stroke="#bfdbfe"/>
+    <text x="15" y="165" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#1e40af">Architecture Logic:</text>
+    <text x="15" y="183" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Parameter budget</text>
+    <text x="15" y="199" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Context window (8k-128k)</text>
+    <text x="15" y="215" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; License (Commercial/OSS)</text>
+    <text x="15" y="231" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Language specialization</text>
+    <text x="15" y="247" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Hardware constraints</text>
+    <text x="15" y="265" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#1e40af">(VRAM &lt; 16GB)</text>
+
+    <rect x="8" y="310" width="129" height="205" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="15" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#0f172a">7 Project Tracks:</text>
+    <text x="15" y="348" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#334155">1. Text Generation</text>
+    <text x="15" y="364" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#334155">2. Domain Translation</text>
+    <text x="15" y="380" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#334155">3. Multi-Doc Summary</text>
+    <text x="15" y="396" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#334155">4. RAG / Q&amp;A Chatbot</text>
+    <text x="15" y="412" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#334155">5. Text Classification</text>
+    <text x="15" y="428" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#334155">6. Sentiment Analysis</text>
+    <text x="15" y="444" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#334155">7. Code &amp; Text-to-SQL</text>
+    <text x="15" y="475" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="700" fill="#1e40af">Target Domains:</text>
+    <text x="15" y="492" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#475569">Health, Finance, Law,</text>
+    <text x="15" y="506" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#475569">Edu, HR, Retail</text>
+  </g>
+
+  <!-- Flow 1 -> 2 -->
+  <line x1="172" y1="340" x2="193" y2="340" stroke="#0284c7" stroke-width="2" marker-end="url(#flowArrow)"/>
+
+  <!-- Pillar 2: Frameworks & Fine-Tuning / RAG -->
+  <g transform="translate(195, 75)">
+    <rect x="0" y="0" width="180" height="535" rx="10" fill="#faf5ff" stroke="#d8b4fe" stroke-width="1.5" filter="url(#pShadow)"/>
+    <rect x="0" y="0" width="180" height="34" rx="10" fill="#f3e8ff"/>
+    <text x="90" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" font-weight="700" fill="#6b21a8">2. Frameworks &amp; Engine</text>
+
+    <!-- Track A: Hugging Face -->
+    <rect x="10" y="48" width="160" height="175" rx="8" fill="#ffffff" stroke="#c084fc"/>
+    <text x="20" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700" fill="#6b21a8">Track A: Hugging Face</text>
+    <text x="20" y="86" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; Transformers (AutoModel)</text>
+    <text x="20" y="102" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; PEFT / LoRA / QLoRA</text>
+    <text x="20" y="118" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; SFTTrainer (TRL)</text>
+    <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; Datasets library</text>
+    <text x="20" y="152" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" font-weight="600" fill="#7c3aed">Adapter Weight Math:</text>
+    <text x="20" y="170" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#0284c7">W = W&#8320; + (B &#183; A) &#183; (&#945;/r)</text>
+    <text x="20" y="186" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#475569">Trains &lt; 1% of parameters</text>
+    <text x="20" y="200" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#475569">Saves 80% VRAM memory</text>
+
+    <!-- Track B: LangChain / RAG -->
+    <rect x="10" y="235" width="160" height="280" rx="8" fill="#ffffff" stroke="#c084fc"/>
+    <text x="20" y="255" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700" fill="#6b21a8">Track B: LangChain / RAG</text>
+    <text x="20" y="273" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; LangChain Core &amp; LCEL</text>
+    <text x="20" y="289" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; Vector Stores (Chroma, FAISS)</text>
+    <text x="20" y="305" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; Embedding models (BGE)</text>
+    <text x="20" y="321" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; RecursiveSplitter (Chunking)</text>
+    <text x="20" y="337" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; Contextual Retrieval</text>
+    <text x="20" y="353" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; Agent Tools &amp; ReAct</text>
+
+    <rect x="15" y="375" width="150" height="125" rx="5" fill="#faf5ff" stroke="#e9d5ff"/>
+    <text x="22" y="393" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" font-weight="700" fill="#6b21a8">RAG Pipeline Flow:</text>
+    <text x="22" y="410" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#334155">Docs &#8594; Chunks &#8594; Vectors</text>
+    <text x="22" y="426" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#334155">Query &#8594; Cosine Top-k</text>
+    <text x="22" y="442" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#334155">Prompt + Retrieved Chunks</text>
+    <text x="22" y="458" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#334155">&#8594; Synthesized Response</text>
+    <text x="22" y="480" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" font-weight="600" fill="#15803d">Eliminates Hallucinations</text>
+  </g>
+
+  <!-- Flow 2 -> 3 -->
+  <line x1="377" y1="340" x2="398" y2="340" stroke="#0284c7" stroke-width="2" marker-end="url(#flowArrow)"/>
+
+  <!-- Pillar 3: Prompt Engineering -->
+  <g transform="translate(400, 75)">
+    <rect x="0" y="0" width="155" height="535" rx="10" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.5" filter="url(#pShadow)"/>
+    <rect x="0" y="0" width="155" height="34" rx="10" fill="#fef3c7"/>
+    <text x="77" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#92400e">3. Prompt Engineering</text>
+
+    <rect x="10" y="50" width="135" height="135" rx="6" fill="#ffffff" stroke="#fde68a"/>
+    <text x="18" y="70" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#92400e">Strict System Prompts:</text>
+    <text x="18" y="88" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Explicit Persona</text>
+    <text x="18" y="104" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Tone, audience, role</text>
+    <text x="18" y="120" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Negative constraints</text>
+    <text x="18" y="136" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Strict JSON / Pydantic</text>
+    <text x="18" y="152" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">structured outputs</text>
+
+    <rect x="10" y="200" width="135" height="145" rx="6" fill="#ffffff" stroke="#fde68a"/>
+    <text x="18" y="220" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#92400e">Few-Shot Prompting:</text>
+    <text x="18" y="238" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Exemplar pairs (x, y)</text>
+    <text x="18" y="254" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Establishes exact style</text>
+    <text x="18" y="270" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Domain terminology</text>
+    <text x="18" y="286" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Error-handling samples</text>
+    <text x="18" y="304" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#b45309">No weights updated;</text>
+    <text x="18" y="318" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#475569">in-context learning</text>
+
+    <rect x="10" y="360" width="135" height="155" rx="6" fill="#ffffff" stroke="#fde68a"/>
+    <text x="18" y="380" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#92400e">Chain-of-Thought (CoT):</text>
+    <text x="18" y="398" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; "Think step by step"</text>
+    <text x="18" y="414" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Intermediate reasoning</text>
+    <text x="18" y="430" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Multi-hop verification</text>
+    <text x="18" y="446" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Self-Consistency voting</text>
+    <text x="18" y="475" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" font-weight="600" fill="#15803d">Boosts accuracy on</text>
+    <text x="18" y="490" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#15803d">complex logic by &gt;30%</text>
+  </g>
+
+  <!-- Flow 3 -> 4 -->
+  <line x1="557" y1="340" x2="578" y2="340" stroke="#0284c7" stroke-width="2" marker-end="url(#flowArrow)"/>
+
+  <!-- Pillar 4: Evaluation & Safety -->
+  <g transform="translate(580, 75)">
+    <rect x="0" y="0" width="180" height="535" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5" filter="url(#pShadow)"/>
+    <rect x="0" y="0" width="180" height="34" rx="10" fill="#dcfce7"/>
+    <text x="90" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#14532d">4. Evaluation &amp; Safety</text>
+
+    <!-- Quantitative Metrics -->
+    <rect x="10" y="50" width="160" height="210" rx="6" fill="#ffffff" stroke="#bbf7d0"/>
+    <text x="18" y="70" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#14532d">Quantitative Metrics:</text>
+    <text x="18" y="88" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; Generation/Summarization:</text>
+    <text x="24" y="104" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#0284c7">ROUGE-1/2/L, BLEU-4</text>
+    <text x="18" y="122" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; Classification/Sentiment:</text>
+    <text x="24" y="138" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#0284c7">Accuracy, F1-Macro</text>
+    <text x="18" y="156" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; Language Modeling:</text>
+    <text x="24" y="172" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#0284c7">Perplexity = exp(Loss)</text>
+    <text x="18" y="190" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; Modern LLM Benchmark:</text>
+    <text x="24" y="206" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#7c3aed">LLM-as-a-Judge (Rubric)</text>
+    <text x="24" y="222" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#475569">RAGAS: Faithfulness &amp; Recall</text>
+
+    <!-- Safety & Guardrails -->
+    <rect x="10" y="275" width="160" height="235" rx="6" fill="#ffffff" stroke="#bbf7d0"/>
+    <text x="18" y="295" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#b91c1c">Limitations &amp; Safety:</text>
+    <text x="18" y="313" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Hallucination detection</text>
+    <text x="18" y="329" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Citation &amp; source grounding</text>
+    <text x="18" y="345" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Prompt injection defenses</text>
+    <text x="18" y="361" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; PII &amp; sensitive data masking</text>
+    <text x="18" y="377" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#8226; Demographic bias audits</text>
+
+    <rect x="15" y="398" width="150" height="95" rx="5" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="22" y="416" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="700" fill="#991b1b">Guardrails Tools:</text>
+    <text x="22" y="432" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#334155">&#8226; NeMo Guardrails</text>
+    <text x="22" y="448" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#334155">&#8226; Llama Guard 3</text>
+    <text x="22" y="464" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" fill="#334155">&#8226; Output JSON validators</text>
+  </g>
+
+  <!-- Flow 4 -> 5 -->
+  <line x1="762" y1="340" x2="783" y2="340" stroke="#0284c7" stroke-width="2" marker-end="url(#flowArrow)"/>
+
+  <!-- Pillar 5: Optimization & Delivery (Bonus Modules) -->
+  <g transform="translate(785, 75)">
+    <rect x="0" y="0" width="210" height="535" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5" filter="url(#pShadow)"/>
+    <rect x="0" y="0" width="210" height="34" rx="10" fill="#ffedd5"/>
+    <text x="105" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#7c2d12">5. Optimization &amp; Demo (Bonus)</text>
+
+    <!-- 4-bit Quantization -->
+    <rect x="10" y="50" width="190" height="175" rx="6" fill="#ffffff" stroke="#fed7aa"/>
+    <text x="18" y="70" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#c2410c">&#9733; 4-bit Quantization (Bonus):</text>
+    <text x="18" y="88" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; FP16 (16 bits) &#8594; INT4 (4 bits)</text>
+    <text x="18" y="104" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; 75% VRAM memory reduction</text>
+    <text x="18" y="120" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; Formats: GGUF, AWQ, EXL2</text>
+    <text x="18" y="136" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; Runtimes: llama.cpp, vLLM</text>
+    <text x="18" y="152" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; bitsandbytes 4-bit NF4</text>
+    <text x="18" y="172" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#15803d">Runs 8B model on 6GB GPU!</text>
+
+    <!-- Multimodality -->
+    <rect x="10" y="240" width="190" height="110" rx="6" fill="#ffffff" stroke="#fed7aa"/>
+    <text x="18" y="260" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#c2410c">&#9733; Multimodality (Bonus):</text>
+    <text x="18" y="278" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; Vision + Text Foundation</text>
+    <text x="18" y="294" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; Models: LLaVA, Qwen2-VL</text>
+    <text x="18" y="310" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; Document Visual QA</text>
+    <text x="18" y="326" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" fill="#334155">&#8226; Charts &amp; Medical Scans</text>
+
+    <!-- Delivery Checklist -->
+    <rect x="10" y="365" width="190" height="155" rx="6" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="18" y="385" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#0f172a">Deliverables &amp; Defense:</text>
+    <text x="18" y="403" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#10004; Functional App (Streamlit/Gradio)</text>
+    <text x="18" y="419" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#10004; Clean documented GitHub repo</text>
+    <text x="18" y="435" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#10004; 15-minute PPT Presentation</text>
+    <text x="18" y="451" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#10004; Live interactive demo</text>
+    <text x="18" y="467" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#334155">&#10004; Rigorous evaluation charts</text>
+    <text x="18" y="495" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="700" fill="#1e40af">Binomial Team Project</text>
+  </g>
+</svg>

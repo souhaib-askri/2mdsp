@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 420" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#475569"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="425" y="32" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Python Execution Model vs Compiled Languages (C/C++)</text>
+  <text x="425" y="52" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#475569">Understanding Bytecode, Dynamic Typing Overhead, and C Extensions Speed</text>
+
+  <!-- Section 1: Compiled Languages (C/C++) -->
+  <g transform="translate(40, 75)">
+    <rect width="770" height="140" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="180" height="28" rx="6" fill="#0284c7"/>
+    <text x="90" y="19" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Compiled Path (C / C++)</text>
+
+    <!-- Step 1: Source -->
+    <rect x="30" y="45" width="130" height="65" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="1.5"/>
+    <text x="95" y="72" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Source Code</text>
+    <text x="95" y="92" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">program.c (Typed)</text>
+
+    <!-- Arrow 1 -->
+    <line x1="160" y1="78" x2="215" y2="78" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="187" y="70" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#475569">gcc / clang</text>
+
+    <!-- Step 2: Compiler -->
+    <rect x="225" y="45" width="140" height="65" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="1.5"/>
+    <text x="295" y="72" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Ahead-of-Time</text>
+    <text x="295" y="92" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">Direct Machine Code</text>
+
+    <!-- Arrow 2 -->
+    <line x1="365" y1="78" x2="420" y2="78" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Step 3: Binary Executable -->
+    <rect x="430" y="45" width="130" height="65" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="1.5"/>
+    <text x="495" y="72" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Binary (.exe)</text>
+    <text x="495" y="92" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">Machine Instructions</text>
+
+    <!-- Arrow 3 -->
+    <line x1="560" y1="78" x2="615" y2="78" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Step 4: Hardware/CPU Execution -->
+    <rect x="625" y="45" width="120" height="65" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+    <text x="685" y="70" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#047857">CPU Execution</text>
+    <text x="685" y="90" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#059669">Fastest (Direct)</text>
+  </g>
+
+  <!-- Section 2: Python (Interpreted / PVM) -->
+  <g transform="translate(40, 235)">
+    <rect width="770" height="160" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="180" height="28" rx="6" fill="#7c3aed"/>
+    <text x="90" y="19" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Python Path (CPython)</text>
+
+    <!-- Step 1: Source -->
+    <rect x="30" y="45" width="130" height="65" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+    <text x="95" y="72" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Python Script</text>
+    <text x="95" y="92" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">script.py (Dynamic)</text>
+
+    <!-- Arrow 1 -->
+    <line x1="160" y1="78" x2="215" y2="78" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="187" y="70" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#475569">Compile</text>
+
+    <!-- Step 2: Bytecode -->
+    <rect x="225" y="45" width="140" height="65" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+    <text x="295" y="72" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Bytecode (.pyc)</text>
+    <text x="295" y="92" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">Platform-neutral</text>
+
+    <!-- Arrow 2 -->
+    <line x1="365" y1="78" x2="420" y2="78" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Step 3: Python Virtual Machine -->
+    <rect x="430" y="45" width="150" height="65" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+    <text x="505" y="68" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#0f172a">PVM (Interpreter)</text>
+    <text x="505" y="86" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">Line-by-line eval</text>
+    <text x="505" y="100" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#b91c1c">+ Type check overhead</text>
+
+    <!-- Arrow 3 -->
+    <line x1="580" y1="78" x2="635" y2="78" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Step 4: CPU -->
+    <rect x="645" y="45" width="105" height="65" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+    <text x="697" y="72" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#9a3412">CPU Output</text>
+    <text x="697" y="92" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#c2410c">Slower natively</text>
+
+    <!-- Bottom note on C extensions -->
+    <rect x="150" y="122" width="550" height="26" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+    <text x="425" y="139" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#166534">★ Acceleration Solution: Heavy data ops delegate directly to C/C++ backends (NumPy, Pandas, PyTorch)</text>
+  </g>
+</svg>

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 430" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="440" y="30" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Pandas Indexing Mechanics: .loc vs .iloc vs [ ]</text>
+  <text x="440" y="50" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#475569">Label-Based vs Integer-Based Indexing and Slice Boundary Differences</text>
+
+  <!-- Column 1: .loc -->
+  <g transform="translate(30, 80)">
+    <rect width="260" height="320" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2" filter="url(#shadow)"/>
+    <rect width="260" height="34" rx="8" fill="#2563eb"/>
+    <text x="130" y="23" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">.loc[rows, cols]</text>
+
+    <!-- Subtitle -->
+    <text x="15" y="58" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#1e40af">Label-Based Selection</text>
+
+    <!-- Specs -->
+    <rect x="15" y="70" width="230" height="75" rx="6" fill="#eff6ff"/>
+    <text x="25" y="90" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#1e3a8a">Slice Boundary Rule:</text>
+    <text x="25" y="108" font-family="monospace" font-size="11" fill="#dc2626">"A" : "C" ➔ INCLUSIVE</text>
+    <text x="25" y="126" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#475569">Both start AND end labels included!</text>
+
+    <text x="15" y="165" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Accepted Types:</text>
+    <text x="15" y="183" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• Single label: <tspan font-family="monospace">"Obama"</tspan></text>
+    <text x="15" y="201" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• List of labels: <tspan font-family="monospace">["A", "B"]</tspan></text>
+    <text x="15" y="219" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• Label slice: <tspan font-family="monospace">"2000":"2020"</tspan></text>
+    <text x="15" y="237" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• Boolean series/mask</text>
+
+    <!-- Best practice badge -->
+    <rect x="15" y="260" width="230" height="42" rx="6" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="130" y="278" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700" fill="#166534">★ Recommended Best Practice</text>
+    <text x="130" y="294" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#15803d">Robust to row reordering</text>
+  </g>
+
+  <!-- Column 2: .iloc -->
+  <g transform="translate(310, 80)">
+    <rect width="260" height="320" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="2" filter="url(#shadow)"/>
+    <rect width="260" height="34" rx="8" fill="#7c3aed"/>
+    <text x="130" y="23" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">.iloc[rows, cols]</text>
+
+    <!-- Subtitle -->
+    <text x="15" y="58" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#581c87">Integer Position Selection</text>
+
+    <!-- Specs -->
+    <rect x="15" y="70" width="230" height="75" rx="6" fill="#fdf4ff"/>
+    <text x="25" y="90" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#6b21a8">Slice Boundary Rule:</text>
+    <text x="25" y="108" font-family="monospace" font-size="11" fill="#7c3aed">0 : 3 ➔ EXCLUSIVE</text>
+    <text x="25" y="126" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#475569">Matches Python range (end excluded)</text>
+
+    <text x="15" y="165" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Accepted Types:</text>
+    <text x="15" y="183" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• Single int: <tspan font-family="monospace">0, -1</tspan></text>
+    <text x="15" y="201" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• List of ints: <tspan font-family="monospace">[0, 2, 4]</tspan></text>
+    <text x="15" y="219" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• Integer slice: <tspan font-family="monospace">0:5</tspan></text>
+    <text x="15" y="237" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• Boolean arrays</text>
+
+    <!-- Usage badge -->
+    <rect x="15" y="260" width="230" height="42" rx="6" fill="#faf5ff" stroke="#d8b4fe"/>
+    <text x="130" y="278" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700" fill="#6b21a8">Positional Extraction</text>
+    <text x="130" y="294" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#7e22ce">Use when labels are unknown/irrelevant</text>
+  </g>
+
+  <!-- Column 3: [ ] Bracket Operator -->
+  <g transform="translate(590, 80)">
+    <rect width="260" height="320" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
+    <rect width="260" height="34" rx="8" fill="#f59e0b"/>
+    <text x="130" y="23" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">df[ ... ] (Context-Dependent)</text>
+
+    <!-- Subtitle -->
+    <text x="15" y="58" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#92400e">Single Argument Operator</text>
+
+    <!-- Specs -->
+    <rect x="15" y="70" width="230" height="75" rx="6" fill="#fffbeb"/>
+    <text x="25" y="90" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#78350f">Slice Caveat:</text>
+    <text x="25" y="108" font-family="monospace" font-size="11" fill="#b45309">df[0:5] ➔ Row Slicing (Positional)</text>
+    <text x="25" y="126" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#475569">Always integer position, end excluded!</text>
+
+    <text x="15" y="165" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">Common Use Cases:</text>
+    <text x="15" y="183" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• Single Col: <tspan font-family="monospace">df["Name"]</tspan> (➔ Series)</text>
+    <text x="15" y="201" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• Col List: <tspan font-family="monospace">df[["Name", "%"]]</tspan> (➔ DF)</text>
+    <text x="15" y="219" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• Boolean Mask: <tspan font-family="monospace">df[df["%"] &gt; 50]</tspan></text>
+    <text x="15" y="237" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#334155">• Integer slice on rows: <tspan font-family="monospace">df[10:20]</tspan></text>
+
+    <!-- Warning badge -->
+    <rect x="15" y="260" width="230" height="42" rx="6" fill="#fff1f2" stroke="#fca5a5"/>
+    <text x="130" y="278" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700" fill="#9f1239">⚠ Syntax Ambiguity</text>
+    <text x="130" y="294" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#b91c1c">Cannot select (row, col) simultaneously!</text>
+  </g>
+</svg>

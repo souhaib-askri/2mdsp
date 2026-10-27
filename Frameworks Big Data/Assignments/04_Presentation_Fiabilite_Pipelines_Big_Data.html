@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موثوقية خطوط أنابيب البيانات الضخمة في بيئة الإنتاج | العرض التقديمي</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/cairo/index.css">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --accent-cyan: #0284c7;
+            --border: #e2e8f0;
+            --card-bg: #ffffff;
+        }
+        body, .reveal {
+            font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+            color: #1e293b;
+        }
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            text-transform: none;
+        }
+        .reveal .slides section {
+            text-align: right;
+            padding: 20px 40px;
+        }
+        .slide-dark {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+        }
+        .slide-dark h1, .slide-dark h2, .slide-dark h3 {
+            color: #ffffff !important;
+        }
+        .badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-size: 0.45em;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            margin-bottom: 12px;
+        }
+        .slide-title {
+            font-size: 1.4em !important;
+            color: #0f172a;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-bottom: 20px !important;
+        }
+        .flex-container {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        .col-text {
+            flex: 1.1;
+            font-size: 0.6em;
+            line-height: 1.7;
+        }
+        .col-media {
+            flex: 0.9;
+            text-align: center;
+        }
+        .col-media img {
+            max-width: 100%;
+            max-height: 480px;
+            border-radius: 10px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+        }
+        .card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+        .card-title {
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 4px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            font-size: 0.55em;
+        }
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            font-size: 0.52em;
+        }
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.48em;
+            margin-top: 15px;
+        }
+        .table-custom th {
+            background: #0f172a;
+            color: #ffffff;
+            padding: 8px 12px;
+            text-align: right;
+        }
+        .table-custom td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #e2e8f0;
+            background: #ffffff;
+        }
+        .table-custom tr:nth-child(even) td {
+            background: #f8fafc;
+        }
+        .speaker-notes-hint {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 0.4em;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Slide 1 -->
+            <section class="slide-dark">
+                <span class="badge" style="background:#0284c7; color:#ffffff;">MASTER 2 DATA SCIENCE & BIG DATA (2MDSP)</span>
+                <h1 style="font-size: 1.8em; margin-top: 10px;">موثوقية خطوط أنابيب البيانات الضخمة في بيئة الإنتاج</h1>
+                <h3 style="font-size: 0.9em; color:#94a3b8; font-weight: normal;">Fiabilité des pipelines Big Data en production : Au-delà de Spark</h3>
+                <p style="font-size: 0.55em; color: #cbd5e1; margin-top: 25px;">
+                    نشاط بحثي معمق — <strong>الموضوع الرابع (Thème 4)</strong> | مادة أطر عمل البيانات الضخمة (Frameworks Big Data)<br>
+                    المعهد العالي للغات المطبقة والإعلامية بباجة (ISLAI Béja)
+                </p>
+                <div style="font-size: 0.5em; color: #38bdf8; margin-top: 25px; border-top: 1px solid #334155; padding-top: 12px;">
+                    من تحمل أخطاء البنية التحتية (Spark RDD) إلى هندسة موثوقية البيانات الشاملة (Data Reliability Engineering)
+                </div>
+                <aside class="notes">
+                    ملاحظات المتحدث:
+                    - الترحيب بالأستاذ وزملائي في ماجستير علوم البيانات 2MDSP.
+                    - تقديم الموضوع الرابع: كيف نضمن الموثوقية خارج حدود Spark الداخلية؟
+                </aside>
+            </section>
+
+            <!-- Slide 2 -->
+            <section>
+                <span class="badge">النموذج الذهني التشبيهي</span>
+                <h2 class="slide-title">تشبيه خط أنابيب البيانات بشبكة مياه المدينة ومحطة التحلية</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title">1. النهر الخام (Data Source)</div>
+                            تدفق مستمر للأحداث من Kafka ومصادر التطبيقات، لكنه محمل بالشوائب والرمال.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">2. محطة المعالجة (Spark Engine)</div>
+                            محرك الحوسبة الموزعة لتصفية المياه وتحويل البيانات على نطاق واسع.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">3. صمام الأمان ومختبر الفحص (Quality Gate)</div>
+                            فحص العينات وعزل المياه الملوثة فوراً في حوض الحجر الصحي (DLQ) لمنع تلويث الشبكة.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">4. صنابير المستهلكين (Consumers)</div>
+                            مياه نقية 100% تصل إلى لوحات تحكم الإدارة ونماذج الذكاء الاصطناعي.
+                        </div>
+                    </div>
+                    <div class="col-media">
+                        <img src="assets/png/data_pipeline_water_analogy.png" alt="Data Pipeline Analogy">
+                    </div>
+                </div>
+                <aside class="notes">تشبيه شبكة المياه يوضح أن المشكلة ليست في سرعة الضخ بل في نقاء المياه وعزل التلوث.</aside>
+            </section>
+
+            <!-- Slide 3 -->
+            <section>
+                <span class="badge">الإشكالية المعمارية</span>
+                <h2 class="slide-title">لماذا لا يكفي Apache Spark وحده في بيئة الإنتاج؟</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title" style="color:#059669;">قوة سبارك الداخلية (In-Memory Fault Tolerance)</div>
+                            نموذج RDD Lineage يعيد احتساب الأجزاء المفقودة تلقائياً عند سقوط خوادم التشغيل (Worker Crash).
+                        </div>
+                        <div class="card">
+                            <div class="card-title" style="color:#dc2626;">العمى الدلالي (Semantic Blindness)</div>
+                            ينهي سبارك المهمة بنجاح تقني (Exit Code 0) حتى لو كانت 100% من السجلات فاسدة منطقياً (أرقام سالبة أو هويات فارغة).
+                        </div>
+                        <div class="card">
+                            <div class="card-title" style="color:#dc2626;">انهيار المشغّل (Driver OOM)</div>
+                            عند نفاذ ذاكرة المشغل Driver، يسقط التطبيق كلياً ويعجز عن استئناف نفسه دون طبقة إدارة عليا.
+                        </div>
+                        <div class="card">
+                            <div class="card-title" style="color:#dc2626;">هشاشة الحدود الخارجية (Boundary Fragility)</div>
+                            عاجز عن مواجهة تغير نمط المصدر (Schema Drift) أو انقطاع واجهات الاستخراج المصدرية.
+                        </div>
+                    </div>
+                    <div class="col-media">
+                        <img src="assets/png/spark_boundary_vs_end_to_end_reliability.png" alt="Spark Boundary">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 4 -->
+            <section>
+                <span class="badge">خارطة الطريق الهندسية</span>
+                <h2 class="slide-title">المحاور الأربعة للبحث (The 4 Research Pillars)</h2>
+                <div class="grid-4" style="margin-top:25px;">
+                    <div class="card" style="border-top: 4px solid #2563eb;">
+                        <h4 style="color:#2563eb; font-size:1.1em; margin-bottom:6px;">المحور الأول</h4>
+                        <strong>تعافي المنسقات</strong><br>
+                        <span style="color:#64748b; font-size:0.85em;">Orchestration Recovery</span>
+                        <ul style="padding-right:15px; margin-top:10px;">
+                            <li>تتبع الحالة ونقاط التفتيش</li>
+                            <li>الاستئناف الدقيق للمهام</li>
+                            <li>عزل الحاويات (K8s Pods)</li>
+                            <li>التنسيق الموجه بالأصول</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="border-top: 4px solid #059669;">
+                        <h4 style="color:#059669; font-size:1.1em; margin-bottom:6px;">المحور الثاني</h4>
+                        <strong>المراقبة الآلية للجودة</strong><br>
+                        <span style="color:#64748b; font-size:0.85em;">Data Quality Monitoring</span>
+                        <ul style="padding-right:15px; margin-top:10px;">
+                            <li>الأبعاد الستة للجودة</li>
+                            <li>بنية قاطع الدائرة للبيانات</li>
+                            <li>فحوصات Great Expectations</li>
+                            <li>نمط WAP الذري في Lakehouse</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="border-top: 4px solid #9333ea;">
+                        <h4 style="color:#9333ea; font-size:1.1em; margin-bottom:6px;">المحور الثالث</h4>
+                        <strong>تتبع الأنساب والرصد</strong><br>
+                        <span style="color:#64748b; font-size:0.85em;">Lineage & Observability</span>
+                        <ul style="padding-right:15px; margin-top:10px;">
+                            <li>الركائز الأربع لرصد البيانات</li>
+                            <li>التحليل العكسي (RCA)</li>
+                            <li>تحليل نطاق الأثر التابع</li>
+                            <li>تتبع نسب الأعمدة المجهري</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="border-top: 4px solid #dc2626;">
+                        <h4 style="color:#dc2626; font-size:1.1em; margin-bottom:6px;">المحور الرابع</h4>
+                        <strong>مخاطر الـ Retries</strong><br>
+                        <span style="color:#64748b; font-size:0.85em;">Naive Retries & Alternatives</span>
+                        <ul style="padding-right:15px; margin-top:10px;">
+                            <li>عواصف المحاولات والقطيع الهادر</li>
+                            <li>غياب التأثير الذاتي والتكرار</li>
+                            <li>التراجع الأسي المشوش (Jitter)</li>
+                            <li>طوابير الرسائل الميتة (DLQ)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 5 -->
+            <section>
+                <span class="badge">المحور 1: تعافي المنسقات</span>
+                <h2 class="slide-title">آليات استعادة مهام الجدولة والتنسيق بعد الفشل (Airflow, Dagster)</h2>
+                <div style="font-size: 0.6em; margin-bottom: 20px; color:#2563eb; font-weight:bold;">
+                    تمثيل العمليات كـ Directed Acyclic Graph: \( G = (V, E) \)
+                </div>
+                <div class="grid-3">
+                    <div class="card" style="border-right: 4px solid #2563eb;">
+                        <div class="card-title">1. تتبع الحالة المركزي (State Backend)</div>
+                        قاعدة بيانات مستقلة (PostgreSQL) تسجل الحالات بدقة:
+                        <code style="font-size:0.9em; display:block; margin:6px 0;">{QUEUED, RUNNING, SUCCESS, FAILED, UPSTREAM_FAILED}</code>
+                        إذا انهار خادم المنسق، تبقى كافة الحالات السابقة محفوظة دون ضياع.
+                    </div>
+                    <div class="card" style="border-right: 4px solid #059669;">
+                        <div class="card-title">2. الاستئناف الدقيق (Fine-Grained Resume)</div>
+                        إذا تعطلت المهمة 4 بعد نجاح 3 مهام، لا يُعاد تشغيل الـ DAG من البداية، بل يُستأنف التنفيذ حصراً من المهمة الفاشلة وتوابعها التابعة (Downstream Only).
+                    </div>
+                    <div class="card" style="border-right: 4px solid #9333ea;">
+                        <div class="card-title">3. نبضات القلب (Scheduler Heartbeat)</div>
+                        رصد نبضات خوادم التنفيذ دورياً، وتحرير الأقفال فورا عند سقوط أي خادم لمنع تحول المهام إلى "مهام زومبي" (Zombie Tasks).
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 6 -->
+            <section>
+                <span class="badge">المحور 1 عمقاً</span>
+                <h2 class="slide-title">عزل المهام في Kubernetes والتحول نحو نمط الأصول (Dagster)</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title">عزل الحاويات (KubernetesPodOperator)</div>
+                            تشغيل كل مهمة Spark في بود مستقل مع حدود صارمة للذاكرة لمنع إسقاط خادم المنسق المشترك.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">حجب التوابع (Upstream Blast Block)</div>
+                            وسم المهام اللاحقة بـ UPSTREAM_FAILED فوراً لمنع انتشار المخرجات غير المكتملة.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">المضاعفة التلقائية للسعة</div>
+                            إعادة تشغيل المهمة الفاشلة فقط بحاوية ذات ذاكرة مضاعفة (من 8GiB إلى 16GiB).
+                        </div>
+                        <div class="card">
+                            <div class="card-title">التنسيق الموجه بالأصول (Asset-Based)</div>
+                            التحول من "شغّل السكربت A ثم B" إلى تعريف الأصول البرمجية وحساب الأصول المتقادمة فقط.
+                        </div>
+                    </div>
+                    <div class="col-media">
+                        <img src="assets/png/orchestrator_dag_recovery_lifecycle.png" alt="Orchestration Recovery">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 7 -->
+            <section>
+                <span class="badge">المحور 2: جودة البيانات</span>
+                <h2 class="slide-title">المراقبة الآلية لجودة البيانات: الأبعاد الستة المعيارية</h2>
+                <div class="grid-3" style="margin-top:20px;">
+                    <div class="card" style="border-top:3px solid #2563eb;">
+                        <strong style="color:#2563eb;">1. الاكتمال (Completeness)</strong><br>
+                        نسبة عدم وجود قيم مفقودة (\(Null\ Ratio \le \epsilon\)). غياب معرّف العميل أو حقول المبيعات.
+                    </div>
+                    <div class="card" style="border-top:3px solid #059669;">
+                        <strong style="color:#059669;">2. التفرد (Uniqueness)</strong><br>
+                        انعدام السجلات المكررة للمفاتيح الأساسية. حماية أرقام العمليات والفواتير.
+                    </div>
+                    <div class="card" style="border-top:3px solid #9333ea;">
+                        <strong style="color:#9333ea;">3. الصلاحية (Validity)</strong><br>
+                        مطابقة البيانات لقواعد النطاق والشكل المنطقي (العمر بين 0 و 120، صيغة الإيميل).
+                    </div>
+                    <div class="card" style="border-top:3px solid #d97706;">
+                        <strong style="color:#d97706;">4. الاتساق (Consistency)</strong><br>
+                        تطابق البيانات عبر مختلف الجداول والأنظمة التابعة والقيد المحاسبي الموحد.
+                    </div>
+                    <div class="card" style="border-top:3px solid #0d9488;">
+                        <strong style="color:#0d9488;">5. الدقة (Accuracy)</strong><br>
+                        تمثيل البيانات للواقع الحقيقي بدقة متناهية ودون انحراف في التحويلات المالية.
+                    </div>
+                    <div class="card" style="border-top:3px solid #e11d48;">
+                        <strong style="color:#e11d48;">6. الحداثة (Freshness)</strong><br>
+                        وصول وتحديث البيانات ضمن الإطار الزمني المتفق عليه في اتفاقيات مستوى الخدمة (SLAs).
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 8 -->
+            <section>
+                <span class="badge">المحور 2 معمارياً</span>
+                <h2 class="slide-title">بنية قاطع الدائرة للبيانات (Data Quality Circuit Breaker)</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title">1. منطقة الاستيعاب الخام (Bronze)</div>
+                            استقبال تدفق الأحداث (Kafka/S3) واستخراج القياسات المبدئية لحجم البيانات وتوزيعها.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">2. محرك التحقق (Validation Engine)</div>
+                            تطبيق قواعد Great Expectations و Soda Core على الطبقة الفضية Silver.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">3. بوابة القرار وقاطع الدائرة</div>
+                            • عند النجاح: مرور الدفعة النظيفة للطبقة الذهبية Gold.<br>
+                            • عند الفشل: فتح القاطع فوراً، عزل السجلات الشاذة في جدول الحجر الصحي (DLQ)، وتجميد تحديث لوحات BI مع إشعار الفريق.
+                        </div>
+                    </div>
+                    <div class="col-media">
+                        <img src="assets/png/automated_data_quality_circuit_breaker.png" alt="Circuit Breaker">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 9 -->
+            <section>
+                <span class="badge">المحور 2 إنتاجياً</span>
+                <h2 class="slide-title">نمط الكتابة-التدقيق-النشر الذري (Write-Audit-Publish - WAP)</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title">1. مرحلة الكتابة (WRITE Stage)</div>
+                            كتابة البيانات في فرع تدقيق مؤقت معزول (Staging Branch) في Apache Iceberg دون مساس بالفرع الرئيسي main.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">2. مرحلة التدقيق (AUDIT Stage)</div>
+                            تنفيذ كافة اختبارات الجودة وفحوص Schema Drift على الفرع المؤقت المعزول.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">3. النشر أو الإلغاء (PUBLISH / ABORT)</div>
+                            • نجاح: تحديث مؤشر البيانات الوصفية ذرياً (Fast-Forward) في أجزاء من الثانية.<br>
+                            • فشل: حذف الفرع المؤقت بالكامل وتفادي أي قراءات غير نظيفة (Zero Dirty Reads).
+                        </div>
+                    </div>
+                    <div class="col-media">
+                        <img src="assets/png/write_audit_publish_wap_pattern.png" alt="WAP Pattern">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 10 -->
+            <section>
+                <span class="badge">المحور 3: تتبع الأنساب</span>
+                <h2 class="slide-title">تتبع الأنساب وإمكانية الرصد (Lineage & Observability)</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title">الركائز الأربع لرصد البيانات</div>
+                            المقاييس (Metrics) + السجلات (Logs) + التتبع الزمني (Traces) + رسم الأنساب (Lineage).
+                        </div>
+                        <div class="card">
+                            <div class="card-title">التحليل العكسي للسبب الجذري (Upstream RCA)</div>
+                            تتبع العقد السابقة عبر الرسم البياني لاكتشاف سبب الخلل الأصلي في ثوانٍ معدودة.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">تحليل نطاق الأثر (Downstream Blast Radius)</div>
+                            حصر كافة الجداول ولوحات BI ونماذج الذكاء الاصطناعي التابعة وتجميدها فوراً لمنع تفشي الضرر.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">معيار OpenLineage المفتوح</div>
+                            معيار عالمي لجمع وإرسال أحداث الأنساب لحظياً إلى مستودعات Marquez و DataHub.
+                        </div>
+                    </div>
+                    <div class="col-media">
+                        <img src="assets/png/pipeline_observability_and_lineage.png" alt="Observability & Lineage">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 11 -->
+            <section>
+                <span class="badge">المحور 3 بالمجهر</span>
+                <h2 class="slide-title">التشخيص الدقيق عبر تتبع الأنساب على مستوى الأعمدة (Column-Level)</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title">قصور تتبع الجداول التقليدي</div>
+                            يخبرك فقط أن جدول gold_kpi تأثر بخلل في جدول أسعار الصرف forex_rates دون أي تفاصيل إضافية.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">تتبع الأعمدة (Column-Level Lineage)</div>
+                            يربط تعبير التحويل الرياضي مباشرة بالحقل المعطوب:<br>
+                            <code>revenue_usd = (amount_cents / 100.0) * rate_to_usd</code>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">العزل الجذري الفوري</div>
+                            تحديد السطر المسبب: قيمة NULL في حقل rate_to_usd دون إهدار الوقت في تفحص ملايين السجلات الأخرى.
+                        </div>
+                    </div>
+                    <div class="col-media">
+                        <img src="assets/png/column_level_lineage_graph.png" alt="Column Level Lineage">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 12 -->
+            <section>
+                <span class="badge">المحور 4: مخاطر المحاولات</span>
+                <h2 class="slide-title">مخاطر وآفات إعادة المحاولة الساذجة (Naive Retries)</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card" style="border-right: 4px solid #dc2626;">
+                            <div class="card-title" style="color:#dc2626;">1. عاصفة إعادة المحاولة (Retry Storm)</div>
+                            فترات الانتظار الثابتة تدفع مئات المهام المتزامنة لمعاودة الهجوم في نفس الثانية على قاعدة بيانات متعثرة (Thundering Herd)، مسببة انهياراً شاملاً.
+                        </div>
+                        <div class="card" style="border-right: 4px solid #dc2626;">
+                            <div class="card-title" style="color:#dc2626;">2. العمليات غير التكرارية (Non-Idempotent)</div>
+                            إعادة تنفيذ استعلام INSERT INTO بعد سقوط مؤقت للاتصال تؤدي لتكرار السجلات وتشويه الحسابات المالية: \( f(f(x)) 
+eq f(x) \).
+                        </div>
+                        <div class="card" style="border-right: 4px solid #dc2626;">
+                            <div class="card-title" style="color:#dc2626;">3. كبسولة السم والخطأ الحتمي (Poison Pill)</div>
+                            خطأ ناتج عن سجل تالف حتمياً؛ تكرار المحاولة 10 مرات لن ينجح أبداً، بل يستنزف موارد الحوسبة السحابية عبثاً.
+                        </div>
+                    </div>
+                    <div class="col-media">
+                        <img src="assets/png/retry_mechanisms_and_failure_modes.png" alt="Retry Failures">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 13 -->
+            <section>
+                <span class="badge">المحور 4 هندسياً</span>
+                <h2 class="slide-title">البدائل المتقدمة لإعادة المحاولة (Resilient Patterns)</h2>
+                <div class="grid-3" style="margin-top:20px;">
+                    <div class="card" style="border-top:4px solid #2563eb;">
+                        <div class="card-title">1. التراجع الأسي المشوش (Full Jitter)</div>
+                        مضاعفة وقت الانتظار مع إضافة تشويش عشوائي منتظم:<br>
+                        <code>t_wait = min(t_max, U(0, t_base * 2^attempt))</code><br>
+                        فض تزامن محاولات العمال وتوزيع الضغط عبر الزمن لتمكين الخوادم من التعافي.
+                    </div>
+                    <div class="card" style="border-top:4px solid #059669;">
+                        <div class="card-title">2. التأثير الذاتي الصارم (Idempotency)</div>
+                        ضمان أن تكرار العملية يعطي نفس نتيجة تنفيذها مرة واحدة:<br>
+                        <code>f(f(x)) = f(x)</code><br>
+                        استبدال الإدخال البسيط بـ MERGE / UPSERT الذري في Delta Lake لمنع تكرار أي سجل نهائياً.
+                    </div>
+                    <div class="card" style="border-top:4px solid #9333ea;">
+                        <div class="card-title">3. طوابير الرسائل الميتة (DLQ)</div>
+                        عزل السجلات المسمومة والحجر الصحي للبيانات:<br>
+                        التقاط السجلات التالفة وعزلها في جدول <code>quarantine_table</code> مع مواصلة معالجة ملايين السجلات السليمة دون توقف.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 14 -->
+            <section>
+                <span class="badge">المقارنة الشاملة</span>
+                <h2 class="slide-title">مصفوفة المقارنة الهندسية للحلول والتقنيات</h2>
+                <table class="table-custom">
+                    <thead>
+                        <tr>
+                            <th>المعيار الهندسي</th>
+                            <th>الممارسة الساذجة التقليدية</th>
+                            <th>الحل الإنتاجي المتقدم</th>
+                            <th>الترسانة التقنية المعتمدة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>إدارة التعافي</strong></td>
+                            <td>إعادة تشغيل الـ DAG كاملاً من البداية</td>
+                            <td>استئناف دقيق للمهام الفاشلة وعزل الحاويات</td>
+                            <td>Airflow K8s, Dagster Assets</td>
+                        </tr>
+                        <tr>
+                            <td><strong>مراقبة الجودة</strong></td>
+                            <td>فحص يدوي، أو انتظار شكاوى المستهلكين</td>
+                            <td>فحوصات قيود استباقية وقواطع دائرة برمجية</td>
+                            <td>Great Expectations, Soda Core</td>
+                        </tr>
+                        <tr>
+                            <td><strong>تشخيص الأعطال</strong></td>
+                            <td>البحث اليدوي العشوائي في السجلات</td>
+                            <td>تتبع الأنساب على مستوى الأعمدة والرسم البياني</td>
+                            <td>OpenLineage, Marquez, DataHub</td>
+                        </tr>
+                        <tr>
+                            <td><strong>سياسة المحاولات</strong></td>
+                            <td>تكرار فوري متطابق (Fixed Retries)</td>
+                            <td>تراجع أسي مشوش + دمج تكراري + حجر صحي</td>
+                            <td>Backoff with Jitter, Lakehouse, DLQ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>حماية المخرجات</strong></td>
+                            <td>الكتابة المباشرة في جداول الإنتاج</td>
+                            <td>نمط الكتابة-التدقيق-النشر الذري (WAP)</td>
+                            <td>Apache Iceberg, Delta Branches</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Slide 15 -->
+            <section class="slide-dark">
+                <span class="badge" style="background:#0284c7; color:#ffffff;">الخلاصة والتوصيات</span>
+                <h2 style="font-size: 1.6em; margin-bottom: 25px;">الوصايا الأربع لهندسة موثوقية البيانات (DRE)</h2>
+                <div style="font-size: 0.6em; line-height: 2; text-align: right; margin-bottom: 30px;">
+                    <div><strong style="color:#38bdf8;">1. الموثوقية تصميم وليست تدخلاً لاحقاً (Reliability by Design):</strong> صمم كل خطوة لتكون تكرارية التأثير (Idempotent).</div>
+                    <div><strong style="color:#38bdf8;">2. انعدام الثقة في المدخلات (Zero-Trust Data):</strong> البيانات القادمة فاسدة حتى يثبت العكس عبر بوابات الجودة.</div>
+                    <div><strong style="color:#38bdf8;">3. الأنساب ركيزة أولية (First-Class Lineage):</strong> تتبع الأعمدة يقلص زمن التعافي (MTTR) من ساعات إلى ثوانٍ.</div>
+                    <div><strong style="color:#38bdf8;">4. ترويض الـ Retries:</strong> فرض التراجع المشوش (Jitter Backoff) وعزل كبسولات السم في طوابير الـ DLQ.</div>
+                </div>
+                <h3 style="font-size: 1.1em; color: #ffffff; margin-top: 20px;">شكراً لحسن استماعكم — باب الأسئلة والنقاش مفتوح (Q&A)</h3>
+            </section>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.js"></script>
+    <script>
+        Reveal.initialize({
+            rtl: true,
+            hash: true,
+            slideNumber: 'c/t',
+            transition: 'slide',
+            plugins: [ RevealNotes, RevealMath.KaTeX ]
+        });
+    </script>
+</body>
+</html>

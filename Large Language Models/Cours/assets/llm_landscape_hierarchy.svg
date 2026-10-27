@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <filter id="shadow" x="-3%" y="-3%" width="106%" height="106%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="480" y="36" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#0f172a">AI to LLM: Conceptual Hierarchy and Specialization</text>
+  <text x="480" y="60" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#334155">How modern Large Language Models sit at the intersection of AI, Deep Learning, and NLP</text>
+
+  <!-- Level 1: Artificial Intelligence (AI) -->
+  <rect x="30" y="85" width="900" height="445" rx="16" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="30" y="85" width="900" height="38" rx="16" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+  <text x="50" y="110" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#0f172a">1. Artificial Intelligence (AI)</text>
+  <text x="260" y="109" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#334155">Broad field: Machines simulating cognitive functions (perception, reasoning, problem solving)</text>
+
+  <!-- Level 2: Machine Learning (ML) -->
+  <rect x="60" y="140" width="840" height="370" rx="14" fill="#f0fdf4" stroke="#86efac" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="60" y="140" width="840" height="36" rx="14" fill="#dcfce7" stroke="#86efac" stroke-width="2"/>
+  <text x="80" y="164" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#14532d">2. Machine Learning (ML)</text>
+  <text x="270" y="163" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#166534">Subfield: Learning patterns and improving performance automatically from empirical data</text>
+
+  <!-- Level 3: Deep Learning (DL) -->
+  <rect x="90" y="195" width="780" height="295" rx="12" fill="#eff6ff" stroke="#93c5fd" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="90" y="195" width="780" height="34" rx="12" fill="#dbeafe" stroke="#93c5fd" stroke-width="2"/>
+  <text x="110" y="218" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#1e3a8a">3. Deep Learning (DL)</text>
+  <text x="280" y="217" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#1e40af">Multi-layer artificial neural networks mimicking complex feature representation</text>
+
+  <!-- Level 4: NLP Intersection / Branch -->
+  <rect x="120" y="250" width="720" height="220" rx="10" fill="#faf5ff" stroke="#d8b4fe" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="120" y="250" width="720" height="32" rx="10" fill="#f3e8ff" stroke="#d8b4fe" stroke-width="2"/>
+  <text x="140" y="272" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#581c87">4. Natural Language Processing (NLP)</text>
+  <text x="400" y="271" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#6b21a8">Empowering computers to parse, understand, and generate human language</text>
+
+  <!-- Level 5: Large Language Models (LLM) - The Core -->
+  <rect x="150" y="302" width="660" height="150" rx="8" fill="#fff7ed" stroke="#fdba74" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="150" y="302" width="660" height="32" rx="8" fill="#ffedd5" stroke="#fdba74" stroke-width="2"/>
+  <text x="170" y="324" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" fill="#7c2d12">5. Large Language Models (LLMs)</text>
+  <text x="420" y="323" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#9a3412">Massive Transformer networks trained on billions of tokens for generative and analytical tasks</text>
+
+  <!-- Feature badges inside LLM -->
+  <g transform="translate(165, 345)">
+    <rect x="0" y="5" width="190" height="85" rx="6" fill="#ffffff" stroke="#fed7aa" stroke-width="1.5"/>
+    <text x="10" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#0f172a">Massive Scale</text>
+    <text x="10" y="46" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#334155">&#8226; Billions of Parameters</text>
+    <text x="10" y="64" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#334155">&#8226; Trillions of Tokens</text>
+    <text x="10" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#334155">&#8226; Huge Context Windows</text>
+  </g>
+
+  <g transform="translate(385, 345)">
+    <rect x="0" y="5" width="190" height="85" rx="6" fill="#ffffff" stroke="#fed7aa" stroke-width="1.5"/>
+    <text x="10" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#0f172a">Core Mechanism</text>
+    <text x="10" y="46" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#334155">&#8226; Autoregressive Pretraining</text>
+    <text x="10" y="64" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#334155">&#8226; Next Token Prediction</text>
+    <text x="10" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#334155">&#8226; Self-Attention Layers</text>
+  </g>
+
+  <g transform="translate(605, 345)">
+    <rect x="0" y="5" width="190" height="85" rx="6" fill="#ffffff" stroke="#fed7aa" stroke-width="1.5"/>
+    <text x="10" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#0f172a">Emergent Abilities</text>
+    <text x="10" y="46" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#334155">&#8226; In-Context Learning</text>
+    <text x="10" y="64" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#334155">&#8226; Multi-step Reasoning</text>
+    <text x="10" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#334155">&#8226; Multimodal Processing</text>
+  </g>
+</svg>

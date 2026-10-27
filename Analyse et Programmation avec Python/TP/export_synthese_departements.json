@@ -1,0 +1,34 @@
+[
+  {
+    "salaire_count":2,
+    "salaire_mean":4725.0,
+    "salaire_median":4725.0,
+    "performance_score_mean":89.5,
+    "performance_score_max":91.0,
+    "prime_annuelle_sum":9525.0
+  },
+  {
+    "salaire_count":2,
+    "salaire_mean":5300.0,
+    "salaire_median":5300.0,
+    "performance_score_mean":89.5,
+    "performance_score_max":92.0,
+    "prime_annuelle_sum":9800.0
+  },
+  {
+    "salaire_count":2,
+    "salaire_mean":4550.0,
+    "salaire_median":4550.0,
+    "performance_score_mean":88.5,
+    "performance_score_max":95.0,
+    "prime_annuelle_sum":9750.0
+  },
+  {
+    "salaire_count":1,
+    "salaire_mean":3200.0,
+    "salaire_median":3200.0,
+    "performance_score_mean":74.0,
+    "performance_score_max":74.0,
+    "prime_annuelle_sum":1600.0
+  }
+]

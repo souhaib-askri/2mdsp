@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les 6 Dimensions de la Qualité des Données | Présentation Master 2</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --border: #e2e8f0;
+        }
+        body, .reveal {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: #1e293b;
+        }
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: -0.02em;
+        }
+        .reveal .slides section {
+            text-align: left;
+            padding: 20px 40px;
+        }
+        .slide-dark {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+        }
+        .slide-dark h1, .slide-dark h2, .slide-dark h3 {
+            color: #ffffff !important;
+        }
+        .badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-size: 0.45em;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            margin-bottom: 12px;
+        }
+        .slide-title {
+            font-size: 1.4em !important;
+            color: #0f172a;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-bottom: 20px !important;
+        }
+        .flex-container {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        .col-text {
+            flex: 1.1;
+            font-size: 0.6em;
+            line-height: 1.65;
+        }
+        .col-media {
+            flex: 0.9;
+            text-align: center;
+        }
+        .col-media img {
+            max-width: 100%;
+            max-height: 480px;
+            border-radius: 10px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+        }
+        .card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-bottom: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+        .card-title {
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 4px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            font-size: 0.55em;
+        }
+        pre code {
+            font-size: 0.8em;
+            border-radius: 6px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Slide 1 -->
+            <section class="slide-dark">
+                <span class="badge" style="background:#0284c7; color:#ffffff;">MASTER 2 DATA SCIENCE & BIG DATA (2MDSP)</span>
+                <h1 style="font-size: 1.8em; margin-top: 10px;">Les 6 Dimensions Normatives de la Qualité des Données</h1>
+                <h3 style="font-size: 0.9em; color:#94a3b8; font-weight: normal;">Cadre Méthodologique DAMA & ISO 8000 pour les Pipelines Big Data en Production</h3>
+                <p style="font-size: 0.55em; color: #cbd5e1; margin-top: 25px;">
+                    Module : <strong>Frameworks Big Data</strong> | ISLAI Béja<br>
+                    Détection de la Corruption Silencieuse, Assertions Métriques et Architecture Coupe-Circuit
+                </p>
+            </section>
+
+            <!-- Slide 2 -->
+            <section>
+                <span class="badge">Problématique</span>
+                <h2 class="slide-title">L'Angle Mort de l'Infrastructure et la Corruption Silencieuse</h2>
+                <div class="grid-3" style="margin-top:25px;">
+                    <div class="card" style="border-top:4px solid #2563eb;">
+                        <div class="card-title">Surveillance d'Infrastructure</div>
+                        Outils : Prometheus, Datadog.<br>
+                        Surveille : CPU, RAM, trafic réseau.<br>
+                        Verdict : "Cluster Spark en bonne santé, Exit Code 0 !"<br>
+                        <em>Angle mort : Aveugle au contenu des tables.</em>
+                    </div>
+                    <div class="card" style="border-top:4px solid #dc2626;">
+                        <div class="card-title" style="color:#dc2626;">Corruption Silencieuse</div>
+                        • 80% des prix d'achat deviennent négatifs.<br>
+                        • 50 000 transactions ont un user_id manquant.<br>
+                        • Dates mutées de format sans alerte.<br>
+                        <em>Impact : Les décisions du DG sont faussées !</em>
+                    </div>
+                    <div class="card" style="border-top:4px solid #059669;">
+                        <div class="card-title" style="color:#059669;">Réponse : Data Quality Engineering</div>
+                        Normes DAMA & ISO 8000 :<br>
+                        • Traiter la donnée comme un produit certifié.<br>
+                        • 6 dimensions formelles mesurées en continu.<br>
+                        • Disjoncteurs automatiques (Circuit Breakers).
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 3 -->
+            <section>
+                <span class="badge">Architecture Globale</span>
+                <h2 class="slide-title">Les 6 Dimensions Normatives de la Qualité (DAMA / ISO 8000)</h2>
+                <div style="text-align:center; margin-top: 15px;">
+                    <img src="assets/png/data_quality_six_dimensions_fr.png" alt="6 Dimensions Framework" style="max-height: 480px; border-radius: 8px; border: 1px solid #e2e8f0; background:#fff; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                </div>
+            </section>
+
+            <!-- Slide 4 -->
+            <section>
+                <span class="badge" style="background:#eff6ff; color:#1e40af;">Dimension 1</span>
+                <h2 class="slide-title">La Complétude (Completeness) : Traquer les Valeurs Manquantes</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title">Métrique & Seuil</div>
+                            Null_Ratio(A) = Count(rows where A is NULL) / Total_Rows ≤ ε
+                        </div>
+                        <div class="card">
+                            <div class="card-title">Risques Métiers</div>
+                            Chute brutale des taux de conversion, rupture catastrophique des INNER JOIN, modèles ML rejetant les inférences.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">Assertion Great Expectations</div>
+                            <code>validator.expect_column_values_to_not_be_null(column="customer_id")</code>
+                        </div>
+                    </div>
+                    <div class="col-text">
+                        <div class="card" style="border-left: 4px solid #2563eb;">
+                            <strong>Règle du Coupe-Circuit :</strong><br><br>
+                            Si le ratio de valeurs nulles sur une clé primaire ou un champ obligatoire dépasse 0.00%, le pipeline s'interrompt immédiatement et le lot est séquestré dans la table de quarantaine (DLQ).
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 5 -->
+            <section>
+                <span class="badge" style="background:#ecfdf5; color:#065f46;">Dimension 2</span>
+                <h2 class="slide-title">L'Unicité (Uniqueness) : Éliminer Doublons et Parasites</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title" style="color:#059669;">Métrique & Seuil</div>
+                            Distinct(Key) == Total_Rows
+                        </div>
+                        <div class="card">
+                            <div class="card-title" style="color:#059669;">Risques Métiers</div>
+                            Facturation double des clients, gonflements artificiels des volumes d'activité, explosion des jointures cartésiennes.
+                        </div>
+                        <div class="card">
+                            <div class="card-title" style="color:#059669;">Assertion Great Expectations</div>
+                            <code>validator.expect_column_values_to_be_unique(column="order_id")</code>
+                        </div>
+                    </div>
+                    <div class="col-text">
+                        <div class="card" style="border-left: 4px solid #059669;">
+                            <strong>Solution Architecturale :</strong><br><br>
+                            Remplacer systématiquement les requêtes INSERT par l'instruction atomique <strong>MERGE INTO (Upsert)</strong> dans Apache Iceberg et Delta Lake pour garantir l'idempotence stricte : <code>f(f(x)) = f(x)</code>.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 6 -->
+            <section>
+                <span class="badge" style="background:#f5f3ff; color:#5b21b6;">Dimension 3</span>
+                <h2 class="slide-title">La Validité (Validity) : Conformité aux Domaines et Syntaxes</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title" style="color:#7c3aed;">Métrique & Seuil</div>
+                            Conformité aux expressions régulières, énumérations et bornes logiques.
+                        </div>
+                        <div class="card">
+                            <div class="card-title" style="color:#7c3aed;">Risques Métiers</div>
+                            Crash des conversions Spark (int('bad_str')), non-conformité réglementaire RGPD, prix d'articles négatifs.
+                        </div>
+                        <div class="card">
+                            <div class="card-title" style="color:#7c3aed;">Assertion Great Expectations</div>
+                            <code>validator.expect_column_values_to_be_between(column="price", min_value=0.01, max_value=10000.0)</code>
+                        </div>
+                    </div>
+                    <div class="col-text">
+                        <div class="card" style="border-left: 4px solid #7c3aed;">
+                            <strong>Contrôles Types :</strong><br><br>
+                            1. Bornes : 0 ≤ âge ≤ 120.<br>
+                            2. Regex : Emails, codes postaux, téléphones.<br>
+                            3. Énumération : statut ∈ {'PENDING', 'PAID', 'CANCELLED'}.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 7 -->
+            <section>
+                <span class="badge" style="background:#fffbeb; color:#92400e;">Dimension 4</span>
+                <h2 class="slide-title">La Cohérence (Consistency) : Intégrité Inter-Systèmes</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title" style="color:#d97706;">Métrique & Seuil</div>
+                            Dérive inter-systèmes (Cross-System Drift) == 0
+                        </div>
+                        <div class="card">
+                            <div class="card-title" style="color:#d97706;">Risques Métiers</div>
+                            Lignes orphelines (commandes sans client), écarts entre la comptabilité et les stocks de l'entrepôt.
+                        </div>
+                        <div class="card">
+                            <div class="card-title" style="color:#d97706;">Test dbt / Soda Core</div>
+                            <code>tests: relationships (from order_items.order_id to orders.id)</code>
+                        </div>
+                    </div>
+                    <div class="col-text">
+                        <div class="card" style="border-left: 4px solid #d97706;">
+                            <strong>Spécificité Big Data :</strong><br><br>
+                            Les stockages distribués (S3, Parquet) ne vérifient pas les contraintes de clés étrangères (Foreign Keys) pour préserver la scalabilité. Le pipeline doit donc tester explicitement cette cohérence par des requêtes de réconciliation.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 8 -->
+            <section>
+                <span class="badge" style="background:#f0fdfa; color:#115e59;">Dimension 5</span>
+                <h2 class="slide-title">La Précision (Accuracy) : Fidélité à la Réalité Observable</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title" style="color:#0d9488;">Métrique & Seuil</div>
+                            Écart vs Vérité Certifiée (Golden Record) &lt; δ
+                        </div>
+                        <div class="card">
+                            <div class="card-title" style="color:#0d9488;">Risques Métiers</div>
+                            Pertes financières par arrondissement fautif, dérive de capteurs IoT, erreurs d'échelle (centimes vs euros).
+                        </div>
+                        <div class="card">
+                            <div class="card-title" style="color:#0d9488;">Assertion Great Expectations</div>
+                            <code>validator.expect_column_mean_to_be_between(column="voltage", min_value=228.0, max_value=232.0)</code>
+                        </div>
+                    </div>
+                    <div class="col-text">
+                        <div class="card" style="border-left: 4px solid #0d9488;">
+                            <strong>Auditabilité :</strong><br><br>
+                            La précision distingue une donnée syntaxiquement valide d'une donnée fidèle aux faits réels observés.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 9 -->
+            <section>
+                <span class="badge" style="background:#fff1f2; color:#9f1239;">Dimension 6</span>
+                <h2 class="slide-title">La Fraîcheur (Freshness) : Respect des Engagements SLAs</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title" style="color:#e11d48;">Métrique & Seuil</div>
+                            Latence = Now() - Max(Event_Timestamp) ≤ SLA
+                        </div>
+                        <div class="card">
+                            <div class="card-title" style="color:#e11d48;">Risques Métiers</div>
+                            Décisions stratégiques prises sur des données obsolètes, tableau de bord gelé sans que personne ne le remarque.
+                        </div>
+                        <div class="card">
+                            <div class="card-title" style="color:#e11d48;">Test Soda Core</div>
+                            <code>checks: freshness(order_timestamp) &lt; 2h</code>
+                        </div>
+                    </div>
+                    <div class="col-text">
+                        <div class="card" style="border-left: 4px solid #e11d48;">
+                            <strong>Détection des Pannes Muettes :</strong><br><br>
+                            Un connecteur CDC bloqué ne lève souvent aucune exception réseau, mais la table cesse d'évoluer. Le contrôle de fraîcheur détecte cette panne silencieuse.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 10 -->
+            <section>
+                <span class="badge">Mise en Œuvre Industrielle</span>
+                <h2 class="slide-title">Le Disjoncteur Automatisé (Data Circuit Breaker)</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title">1. Ingestion Bronze</div>
+                            Réception brute et calcul des métriques de volume.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">2. Moteur de Validation (Silver)</div>
+                            Exécution des assertions sur les 6 dimensions.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">3. Action du Coupe-Circuit</div>
+                            • Succès : Passage en Gold certifié.<br>
+                            • Échec : Dérivation en Dead Letter Queue (DLQ), gel des rapports BI et notification d'astreinte.
+                        </div>
+                    </div>
+                    <div class="col-media">
+                        <img src="assets/png/automated_data_quality_circuit_breaker.png" alt="Circuit Breaker Architecture">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 11 -->
+            <section>
+                <span class="badge">Garantie Atomique</span>
+                <h2 class="slide-title">Le Pattern Write-Audit-Publish (WAP)</h2>
+                <div class="flex-container">
+                    <div class="col-text">
+                        <div class="card">
+                            <div class="card-title">1. WRITE (Écriture Isolée)</div>
+                            Écriture dans une branche de staging éphémère sans toucher à la branche de production main.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">2. AUDIT (Audit Automatisé)</div>
+                            Exécution complète des tests des 6 dimensions sur la branche isolée.
+                        </div>
+                        <div class="card">
+                            <div class="card-title">3. PUBLISH / ABORT</div>
+                            Bascule atomique instantanée (Fast-Forward) ou destruction complète en cas d'échec (Zéro lecture sale).
+                        </div>
+                    </div>
+                    <div class="col-media">
+                        <img src="assets/png/write_audit_publish_wap_pattern.png" alt="WAP Architecture">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 12 -->
+            <section class="slide-dark">
+                <span class="badge" style="background:#0284c7; color:#ffffff;">Synthèse & Recommandations</span>
+                <h2 style="font-size: 1.6em; margin-bottom: 25px;">Les 4 Piliers d'une Stratégie Qualité Industrielle</h2>
+                <div style="font-size: 0.6em; line-height: 2; margin-bottom: 30px;">
+                    <div><strong style="color:#38bdf8;">1. Les Contrats de Données (Data Contracts) :</strong> Définir formellement les 6 dimensions entre producteurs et consommateurs.</div>
+                    <div><strong style="color:#38bdf8;">2. Automatisation Impérative :</strong> Aucune donnée n'atteint la couche Gold sans validation déclarative.</div>
+                    <div><strong style="color:#38bdf8;">3. Isolation et Quarantaine :</strong> Utiliser des coupes-circuits et des Dead Letter Queues pour préserver le service.</div>
+                    <div><strong style="color:#38bdf8;">4. Traçabilité par OpenLineage :</strong> Lier les anomalies au lignage de colonnes pour un diagnostic instantané.</div>
+                </div>
+                <h3 style="font-size: 1.1em; color: #ffffff; text-align:center;">Merci pour votre attention — Session de Questions-Réponses (Q&A)</h3>
+            </section>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.js"></script>
+    <script>
+        Reveal.initialize({
+            rtl: false,
+            hash: true,
+            slideNumber: 'c/t',
+            transition: 'slide',
+            plugins: [ RevealNotes, RevealMath.KaTeX ]
+        });
+    </script>
+</body>
+</html>
