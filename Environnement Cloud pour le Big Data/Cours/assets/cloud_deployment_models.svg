@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <linearGradient id="pubGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="privGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="hybGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="commGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+
+    <marker id="syncArrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+
+  <style>
+    .title { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 20px; font-weight: 700; fill: #0f172a; }
+    .subtitle { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 500; fill: #475569; }
+    .card-title { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 700; fill: #ffffff; text-anchor: middle; }
+    .item-title { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 700; fill: #0f172a; }
+    .item-desc { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 500; fill: #334155; }
+    .badge { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 10px; font-weight: 700; text-anchor: middle; }
+  </style>
+
+  <!-- Title & Subtitle -->
+  <text x="480" y="30" text-anchor="middle" class="title">Cloud Computing Deployment Models</text>
+  <text x="480" y="50" text-anchor="middle" class="subtitle">Architectural Taxonomy: Public, Private, Hybrid, and Community Deployments</text>
+
+  <!-- ================= 1. PUBLIC CLOUD ================= -->
+  <g transform="translate(30, 75)">
+    <rect x="0" y="0" width="205" height="370" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="205" height="34" rx="10" fill="url(#pubGrad)"/>
+    <rect x="0" y="24" width="205" height="10" fill="url(#pubGrad)"/>
+    <text x="102" y="22" class="card-title">Public Cloud</text>
+
+    <!-- Icon Graphic: Multi-tenant Globe -->
+    <circle cx="102" cy="72" r="24" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+    <path d="M 88 72 Q 102 60 116 72 Q 102 84 88 72 Z" fill="none" stroke="#2563eb" stroke-width="1.5"/>
+    <circle cx="102" cy="72" r="16" fill="none" stroke="#3b82f6" stroke-width="1.2"/>
+    <line x1="78" y1="72" x2="126" y2="72" stroke="#2563eb" stroke-width="1.5"/>
+
+    <!-- Key Attributes -->
+    <rect x="12" y="110" width="181" height="50" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="20" y="128" class="item-title">Tenancy &amp; Access</text>
+    <text x="20" y="146" class="item-desc">Multi-tenant, Open Internet</text>
+
+    <rect x="12" y="168" width="181" height="50" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="20" y="186" class="item-title">Ownership &amp; Host</text>
+    <text x="20" y="204" class="item-desc">Third-party Cloud Providers</text>
+
+    <rect x="12" y="226" width="181" height="50" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="20" y="244" class="item-title">Cost Structure</text>
+    <text x="20" y="262" class="item-desc">OpEx, Pay-as-you-go (Utility)</text>
+
+    <rect x="12" y="284" width="181" height="50" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="20" y="302" class="item-title">Key Advantages</text>
+    <text x="20" y="320" class="item-desc">Near-infinite Elasticity, No CapEx</text>
+
+    <!-- Examples footer badge -->
+    <rect x="12" y="342" width="181" height="20" rx="4" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="102" y="356" class="badge" fill="#1e40af">AWS, Azure, GCP, OCI</text>
+  </g>
+
+  <!-- ================= 2. PRIVATE CLOUD ================= -->
+  <g transform="translate(265, 75)">
+    <rect x="0" y="0" width="205" height="370" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="205" height="34" rx="10" fill="url(#privGrad)"/>
+    <rect x="0" y="24" width="205" height="10" fill="url(#privGrad)"/>
+    <text x="102" y="22" class="card-title">Private Cloud</text>
+
+    <!-- Icon Graphic: Dedicated Shield / Data Center -->
+    <circle cx="102" cy="72" r="24" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+    <path d="M 102 58 L 118 64 V 76 C 118 84 102 90 102 90 C 102 90 86 84 86 76 V 64 Z" fill="#10b981" opacity="0.2"/>
+    <path d="M 102 58 L 118 64 V 76 C 118 84 102 90 102 90 C 102 90 86 84 86 76 V 64 Z" fill="none" stroke="#059669" stroke-width="1.5"/>
+
+    <!-- Key Attributes -->
+    <rect x="12" y="110" width="181" height="50" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="20" y="128" class="item-title">Tenancy &amp; Access</text>
+    <text x="20" y="146" class="item-desc">Single-tenant, Corporate VPN</text>
+
+    <rect x="12" y="168" width="181" height="50" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="20" y="186" class="item-title">Ownership &amp; Host</text>
+    <text x="20" y="204" class="item-desc">Internal Enterprise / Colo DC</text>
+
+    <rect x="12" y="226" width="181" height="50" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="20" y="244" class="item-title">Cost Structure</text>
+    <text x="20" y="262" class="item-desc">CapEx + High OpEx (Maintenance)</text>
+
+    <rect x="12" y="284" width="181" height="50" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="20" y="302" class="item-title">Key Advantages</text>
+    <text x="20" y="320" class="item-desc">Strict Compliance, Full Control</text>
+
+    <!-- Examples footer badge -->
+    <rect x="12" y="342" width="181" height="20" rx="4" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="102" y="356" class="badge" fill="#065f46">OpenStack, VMware, Nutanix</text>
+  </g>
+
+  <!-- ================= 3. HYBRID CLOUD ================= -->
+  <g transform="translate(500, 75)">
+    <rect x="0" y="0" width="220" height="370" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="220" height="34" rx="10" fill="url(#hybGrad)"/>
+    <rect x="0" y="24" width="220" height="10" fill="url(#hybGrad)"/>
+    <text x="110" y="22" class="card-title">Hybrid Cloud</text>
+
+    <!-- Icon Graphic: Interconnected Bridge -->
+    <circle cx="82" cy="72" r="16" fill="#ecfdf5" stroke="#059669" stroke-width="1.2"/>
+    <text x="82" y="76" font-size="9" font-weight="700" fill="#047857" text-anchor="middle" font-family="sans-serif">Priv</text>
+    <circle cx="138" cy="72" r="16" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+    <text x="138" y="76" font-size="9" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="sans-serif">Pub</text>
+    <path d="M 98 72 L 122 72" stroke="#7c3aed" stroke-width="2" stroke-dasharray="3 2" marker-end="url(#syncArrow)"/>
+
+    <!-- Key Attributes -->
+    <rect x="12" y="110" width="196" height="50" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="20" y="128" class="item-title">Composition</text>
+    <text x="20" y="146" class="item-desc">Private + Public Orchestration</text>
+
+    <rect x="12" y="168" width="196" height="50" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="20" y="186" class="item-title">Interconnection</text>
+    <text x="20" y="204" class="item-desc">DirectConnect, VPN, SD-WAN</text>
+
+    <rect x="12" y="226" width="196" height="50" rx="6" fill="#faf5ff" stroke="#e9d5ff"/>
+    <text x="20" y="244" class="item-title" fill="#6b21a8">Cloud Bursting</text>
+    <text x="20" y="262" class="item-desc">Spill peak loads to public cloud</text>
+
+    <rect x="12" y="284" width="196" height="50" rx="6" fill="#faf5ff" stroke="#e9d5ff"/>
+    <text x="20" y="302" class="item-title" fill="#6b21a8">Disaster Recovery (DR)</text>
+    <text x="20" y="320" class="item-desc">Failover target without high idle cost</text>
+
+    <!-- Examples footer badge -->
+    <rect x="12" y="342" width="196" height="20" rx="4" fill="#faf5ff" stroke="#ddd6fe"/>
+    <text x="110" y="356" class="badge" fill="#5b21b6">AWS Outposts, Azure Arc</text>
+  </g>
+
+  <!-- ================= 4. COMMUNITY CLOUD ================= -->
+  <g transform="translate(745, 75)">
+    <rect x="0" y="0" width="185" height="370" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="185" height="34" rx="10" fill="url(#commGrad)"/>
+    <rect x="0" y="24" width="185" height="10" fill="url(#commGrad)"/>
+    <text x="92" y="22" class="card-title">Community Cloud</text>
+
+    <!-- Icon Graphic: Shared Consortium -->
+    <circle cx="92" cy="72" r="22" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5"/>
+    <circle cx="82" cy="70" r="6" fill="#d97706"/>
+    <circle cx="102" cy="70" r="6" fill="#d97706"/>
+    <circle cx="92" cy="80" r="5" fill="#f59e0b"/>
+
+    <!-- Key Attributes -->
+    <rect x="10" y="110" width="165" height="50" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="16" y="128" class="item-title">Shared Tenancy</text>
+    <text x="16" y="146" class="item-desc">Specific industry cluster</text>
+
+    <rect x="10" y="168" width="165" height="50" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="16" y="186" class="item-title">Governance</text>
+    <text x="16" y="204" class="item-desc">Joint consortium policies</text>
+
+    <rect x="10" y="226" width="165" height="50" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="16" y="244" class="item-title">Cost Sharing</text>
+    <text x="16" y="262" class="item-desc">Shared CapEx &amp; OpEx</text>
+
+    <rect x="10" y="284" width="165" height="50" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="16" y="302" class="item-title">Key Target</text>
+    <text x="16" y="320" class="item-desc">Gov, Healthcare, Research</text>
+
+    <!-- Examples footer badge -->
+    <rect x="10" y="342" width="165" height="20" rx="4" fill="#fffbeb" stroke="#fde68a"/>
+    <text x="92" y="356" class="badge" fill="#92400e">GovCloud, HIPAA Cloud</text>
+  </g>
+
+  <!-- Connective Hybrid Link indicator -->
+  <path d="M 470 260 C 485 260, 485 260, 500 260" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="2 2"/>
+</svg>

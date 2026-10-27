@@ -22,15 +22,17 @@
             }
           },
           {
-            "id": "fe2c369b1e7934ff",
+            "id": "73f7557e4bfc233b",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "Analyse et Programmation avec Python/Cours/Chapitre 2 - Panda 3.pdf"
+                "file": "Analyse et Programmation avec Python/Cours/04_Pandas_Partie_3_Groupby_Pivot_Jointures_et_Reshaping.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-file-text",
-              "title": "Chapitre 2 - Panda 3"
+              "icon": "lucide-file",
+              "title": "04_Pandas_Partie_3_Groupby_Pivot_Jointures_et_Reshaping"
             }
           }
         ],
@@ -201,11 +203,21 @@
       "bases:Create new base": false
     }
   },
-  "active": "fe2c369b1e7934ff",
+  "active": "73f7557e4bfc233b",
   "lastOpenFiles": [
+    "Framework web Python/Cours/assets/poo_uml_class_hierarchy.svg",
+    "Large Language Models/Cours/assets/self_attention_mechanism.svg",
+    "Environnement Cloud pour le Big Data/Cours/assets/cloud_deployment_models.svg",
+    "Analyse et Programmation avec Python/Cours/assets/dataframe_merge_join.svg",
+    "Analyse et Programmation avec Python/Cours/assets/pivot_table_mechanics.svg",
+    "Traitement Automatique du Langage Naturel/Cours/assets/tokenizers_comparison.svg",
+    "Framework web Python/Cours/01_Rappels_Architectures_Web_et_POO_Python.md",
     "Analyse et Programmation avec Python/Cours/04_Pandas_Partie_3_Groupby_Pivot_Jointures_et_Reshaping.md",
-    "Analyse et Programmation avec Python/Cours/03_Pandas_Partie_2_Exploration_Modification_et_Tri.md",
     "Analyse et Programmation avec Python/Cours/Chapitre 2 - Panda 3.pdf",
+    "Framework web Python/Cours/CH3 FWP_2DS 2026-2027.pdf",
+    "Framework web Python/Cours/CH2 FWP_2DS 2026-2027.pdf",
+    "AGENTS.md",
+    "Analyse et Programmation avec Python/Cours/03_Pandas_Partie_2_Exploration_Modification_et_Tri.md",
     "Analyse et Programmation avec Python/Cours/02_Pandas_Partie_1_Prise_en_Main_et_Structures_de_Donnees.md",
     "Traitement Automatique du Langage Naturel/Cours/Prétraitement du texte.pdf",
     "Traitement Automatique du Langage Naturel/Cours/Introduction au TALN.pdf",
@@ -222,18 +234,11 @@
     "Large Language Models/Cours/01_Introduction_aux_LLM.md",
     "Large Language Models/Cours/assets/transformer_attention_vs_rnn_bottleneck.svg",
     "Large Language Models/Cours/assets/evolution_ngrams_to_transformers.svg",
-    "Large Language Models/Cours/assets/llm_landscape_hierarchy.svg",
     "Large Language Models/Assignments/assets",
     "Large Language Models/TP/assets",
-    "Large Language Models/Cours/assets",
-    "Large Language Models/TP/TP1.pdf",
     "Framework web Python/TP/TP3_Heritage_POO_et_Securite_Flask.md",
     "Framework web Python/TP/02_Atelier_3_Heritage_POO_et_Securite_Flask.md",
-    "Framework web Python/TP/assets/flask_poo_inheritance_workflow.svg",
     "Framework web Python/Cours/03_Les_Sessions_avec_Flask.md",
-    "Framework web Python/Cours/assets/flask_session_workflow.svg",
-    "Framework web Python/TP/TP3 Héritage/MonProjetFlask/venv/Lib/site-packages/werkzeug/debug/shared/more.png",
-    "Framework web Python/TP/TP3 Héritage/MonProjetFlask/venv/Lib/site-packages/werkzeug/debug/shared/less.png",
     "Framework web Python/TP/TP3 Héritage/MonProjetFlask/venv/Lib/site-packages/werkzeug/debug/shared/ICON_LICENSE.md",
     "Framework web Python/TP/TP3 Héritage/MonProjetFlask/venv/Lib/site-packages/pip-26.2.1.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
     "Framework web Python/TP/TP3 Héritage/MonProjetFlask/venv/Lib/site-packages/pip/_vendor/idna/LICENSE.md",
@@ -245,9 +250,6 @@
     "Framework web Python/TP/TP1_Installation_Flask_et_Application_Web_POO.md",
     "Framework web Python/TP/Correction app POO/README.md",
     "Framework web Python/TP/Correction app POO/README_AR.md",
-    "Framework web Python/Cours/02_Gestion_des_Exceptions_en_Python.md",
-    "Framework web Python/TP/App1/README.md",
-    "Framework web Python/Cours/01_Rappels_Architectures_Web_et_POO_Python.md",
-    "Framework web Python/TP/01_Atelier_1_Installation_Flask_et_Application_Web_POO.md"
+    "Framework web Python/Cours/02_Gestion_des_Exceptions_en_Python.md"
   ]
 }

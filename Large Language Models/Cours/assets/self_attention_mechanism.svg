@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <linearGradient id="tokenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </linearGradient>
+    <linearGradient id="focusGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#fde047"/>
+    </linearGradient>
+    <linearGradient id="targetGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#bfdbfe"/>
+      <stop offset="100%" stop-color="#93c5fd"/>
+    </linearGradient>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+
+    <marker id="attArrowHigh" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+    </marker>
+    <marker id="attArrowMed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <style>
+    .title { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 20px; font-weight: 700; fill: #0f172a; }
+    .subtitle { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 500; fill: #475569; }
+    .token-text { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 600; fill: #0f172a; text-anchor: middle; }
+    .token-sub { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 10px; font-weight: 500; fill: #64748b; text-anchor: middle; }
+    .weight-text { font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700; fill: #1d4ed8; text-anchor: middle; }
+    .box-title { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 700; fill: #1e1b4b; }
+    .box-desc { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 500; fill: #334155; }
+  </style>
+
+  <!-- Title & Subtitle -->
+  <text x="480" y="30" text-anchor="middle" class="title">Self-Attention Mechanism: Contextual Disambiguation</text>
+  <text x="480" y="52" text-anchor="middle" class="subtitle">Coreference Resolution: "She dropped the glass because it was fragile."</text>
+
+  <!-- ================= TOP: SENTENCE TOKENS ================= -->
+  <g transform="translate(45, 90)">
+    <!-- Token 1: She -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="85" height="56" rx="8" fill="url(#tokenGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="42" y="28" class="token-text">She</text>
+      <text x="42" y="44" class="token-sub">w1 (Key)</text>
+    </g>
+
+    <!-- Token 2: dropped -->
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="95" height="56" rx="8" fill="url(#tokenGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="47" y="28" class="token-text">dropped</text>
+      <text x="47" y="44" class="token-sub">w2 (Key)</text>
+    </g>
+
+    <!-- Token 3: the -->
+    <g transform="translate(210, 0)">
+      <rect x="0" y="0" width="80" height="56" rx="8" fill="url(#tokenGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="40" y="28" class="token-text">the</text>
+      <text x="40" y="44" class="token-sub">w3 (Key)</text>
+    </g>
+
+    <!-- Token 4: glass (TARGET OF HIGH ATTENTION) -->
+    <g transform="translate(305, 0)">
+      <rect x="0" y="0" width="105" height="56" rx="8" fill="url(#targetGrad)" stroke="#2563eb" stroke-width="2"/>
+      <text x="52" y="28" class="token-text" fill="#1e3a8a">glass</text>
+      <text x="52" y="44" class="token-sub" fill="#1d4ed8">w4 (Referent)</text>
+    </g>
+
+    <!-- Token 5: because -->
+    <g transform="translate(425, 0)">
+      <rect x="0" y="0" width="95" height="56" rx="8" fill="url(#tokenGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="47" y="28" class="token-text">because</text>
+      <text x="47" y="44" class="token-sub">w5 (Key)</text>
+    </g>
+
+    <!-- Token 6: it (QUERY FOCUS) -->
+    <g transform="translate(535, 0)">
+      <rect x="0" y="0" width="85" height="56" rx="8" fill="url(#focusGrad)" stroke="#ca8a04" stroke-width="2"/>
+      <text x="42" y="28" class="token-text" fill="#854d0e">it</text>
+      <text x="42" y="44" class="token-sub" fill="#a16207">w6 (Query)</text>
+    </g>
+
+    <!-- Token 7: was -->
+    <g transform="translate(635, 0)">
+      <rect x="0" y="0" width="80" height="56" rx="8" fill="url(#tokenGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="40" y="28" class="token-text">was</text>
+      <text x="40" y="44" class="token-sub">w7 (Key)</text>
+    </g>
+
+    <!-- Token 8: fragile -->
+    <g transform="translate(730, 0)">
+      <rect x="0" y="0" width="95" height="56" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+      <text x="47" y="28" class="token-text" fill="#166534">fragile</text>
+      <text x="47" y="44" class="token-sub" fill="#15803d">w8 (Attribute)</text>
+    </g>
+
+    <!-- Token 9: . -->
+    <g transform="translate(840, 0)">
+      <rect x="0" y="0" width="35" height="56" rx="8" fill="url(#tokenGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="17" y="28" class="token-text">.</text>
+      <text x="17" y="44" class="token-sub">w9</text>
+    </g>
+  </g>
+
+  <!-- ================= ATTENTION ARCS FROM "IT" ================= -->
+  <!-- Arc 1: "it" -> "glass" (STRONG ATTENTION) -->
+  <path d="M 577 155 C 577 240, 357 240, 357 155" fill="none" stroke="#2563eb" stroke-width="4.5" marker-end="url(#attArrowHigh)"/>
+  <rect x="420" y="210" width="95" height="26" rx="6" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.2"/>
+  <text x="467" y="227" class="weight-text">α = 0.82 ★</text>
+
+  <!-- Arc 2: "it" -> "fragile" (MODERATE ATTENTION - causal explanation) -->
+  <path d="M 585 155 C 600 200, 765 200, 775 155" fill="none" stroke="#10b981" stroke-width="2.5" stroke-dasharray="4 2" marker-end="url(#attArrowHigh)"/>
+  <rect x="660" y="185" width="85" height="22" rx="4" fill="#ecfdf5" stroke="#a7f3d0"/>
+  <text x="702" y="200" font-family="'Courier New', monospace" font-size="11" font-weight="700" fill="#047857" text-anchor="middle">α = 0.11</text>
+
+  <!-- Arc 3: "it" -> "She" (WEAK ATTENTION - rejected referent) -->
+  <path d="M 565 155 C 500 280, 75 280, 42 155" fill="none" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#attArrowMed)"/>
+  <rect x="180" y="260" width="75" height="20" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="217" y="274" font-family="'Courier New', monospace" font-size="10" font-weight="600" fill="#64748b" text-anchor="middle">α = 0.03</text>
+
+  <!-- Arc 4: "it" -> "dropped" -->
+  <path d="M 570 155 C 520 220, 160 220, 147 155" fill="none" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2 2"/>
+
+  <!-- ================= BOTTOM PANELS: HOW IT WORKS ================= -->
+  <g transform="translate(45, 305)">
+    <!-- Box 1: Mathematical Step -->
+    <rect x="0" y="0" width="270" height="150" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="270" height="30" rx="10" fill="#f1f5f9"/>
+    <rect x="0" y="20" width="270" height="10" fill="#f1f5f9"/>
+    <text x="135" y="20" text-anchor="middle" class="box-title">1. Dot-Product Matching</text>
+
+    <text x="15" y="52" class="box-desc">• Query vector <tspan font-family="monospace" font-weight="700">q_it</tspan> represents "what is it?"</text>
+    <text x="15" y="74" class="box-desc">• Multiplied by all Key vectors <tspan font-family="monospace" font-weight="700">k_j</tspan>:</text>
+    <rect x="15" y="85" width="240" height="26" rx="4" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="135" y="102" font-family="'Courier New', monospace" font-size="11" font-weight="700" fill="#1e293b" text-anchor="middle">Score(it, j) = (q_it · k_j) / √d</text>
+    <text x="15" y="132" class="box-desc">• "glass" yields the highest dot-product score.</text>
+  </g>
+
+  <g transform="translate(345, 305)">
+    <!-- Box 2: Softmax Normalization -->
+    <rect x="0" y="0" width="270" height="150" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="270" height="30" rx="10" fill="#f1f5f9"/>
+    <rect x="0" y="20" width="270" height="10" fill="#f1f5f9"/>
+    <text x="135" y="20" text-anchor="middle" class="box-title">2. Softmax Distribution</text>
+
+    <text x="15" y="52" class="box-desc">• Scores converted into probability weights:</text>
+    <rect x="15" y="62" width="240" height="26" rx="4" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="135" y="79" font-family="'Courier New', monospace" font-size="11" font-weight="700" fill="#1e293b" text-anchor="middle">α_j = exp(Score_j) / Σ exp(Score)</text>
+    <text x="15" y="108" class="box-desc">• Weights sum exactly to 1.0 (100%).</text>
+    <text x="15" y="128" class="box-desc">• Amplifies relevant token while suppressing noise.</text>
+  </g>
+
+  <g transform="translate(645, 305)">
+    <!-- Box 3: Contextual Representation -->
+    <rect x="0" y="0" width="270" height="150" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="270" height="30" rx="10" fill="#f1f5f9"/>
+    <rect x="0" y="20" width="270" height="10" fill="#f1f5f9"/>
+    <text x="135" y="20" text-anchor="middle" class="box-title">3. Value Aggregation</text>
+
+    <text x="15" y="52" class="box-desc">• Final vector for "it" is a weighted blend:</text>
+    <rect x="15" y="62" width="240" height="26" rx="4" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="135" y="79" font-family="'Courier New', monospace" font-size="11" font-weight="700" fill="#1e293b" text-anchor="middle">v'_it = Σ (α_j · v_j)</text>
+    <text x="15" y="108" class="box-desc">• Output vector <tspan font-weight="700" fill="#1d4ed8">v'_it</tspan> now contains "glass"</text>
+    <text x="15" y="128" class="box-desc">  semantics + "fragile" causality!</text>
+  </g>
+</svg>

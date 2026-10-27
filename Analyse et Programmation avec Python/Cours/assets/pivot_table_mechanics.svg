@@ -1,0 +1,231 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="headerBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="headerPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="headerEmerald" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <style>
+    .title { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 20px; font-weight: 700; fill: #0f172a; }
+    .subtitle { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 500; fill: #475569; }
+    .col-header { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 700; fill: #ffffff; }
+    .cell-txt { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 500; fill: #0f172a; text-anchor: middle; }
+    .cell-txt-bold { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+    .cell-nan { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 600; fill: #94a3b8; font-style: italic; text-anchor: middle; }
+    .code-label { font-family: 'Courier New', monospace; font-size: 13px; font-weight: 700; fill: #1e293b; }
+    .badge-txt { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 700; fill: #ffffff; text-anchor: middle; }
+  </style>
+
+  <!-- Title & Subtitle -->
+  <text x="480" y="32" text-anchor="middle" class="title">Pandas Pivot Table Internal Mechanics</text>
+  <text x="480" y="54" text-anchor="middle" class="subtitle">df.pivot_table(index='R', columns='C', values='V', aggfunc=sum)</text>
+
+  <!-- ================= SECTION 1: SOURCE DATAFRAME ================= -->
+  <g transform="translate(40, 80)">
+    <!-- Outer Card -->
+    <rect x="0" y="0" width="220" height="340" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="220" height="34" rx="10" fill="url(#headerBlue)"/>
+    <rect x="0" y="24" width="220" height="10" fill="url(#headerBlue)"/>
+    <text x="110" y="22" text-anchor="middle" class="col-header">Input DataFrame (df)</text>
+
+    <!-- Table Columns Header -->
+    <rect x="15" y="44" width="60" height="24" rx="4" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="45" y="60" class="cell-txt-bold" fill="#1d4ed8">R (index)</text>
+
+    <rect x="80" y="44" width="60" height="24" rx="4" fill="#fdf2f8" stroke="#fbcfe8"/>
+    <text x="110" y="60" class="cell-txt-bold" fill="#be185d">C (col)</text>
+
+    <rect x="145" y="44" width="60" height="24" rx="4" fill="#f0fdf4" stroke="#bbf7d0"/>
+    <text x="175" y="60" class="cell-txt-bold" fill="#15803d">V (val)</text>
+
+    <!-- Data Rows -->
+    <!-- Row 1 -->
+    <line x1="15" y1="96" x2="205" y2="96" stroke="#f1f5f9" stroke-width="1"/>
+    <text x="45" y="90" class="cell-txt">A</text><text x="110" y="90" class="cell-txt">F</text><text x="175" y="90" class="cell-txt-bold">3</text>
+    <!-- Row 2 -->
+    <line x1="15" y1="122" x2="205" y2="122" stroke="#f1f5f9" stroke-width="1"/>
+    <text x="45" y="116" class="cell-txt">B</text><text x="110" y="116" class="cell-txt">M</text><text x="175" y="116" class="cell-txt-bold">1</text>
+    <!-- Row 3 -->
+    <line x1="15" y1="148" x2="205" y2="148" stroke="#f1f5f9" stroke-width="1"/>
+    <text x="45" y="142" class="cell-txt">C</text><text x="110" y="142" class="cell-txt">F</text><text x="175" y="116" class="cell-txt-bold">4</text>
+    <!-- Row 4 -->
+    <line x1="15" y1="174" x2="205" y2="174" stroke="#f1f5f9" stroke-width="1"/>
+    <text x="45" y="168" class="cell-txt">A</text><text x="110" y="168" class="cell-txt">M</text><text x="175" y="168" class="cell-txt-bold">1</text>
+    <!-- Row 5 -->
+    <line x1="15" y1="200" x2="205" y2="200" stroke="#f1f5f9" stroke-width="1"/>
+    <text x="45" y="194" class="cell-txt">B</text><text x="110" y="194" class="cell-txt">F</text><text x="175" y="194" class="cell-txt-bold">5</text>
+    <!-- Row 6 -->
+    <line x1="15" y1="226" x2="205" y2="226" stroke="#f1f5f9" stroke-width="1"/>
+    <text x="45" y="220" class="cell-txt">C</text><text x="110" y="220" class="cell-txt">M</text><text x="175" y="220" class="cell-txt-bold">9</text>
+    <!-- Row 7 -->
+    <line x1="15" y1="252" x2="205" y2="252" stroke="#f1f5f9" stroke-width="1"/>
+    <text x="45" y="246" class="cell-txt">A</text><text x="110" y="246" class="cell-txt">F</text><text x="175" y="246" class="cell-txt-bold">2</text>
+    <!-- Row 8 -->
+    <line x1="15" y1="278" x2="205" y2="278" stroke="#f1f5f9" stroke-width="1"/>
+    <text x="45" y="272" class="cell-txt">D</text><text x="110" y="272" class="cell-txt">F</text><text x="175" y="272" class="cell-txt-bold">5</text>
+    <!-- Row 9 -->
+    <text x="45" y="298" class="cell-txt">B</text><text x="110" y="298" class="cell-txt">M</text><text x="175" y="298" class="cell-txt-bold">6</text>
+
+    <!-- Legend note -->
+    <rect x="15" y="312" width="190" height="18" rx="4" fill="#f8fafc"/>
+    <text x="110" y="325" font-size="10" fill="#64748b" text-anchor="middle" font-family="sans-serif">9 records across categories</text>
+  </g>
+
+  <!-- Flow Arrow 1 -->
+  <path d="M 275 250 L 330 250" stroke="#475569" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+  <text x="302" y="238" font-size="11" font-weight="600" fill="#475569" text-anchor="middle" font-family="sans-serif">GroupBy</text>
+  <text x="302" y="268" font-size="10" font-weight="500" fill="#64748b" text-anchor="middle" font-family="sans-serif">(R, C)</text>
+
+  <!-- ================= SECTION 2: GROUPING & AGGREGATION ================= -->
+  <g transform="translate(345, 80)">
+    <rect x="0" y="0" width="270" height="340" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="270" height="34" rx="10" fill="url(#headerPurple)"/>
+    <rect x="0" y="24" width="270" height="10" fill="url(#headerPurple)"/>
+    <text x="135" y="22" text-anchor="middle" class="col-header">Group by (R, C) &amp; Aggregate</text>
+
+    <!-- Group items -->
+    <!-- Group (A, F) -->
+    <rect x="15" y="46" width="240" height="30" rx="6" fill="#faf5ff" stroke="#e9d5ff"/>
+    <text x="30" y="66" class="code-label" fill="#6b21a8">(A, F)</text>
+    <text x="95" y="66" font-size="12" fill="#475569" font-family="sans-serif">values: [3, 2]</text>
+    <path d="M 180 62 L 195 62" stroke="#9333ea" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="210" y="52" width="35" height="20" rx="4" fill="#9333ea"/>
+    <text x="227" y="66" class="badge-txt">5</text>
+
+    <!-- Group (A, M) -->
+    <rect x="15" y="82" width="240" height="30" rx="6" fill="#faf5ff" stroke="#e9d5ff"/>
+    <text x="30" y="102" class="code-label" fill="#6b21a8">(A, M)</text>
+    <text x="95" y="102" font-size="12" fill="#475569" font-family="sans-serif">values: [1]</text>
+    <path d="M 180 98 L 195 98" stroke="#9333ea" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="210" y="88" width="35" height="20" rx="4" fill="#9333ea"/>
+    <text x="227" y="102" class="badge-txt">1</text>
+
+    <!-- Group (B, F) -->
+    <rect x="15" y="118" width="240" height="30" rx="6" fill="#faf5ff" stroke="#e9d5ff"/>
+    <text x="30" y="138" class="code-label" fill="#6b21a8">(B, F)</text>
+    <text x="95" y="138" font-size="12" fill="#475569" font-family="sans-serif">values: [5]</text>
+    <path d="M 180 134 L 195 134" stroke="#9333ea" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="210" y="124" width="35" height="20" rx="4" fill="#9333ea"/>
+    <text x="227" y="138" class="badge-txt">5</text>
+
+    <!-- Group (B, M) -->
+    <rect x="15" y="154" width="240" height="30" rx="6" fill="#faf5ff" stroke="#e9d5ff"/>
+    <text x="30" y="174" class="code-label" fill="#6b21a8">(B, M)</text>
+    <text x="95" y="174" font-size="12" fill="#475569" font-family="sans-serif">values: [1, 6]</text>
+    <path d="M 180 170 L 195 170" stroke="#9333ea" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="210" y="160" width="35" height="20" rx="4" fill="#9333ea"/>
+    <text x="227" y="174" class="badge-txt">7</text>
+
+    <!-- Group (C, F) -->
+    <rect x="15" y="190" width="240" height="30" rx="6" fill="#faf5ff" stroke="#e9d5ff"/>
+    <text x="30" y="210" class="code-label" fill="#6b21a8">(C, F)</text>
+    <text x="95" y="210" font-size="12" fill="#475569" font-family="sans-serif">values: [4]</text>
+    <path d="M 180 206 L 195 206" stroke="#9333ea" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="210" y="196" width="35" height="20" rx="4" fill="#9333ea"/>
+    <text x="227" y="210" class="badge-txt">4</text>
+
+    <!-- Group (C, M) -->
+    <rect x="15" y="226" width="240" height="30" rx="6" fill="#faf5ff" stroke="#e9d5ff"/>
+    <text x="30" y="246" class="code-label" fill="#6b21a8">(C, M)</text>
+    <text x="95" y="246" font-size="12" fill="#475569" font-family="sans-serif">values: [9]</text>
+    <path d="M 180 242 L 195 242" stroke="#9333ea" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="210" y="232" width="35" height="20" rx="4" fill="#9333ea"/>
+    <text x="227" y="246" class="badge-txt">9</text>
+
+    <!-- Group (D, F) -->
+    <rect x="15" y="262" width="240" height="30" rx="6" fill="#faf5ff" stroke="#e9d5ff"/>
+    <text x="30" y="282" class="code-label" fill="#6b21a8">(D, F)</text>
+    <text x="95" y="282" font-size="12" fill="#475569" font-family="sans-serif">values: [5]</text>
+    <path d="M 180 278 L 195 278" stroke="#9333ea" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="210" y="268" width="35" height="20" rx="4" fill="#9333ea"/>
+    <text x="227" y="282" class="badge-txt">5</text>
+
+    <!-- Group (D, M) -->
+    <rect x="15" y="298" width="240" height="30" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="3 3"/>
+    <text x="30" y="318" class="code-label" fill="#64748b">(D, M)</text>
+    <text x="95" y="318" font-size="12" fill="#94a3b8" font-family="sans-serif">values: [ ] (none)</text>
+    <path d="M 180 314 L 195 314" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="210" y="304" width="35" height="20" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="227" y="318" font-size="11" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="sans-serif">NaN</text>
+  </g>
+
+  <!-- Flow Arrow 2 -->
+  <path d="M 630 250 L 685 250" stroke="#475569" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+  <text x="657" y="238" font-size="11" font-weight="600" fill="#475569" text-anchor="middle" font-family="sans-serif">Reshape</text>
+  <text x="657" y="268" font-size="10" font-weight="500" fill="#64748b" text-anchor="middle" font-family="sans-serif">2D Grid</text>
+
+  <!-- ================= SECTION 3: 2D PIVOT TABLE ================= -->
+  <g transform="translate(700, 80)">
+    <rect x="0" y="0" width="220" height="340" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="220" height="34" rx="10" fill="url(#headerEmerald)"/>
+    <rect x="0" y="24" width="220" height="10" fill="url(#headerEmerald)"/>
+    <text x="110" y="22" text-anchor="middle" class="col-header">Pivot Table Output</text>
+
+    <!-- Column labels banner -->
+    <rect x="80" y="44" width="125" height="20" rx="4" fill="#fdf2f8" stroke="#fbcfe8"/>
+    <text x="142" y="58" font-size="11" font-weight="700" fill="#be185d" text-anchor="middle" font-family="sans-serif">columns = 'C'</text>
+
+    <!-- Subheaders -->
+    <rect x="15" y="70" width="60" height="26" rx="4" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="45" y="87" class="cell-txt-bold" fill="#1d4ed8">R \ C</text>
+
+    <rect x="80" y="70" width="60" height="26" rx="4" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="110" y="87" class="cell-txt-bold" fill="#047857">F</text>
+
+    <rect x="145" y="70" width="60" height="26" rx="4" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="175" y="87" class="cell-txt-bold" fill="#047857">M</text>
+
+    <!-- Table Grid Rows -->
+    <!-- Row A -->
+    <rect x="15" y="104" width="60" height="36" rx="4" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="45" y="127" class="cell-txt-bold">A</text>
+    <rect x="80" y="104" width="60" height="36" rx="4" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="110" y="127" class="cell-txt-bold" fill="#15803d">5</text>
+    <rect x="145" y="104" width="60" height="36" rx="4" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="175" y="127" class="cell-txt-bold" fill="#15803d">1</text>
+
+    <!-- Row B -->
+    <rect x="15" y="148" width="60" height="36" rx="4" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="45" y="171" class="cell-txt-bold">B</text>
+    <rect x="80" y="148" width="60" height="36" rx="4" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="110" y="171" class="cell-txt-bold" fill="#15803d">5</text>
+    <rect x="145" y="148" width="60" height="36" rx="4" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="175" y="171" class="cell-txt-bold" fill="#15803d">7</text>
+
+    <!-- Row C -->
+    <rect x="15" y="192" width="60" height="36" rx="4" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="45" y="215" class="cell-txt-bold">C</text>
+    <rect x="80" y="192" width="60" height="36" rx="4" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="110" y="215" class="cell-txt-bold" fill="#15803d">4</text>
+    <rect x="145" y="192" width="60" height="36" rx="4" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="175" y="215" class="cell-txt-bold" fill="#15803d">9</text>
+
+    <!-- Row D -->
+    <rect x="15" y="236" width="60" height="36" rx="4" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="45" y="259" class="cell-txt-bold">D</text>
+    <rect x="80" y="236" width="60" height="36" rx="4" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="110" y="259" class="cell-txt-bold" fill="#15803d">5</text>
+    <rect x="145" y="236" width="60" height="36" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="175" y="259" class="cell-nan">NaN</text>
+
+    <!-- Summary Box -->
+    <rect x="15" y="286" width="190" height="44" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="110" y="303" font-size="10" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="sans-serif">Index: Unique 'R' values</text>
+    <text x="110" y="319" font-size="10" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="sans-serif">Columns: Unique 'C' values</text>
+  </g>
+</svg>

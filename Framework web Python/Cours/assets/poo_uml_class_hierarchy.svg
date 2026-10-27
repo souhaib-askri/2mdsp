@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <!-- UML Inheritance Arrow (Hollow Triangle pointing to superclass) -->
+    <marker id="umlHollowArrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <polygon points="1,1 11,6 1,11" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+    </marker>
+    <!-- UML Realization / Interface Arrow (Dashed with hollow triangle) -->
+    <marker id="umlInterfaceArrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <polygon points="1,1 11,6 1,11" fill="#ffffff" stroke="#d97706" stroke-width="1.8"/>
+    </marker>
+  </defs>
+
+  <style>
+    .main-title { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 20px; font-weight: 700; fill: #0f172a; }
+    .main-sub { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 500; fill: #475569; }
+    .panel-hdr { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 700; fill: #1e293b; }
+    .uml-title { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 700; text-anchor: middle; fill: #ffffff; }
+    .uml-interface-tag { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 10px; font-weight: 600; text-anchor: middle; fill: #92400e; font-style: italic; }
+    .uml-member { font-family: 'Courier New', monospace; font-size: 11px; font-weight: 500; fill: #0f172a; }
+    .uml-method { font-family: 'Courier New', monospace; font-size: 11px; font-weight: 600; fill: #1e3a8a; }
+  </style>
+
+  <!-- Main Title -->
+  <text x="480" y="28" text-anchor="middle" class="main-title">Python Object-Oriented Class Hierarchy (UML)</text>
+  <text x="480" y="48" text-anchor="middle" class="main-sub">Single Inheritance, Multiple Inheritance, and Interface Abstraction Models</text>
+
+  <!-- ================= LEFT PANEL: SINGLE INHERITANCE ================= -->
+  <g transform="translate(30, 70)">
+    <!-- Container frame -->
+    <rect x="0" y="0" width="430" height="425" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="215" y="25" text-anchor="middle" class="panel-hdr">Pattern A: Single Inheritance &amp; Specialization</text>
+
+    <!-- Superclass: Personne -->
+    <g transform="translate(125, 45)">
+      <rect x="0" y="0" width="180" height="115" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="1.8"/>
+      <!-- Header -->
+      <path d="M 0 6 Q 0 0 6 0 L 174 0 Q 180 0 180 6 L 180 26 L 0 26 Z" fill="#2563eb"/>
+      <text x="90" y="18" class="uml-title">Personne (Base)</text>
+      <!-- Attributes -->
+      <line x1="0" y1="26" x2="180" y2="26" stroke="#2563eb" stroke-width="1"/>
+      <text x="10" y="42" class="uml-member">- nom: str</text>
+      <text x="10" y="58" class="uml-member">- prenom: str</text>
+      <text x="10" y="74" class="uml-member">- age: int</text>
+      <!-- Methods -->
+      <line x1="0" y1="84" x2="180" y2="84" stroke="#cbd5e1" stroke-width="1"/>
+      <text x="10" y="102" class="uml-method">+ affiche()</text>
+    </g>
+
+    <!-- Subclass 1: Etudiant -->
+    <g transform="translate(20, 260)">
+      <rect x="0" y="0" width="180" height="120" rx="6" fill="#ffffff" stroke="#059669" stroke-width="1.8"/>
+      <path d="M 0 6 Q 0 0 6 0 L 174 0 Q 180 0 180 6 L 180 26 L 0 26 Z" fill="#059669"/>
+      <text x="90" y="18" class="uml-title">Etudiant (Derived)</text>
+      <text x="10" y="44" class="uml-member">- numEtudiant: int</text>
+      <line x1="0" y1="56" x2="180" y2="56" stroke="#cbd5e1" stroke-width="1"/>
+      <text x="10" y="74" class="uml-method">+ __init__(...)</text>
+      <text x="10" y="92" class="uml-method">+ affiche()</text>
+      <text x="10" y="108" class="uml-method">+ getNumEtudiant()</text>
+    </g>
+
+    <!-- Subclass 2: Enseignant -->
+    <g transform="translate(230, 260)">
+      <rect x="0" y="0" width="180" height="140" rx="6" fill="#ffffff" stroke="#059669" stroke-width="1.8"/>
+      <path d="M 0 6 Q 0 0 6 0 L 174 0 Q 180 0 180 6 L 180 26 L 0 26 Z" fill="#059669"/>
+      <text x="90" y="18" class="uml-title">Enseignant (Derived)</text>
+      <text x="10" y="44" class="uml-member">- specialite: str</text>
+      <text x="10" y="60" class="uml-member">- grade: str</text>
+      <text x="10" y="76" class="uml-member">- salaire: float</text>
+      <line x1="0" y1="86" x2="180" y2="86" stroke="#cbd5e1" stroke-width="1"/>
+      <text x="10" y="104" class="uml-method">+ __init__(...)</text>
+      <text x="10" y="122" class="uml-method">+ affiche()</text>
+    </g>
+
+    <!-- UML Inheritance Arrows connecting children up to Personne -->
+    <!-- From Etudiant to Personne -->
+    <path d="M 110 260 L 110 205 L 185 205 L 185 160" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#umlHollowArrow)"/>
+    <!-- From Enseignant to Personne -->
+    <path d="M 320 260 L 320 205 L 245 205 L 245 160" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#umlHollowArrow)"/>
+    <text x="215" y="198" text-anchor="middle" font-size="10" font-weight="600" fill="#64748b" font-family="sans-serif">inherits from</text>
+  </g>
+
+  <!-- ================= RIGHT PANEL: MULTIPLE INHERITANCE ================= -->
+  <g transform="translate(500, 70)">
+    <!-- Container frame -->
+    <rect x="0" y="0" width="430" height="425" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="215" y="25" text-anchor="middle" class="panel-hdr">Pattern B: Multiple Inheritance</text>
+
+    <!-- Superclass 1: Personne -->
+    <g transform="translate(20, 50)">
+      <rect x="0" y="0" width="180" height="115" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="1.8"/>
+      <path d="M 0 6 Q 0 0 6 0 L 174 0 Q 180 0 180 6 L 180 26 L 0 26 Z" fill="#2563eb"/>
+      <text x="90" y="18" class="uml-title">Personne (Parent 1)</text>
+      <text x="10" y="44" class="uml-member">- nom: str</text>
+      <text x="10" y="60" class="uml-member">- prenom: str</text>
+      <text x="10" y="76" class="uml-member">- dateN: str</text>
+      <line x1="0" y1="86" x2="180" y2="86" stroke="#cbd5e1" stroke-width="1"/>
+      <text x="10" y="104" class="uml-method">+ afficherInfos()</text>
+    </g>
+
+    <!-- Superclass 2: Employe -->
+    <g transform="translate(230, 50)">
+      <rect x="0" y="0" width="180" height="115" rx="6" fill="#ffffff" stroke="#0891b2" stroke-width="1.8"/>
+      <path d="M 0 6 Q 0 0 6 0 L 174 0 Q 180 0 180 6 L 180 26 L 0 26 Z" fill="#0891b2"/>
+      <text x="90" y="18" class="uml-title">Employe (Parent 2)</text>
+      <text x="10" y="44" class="uml-member">- codeEmp: int</text>
+      <text x="10" y="60" class="uml-member">- salaire: float</text>
+      <text x="10" y="76" class="uml-member">- anneeRec: int</text>
+      <line x1="0" y1="86" x2="180" y2="86" stroke="#cbd5e1" stroke-width="1"/>
+      <text x="10" y="104" class="uml-method">+ afficherInfos()</text>
+    </g>
+
+    <!-- Derived Class: Professeur (Multiple Parents) -->
+    <g transform="translate(105, 260)">
+      <rect x="0" y="0" width="220" height="135" rx="6" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+      <path d="M 0 6 Q 0 0 6 0 L 214 0 Q 220 0 220 6 L 220 28 L 0 28 Z" fill="#7c3aed"/>
+      <text x="110" y="19" class="uml-title">Professeur (Child)</text>
+      <text x="10" y="46" class="uml-member">- specialite: str</text>
+      <text x="10" y="64" class="uml-member">+ inherits: Personne + Employe</text>
+      <line x1="0" y1="74" x2="220" y2="74" stroke="#cbd5e1" stroke-width="1"/>
+      <text x="10" y="92" class="uml-method">+ __init__(7 params)</text>
+      <text x="10" y="110" class="uml-method">+ afficherInfos() [Combined]</text>
+      <text x="10" y="126" class="uml-method">+ getSpecialite()</text>
+    </g>
+
+    <!-- Multiple Inheritance Arrows -->
+    <!-- From Professeur up to Personne -->
+    <path d="M 160 260 L 160 210 L 110 210 L 110 165" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#umlHollowArrow)"/>
+    <!-- From Professeur up to Employe -->
+    <path d="M 270 260 L 270 210 L 320 210 L 320 165" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#umlHollowArrow)"/>
+    <text x="215" y="204" text-anchor="middle" font-size="10" font-weight="600" fill="#64748b" font-family="sans-serif">class Professeur(Personne, Employe)</text>
+  </g>
+</svg>

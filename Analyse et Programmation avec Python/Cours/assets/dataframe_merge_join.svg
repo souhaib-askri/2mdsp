@@ -1,0 +1,234 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="100%" height="100%" style="background:transparent;">
+  <defs>
+    <linearGradient id="blueHdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1d4ed8"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="purpleHdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6d28d9"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="greenHdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#047857"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+
+    <marker id="joinArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#475569"/>
+    </marker>
+    <marker id="matchArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#e11d48"/>
+    </marker>
+  </defs>
+
+  <style>
+    .title { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 20px; font-weight: 700; fill: #0f172a; }
+    .subtitle { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 500; fill: #475569; }
+    .tbl-title { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 700; fill: #ffffff; text-anchor: middle; }
+    .th-cell { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 700; fill: #1e293b; text-anchor: middle; }
+    .td-cell { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 500; fill: #0f172a; text-anchor: middle; }
+    .td-key { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 700; fill: #be123c; text-anchor: middle; }
+    .join-label { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 600; fill: #334155; }
+    .type-box-txt { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 600; fill: #0f172a; text-anchor: middle; }
+  </style>
+
+  <!-- Title & Subtitle -->
+  <text x="480" y="28" text-anchor="middle" class="title">Pandas DataFrame Merging &amp; Joining</text>
+  <text x="480" y="48" text-anchor="middle" class="subtitle">pd.merge(left=elections, right=babynames_2022, left_on='First Name', right_on='Name')</text>
+
+  <!-- ================= LEFT TABLE: ELECTIONS ================= -->
+  <g transform="translate(30, 75)">
+    <rect x="0" y="0" width="370" height="175" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="370" height="28" rx="8" fill="url(#blueHdr)"/>
+    <rect x="0" y="20" width="370" height="8" fill="url(#blueHdr)"/>
+    <text x="185" y="19" class="tbl-title">Left DataFrame: elections</text>
+
+    <!-- Headers -->
+    <rect x="10" y="34" width="55" height="22" rx="4" fill="#eff6ff"/>
+    <text x="37" y="49" class="th-cell">Year</text>
+
+    <rect x="70" y="34" width="135" height="22" rx="4" fill="#eff6ff"/>
+    <text x="137" y="49" class="th-cell">Candidate</text>
+
+    <rect x="210" y="34" width="65" height="22" rx="4" fill="#eff6ff"/>
+    <text x="242" y="49" class="th-cell">Party</text>
+
+    <rect x="280" y="34" width="80" height="22" rx="4" fill="#ffe4e6" stroke="#f43f5e" stroke-width="1.2"/>
+    <text x="320" y="49" class="th-cell" fill="#be123c">First Name ★</text>
+
+    <!-- Row 1 -->
+    <line x1="10" y1="82" x2="360" y2="82" stroke="#f1f5f9"/>
+    <text x="37" y="76" class="td-cell">1952</text>
+    <text x="137" y="76" class="td-cell">Dwight Eisenhower</text>
+    <text x="242" y="76" class="td-cell">Republican</text>
+    <rect x="283" y="62" width="74" height="18" rx="3" fill="#ffe4e6"/>
+    <text x="320" y="76" class="td-key">Dwight</text>
+
+    <!-- Row 2 -->
+    <line x1="10" y1="108" x2="360" y2="108" stroke="#f1f5f9"/>
+    <text x="37" y="102" class="td-cell">2008</text>
+    <text x="137" y="102" class="td-cell">Barack Obama</text>
+    <text x="242" y="102" class="td-cell">Democratic</text>
+    <rect x="283" y="88" width="74" height="18" rx="3" fill="#ffe4e6"/>
+    <text x="320" y="102" class="td-key">Barack</text>
+
+    <!-- Row 3 -->
+    <line x1="10" y1="134" x2="360" y2="134" stroke="#f1f5f9"/>
+    <text x="37" y="128" class="td-cell">2016</text>
+    <text x="137" y="128" class="td-cell">Donald Trump</text>
+    <text x="242" y="128" class="td-cell">Republican</text>
+    <rect x="283" y="114" width="74" height="18" rx="3" fill="#ffe4e6"/>
+    <text x="320" y="128" class="td-key">Donald</text>
+
+    <!-- Row 4 -->
+    <text x="37" y="154" class="td-cell">2020</text>
+    <text x="137" y="154" class="td-cell">Joe Biden</text>
+    <text x="242" y="154" class="td-cell">Democratic</text>
+    <rect x="283" y="140" width="74" height="18" rx="3" fill="#ffe4e6"/>
+    <text x="320" y="154" class="td-key">Joe</text>
+  </g>
+
+  <!-- ================= RIGHT TABLE: BABY NAMES 2022 ================= -->
+  <g transform="translate(560, 75)">
+    <rect x="0" y="0" width="370" height="175" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="370" height="28" rx="8" fill="url(#purpleHdr)"/>
+    <rect x="0" y="20" width="370" height="8" fill="url(#purpleHdr)"/>
+    <text x="185" y="19" class="tbl-title">Right DataFrame: babynames_2022</text>
+
+    <!-- Headers -->
+    <rect x="10" y="34" width="80" height="22" rx="4" fill="#ffe4e6" stroke="#f43f5e" stroke-width="1.2"/>
+    <text x="50" y="49" class="th-cell" fill="#be123c">Name ★</text>
+
+    <rect x="95" y="34" width="55" height="22" rx="4" fill="#f5f3ff"/>
+    <text x="122" y="49" class="th-cell">Sex</text>
+
+    <rect x="155" y="34" width="90" height="22" rx="4" fill="#f5f3ff"/>
+    <text x="200" y="49" class="th-cell">Count (2022)</text>
+
+    <rect x="250" y="34" width="110" height="22" rx="4" fill="#f5f3ff"/>
+    <text x="305" y="49" class="th-cell">Year</text>
+
+    <!-- Row 1 -->
+    <line x1="10" y1="82" x2="360" y2="82" stroke="#f1f5f9"/>
+    <rect x="13" y="62" width="74" height="18" rx="3" fill="#ffe4e6"/>
+    <text x="50" y="76" class="td-key">Dwight</text>
+    <text x="122" y="76" class="td-cell">M</text>
+    <text x="200" y="76" class="td-cell" font-weight="700">5</text>
+    <text x="305" y="76" class="td-cell">2022</text>
+
+    <!-- Row 2 -->
+    <line x1="10" y1="108" x2="360" y2="108" stroke="#f1f5f9"/>
+    <rect x="13" y="88" width="74" height="18" rx="3" fill="#ffe4e6"/>
+    <text x="50" y="102" class="td-key">Donald</text>
+    <text x="122" y="102" class="td-cell">M</text>
+    <text x="200" y="102" class="td-cell" font-weight="700">421</text>
+    <text x="305" y="102" class="td-cell">2022</text>
+
+    <!-- Row 3 -->
+    <line x1="10" y1="134" x2="360" y2="134" stroke="#f1f5f9"/>
+    <rect x="13" y="114" width="74" height="18" rx="3" fill="#ffe4e6"/>
+    <text x="50" y="128" class="td-key">Joe</text>
+    <text x="122" y="128" class="td-cell">M</text>
+    <text x="200" y="128" class="td-cell" font-weight="700">624</text>
+    <text x="305" y="128" class="td-cell">2022</text>
+
+    <!-- Row 4 -->
+    <rect x="13" y="140" width="74" height="18" rx="3" fill="#f1f5f9"/>
+    <text x="50" y="154" class="td-cell" fill="#94a3b8">Liam</text>
+    <text x="122" y="154" class="td-cell">M</text>
+    <text x="200" y="154" class="td-cell" font-weight="700">20456</text>
+    <text x="305" y="154" class="td-cell">2022</text>
+  </g>
+
+  <!-- ================= MIDDLE CONNECTOR ================= -->
+  <g transform="translate(405, 120)">
+    <rect x="10" y="5" width="130" height="70" rx="8" fill="#fff1f2" stroke="#fecdd3" stroke-width="1.5"/>
+    <text x="75" y="28" font-size="11" font-weight="700" fill="#be123c" text-anchor="middle" font-family="sans-serif">Matching Keys</text>
+    <text x="75" y="46" font-size="11" font-weight="600" fill="#be123c" text-anchor="middle" font-family="monospace">First Name == Name</text>
+    <text x="75" y="62" font-size="10" font-weight="500" fill="#881337" text-anchor="middle" font-family="sans-serif">(Inner Join: default)</text>
+
+    <!-- Linking arrows -->
+    <path d="M 0 40 L 10 40" stroke="#f43f5e" stroke-width="2"/>
+    <path d="M 140 40 L 150 40" stroke="#f43f5e" stroke-width="2"/>
+  </g>
+
+  <!-- Arrow down to Merged Table -->
+  <path d="M 480 200 L 480 250" stroke="#475569" stroke-width="2" marker-end="url(#joinArrow)"/>
+  <rect x="425" y="215" width="110" height="20" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="480" y="229" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="sans-serif">pd.merge()</text>
+
+  <!-- ================= BOTTOM TABLE: MERGED DATAFRAME ================= -->
+  <g transform="translate(90, 265)">
+    <rect x="0" y="0" width="780" height="165" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="780" height="28" rx="8" fill="url(#greenHdr)"/>
+    <rect x="0" y="20" width="780" height="8" fill="url(#greenHdr)"/>
+    <text x="390" y="19" class="tbl-title">Output: merged_df (Combined Records)</text>
+
+    <!-- Headers -->
+    <rect x="15" y="34" width="70" height="22" rx="4" fill="#ecfdf5"/>
+    <text x="50" y="49" class="th-cell">Year_x</text>
+
+    <rect x="90" y="34" width="145" height="22" rx="4" fill="#ecfdf5"/>
+    <text x="162" y="49" class="th-cell">Candidate</text>
+
+    <rect x="240" y="34" width="95" height="22" rx="4" fill="#ecfdf5"/>
+    <text x="287" y="49" class="th-cell">Party</text>
+
+    <rect x="340" y="34" width="95" height="22" rx="4" fill="#ffe4e6" stroke="#f43f5e" stroke-width="1.2"/>
+    <text x="387" y="49" class="th-cell" fill="#be123c">First Name</text>
+
+    <rect x="440" y="34" width="95" height="22" rx="4" fill="#ffe4e6" stroke="#f43f5e" stroke-width="1.2"/>
+    <text x="487" y="49" class="th-cell" fill="#be123c">Name</text>
+
+    <rect x="540" y="34" width="55" height="22" rx="4" fill="#ecfdf5"/>
+    <text x="567" y="49" class="th-cell">Sex</text>
+
+    <rect x="600" y="34" width="95" height="22" rx="4" fill="#ecfdf5"/>
+    <text x="647" y="49" class="th-cell">Count (2022)</text>
+
+    <rect x="700" y="34" width="65" height="22" rx="4" fill="#ecfdf5"/>
+    <text x="732" y="49" class="th-cell">Year_y</text>
+
+    <!-- Merged Row 1: Dwight -->
+    <line x1="15" y1="84" x2="765" y2="84" stroke="#f1f5f9"/>
+    <text x="50" y="78" class="td-cell">1952</text>
+    <text x="162" y="78" class="td-cell">Dwight Eisenhower</text>
+    <text x="287" y="78" class="td-cell">Republican</text>
+    <text x="387" y="78" class="td-key">Dwight</text>
+    <text x="487" y="78" class="td-key">Dwight</text>
+    <text x="567" y="78" class="td-cell">M</text>
+    <rect x="625" y="64" width="45" height="18" rx="4" fill="#dcfce7"/>
+    <text x="647" y="78" class="td-cell" font-weight="700" fill="#15803d">5</text>
+    <text x="732" y="78" class="td-cell">2022</text>
+
+    <!-- Merged Row 2: Donald -->
+    <line x1="15" y1="110" x2="765" y2="110" stroke="#f1f5f9"/>
+    <text x="50" y="104" class="td-cell">2016</text>
+    <text x="162" y="104" class="td-cell">Donald Trump</text>
+    <text x="287" y="104" class="td-cell">Republican</text>
+    <text x="387" y="104" class="td-key">Donald</text>
+    <text x="487" y="104" class="td-key">Donald</text>
+    <text x="567" y="104" class="td-cell">M</text>
+    <rect x="625" y="90" width="45" height="18" rx="4" fill="#dcfce7"/>
+    <text x="647" y="104" class="td-cell" font-weight="700" fill="#15803d">421</text>
+    <text x="732" y="104" class="td-cell">2022</text>
+
+    <!-- Merged Row 3: Joe -->
+    <line x1="15" y1="136" x2="765" y2="136" stroke="#f1f5f9"/>
+    <text x="50" y="130" class="td-cell">2020</text>
+    <text x="162" y="130" class="td-cell">Joe Biden</text>
+    <text x="287" y="130" class="td-cell">Democratic</text>
+    <text x="387" y="130" class="td-key">Joe</text>
+    <text x="487" y="130" class="td-key">Joe</text>
+    <text x="567" y="130" class="td-cell">M</text>
+    <rect x="625" y="116" width="45" height="18" rx="4" fill="#dcfce7"/>
+    <text x="647" y="130" class="td-cell" font-weight="700" fill="#15803d">624</text>
+    <text x="732" y="130" class="td-cell">2022</text>
+
+    <!-- Note on unmatched (Barack omitted because not in 2022 top records, Liam omitted because not a president) -->
+    <text x="390" y="153" font-size="10" font-weight="500" fill="#64748b" text-anchor="middle" font-family="sans-serif">Note: Unmatched records (e.g. Liam, Barack) excluded in Inner Join. Duplicate column names auto-suffixed (_x, _y).</text>
+  </g>
+
+  <!-- Footer Tip -->
+  <text x="480" y="455" text-anchor="middle" font-size="11" font-weight="600" fill="#475569" font-family="sans-serif">Pandas Join Types: inner (default), left, right, outer — controlled via the <tspan font-family="monospace" fill="#0f172a">how='...'</tspan> parameter.</text>
+</svg>
